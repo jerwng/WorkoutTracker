@@ -71,8 +71,6 @@ struct ExerciseListView: View {
                 exerciseEntriesByExercise[exerciseRecord.value.exerciseId] = exerciseExerciseEntries
             }
         }
-        
-        print(exerciseEntriesByExercise)
     }
     
     
