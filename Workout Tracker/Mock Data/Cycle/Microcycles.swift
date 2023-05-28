@@ -14,5 +14,16 @@ struct Microcycle: Identifiable {
 }
 
 struct Microcycles {
-    let microcycles = [0: Microcycle(id: 0, microcycleName: "Microcycle 1", dayIds: [3])]
+    let microcycles = [
+        0: Microcycle(
+            id: 0,
+            microcycleName: "Microcycle 1",
+            dayIds: [1,2,3]
+        ),
+        1: Microcycle(
+            id: 1,
+            microcycleName: "Microcycle 2",
+            dayIds: []
+        )
+    ]
 }

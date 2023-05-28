@@ -15,6 +15,7 @@
 		C40DFD7C29DD127900EC700C /* Workout_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD7B29DD127900EC700C /* Workout_TrackerUITests.swift */; };
 		C40DFD7E29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD7D29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift */; };
 		C40DFD8D29DD165700EC700C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD8C29DD165700EC700C /* HeaderView.swift */; };
+		C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428A7E42A23EB180050CEFC /* Cycle.swift */; };
 		C4595DA229F0D81200FA1D84 /* ExerciseRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4595DA129F0D81200FA1D84 /* ExerciseRecords.swift */; };
 		C476C53929E4FD2A000FCE2A /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C53829E4FD2A000FCE2A /* Exercises.swift */; };
 		C47A242F29F5AF19005C171B /* ExerciseEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A242E29F5AF19005C171B /* ExerciseEntries.swift */; };
@@ -57,6 +58,7 @@
 		C40DFD7B29DD127900EC700C /* Workout_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_TrackerUITests.swift; sourceTree = "<group>"; };
 		C40DFD7D29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C40DFD8C29DD165700EC700C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C428A7E42A23EB180050CEFC /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
 		C4595DA129F0D81200FA1D84 /* ExerciseRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRecords.swift; sourceTree = "<group>"; };
 		C476C53829E4FD2A000FCE2A /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
 		C47A242E29F5AF19005C171B /* ExerciseEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntries.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		C40DFD5F29DD127800EC700C /* Workout Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				C428A7E32A23EAF10050CEFC /* Utils */,
 				C4C0F94D29E654160090C0EE /* Pages */,
 				C476C53729E4FC93000FCE2A /* Mock Data */,
 				C40DFD8B29DD163300EC700C /* Components */,
@@ -163,6 +166,14 @@
 				C4EA44EC29E8F57B0072672A /* ExercistListView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		C428A7E32A23EAF10050CEFC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C428A7E42A23EB180050CEFC /* Cycle.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		C476C53729E4FC93000FCE2A /* Mock Data */ = {
@@ -352,6 +363,7 @@
 				C47A243729F5AFB0005C171B /* Days.swift in Sources */,
 				C4595DA229F0D81200FA1D84 /* ExerciseRecords.swift in Sources */,
 				C40DFD6129DD127800EC700C /* Workout_TrackerApp.swift in Sources */,
+				C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */,
 				C48342F329E7A8A6002E781F /* ItalicFootnote.swift in Sources */,
 				C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */,
 				C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */,
