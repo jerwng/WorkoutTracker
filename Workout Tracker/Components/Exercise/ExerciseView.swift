@@ -18,6 +18,8 @@ struct ExerciseView: View {
                 Text(exercise.exerciseName).font(.title2).fontWeight(.bold)
                 
                 ItalicFootnote(content: "0 of " + String(exercise.exerciseSets))
+                
+                ExerciseRepRange(exercise: exercise)
             }
             
             VStack(alignment: .leading){
@@ -25,6 +27,7 @@ struct ExerciseView: View {
                     exerciseEntry in
                     ExerciseEntryRow(exerciseEntry: exerciseEntry)
                 }
+                .padding(.leading, 15.0)
             }
             Divider().background(Color(.black))
             
