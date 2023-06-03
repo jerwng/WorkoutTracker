@@ -20,11 +20,10 @@ struct ExerciseView: View {
                 ItalicFootnote(content: "0 of " + String(exercise.exerciseSets))
             }
             
-            VStack {
+            VStack(alignment: .leading){
                 ForEach(exerciseEntries) {
                     exerciseEntry in
-                    Text(String(exerciseEntry.reps)) + Text(" @ ") +
-                    Text(String(exerciseEntry.weight)) + Text("lbs")
+                    ExerciseEntryRow(exerciseEntry: exerciseEntry)
                 }
             }
             Divider().background(Color(.black))
