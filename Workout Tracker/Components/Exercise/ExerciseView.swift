@@ -26,8 +26,11 @@ struct ExerciseView: View {
                 ForEach(exerciseEntries) {
                     exerciseEntry in
                     ExerciseEntryRow(exerciseEntry: exerciseEntry)
+                }.padding(.leading, 15.0)
+                
+                if (exercise.exerciseNotes != nil) {
+                    ExerciseNotes(exerciseNotes: exercise.exerciseNotes!)
                 }
-                .padding(.leading, 15.0)
             }
             Divider().background(Color(.black))
             

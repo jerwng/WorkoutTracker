@@ -15,14 +15,16 @@ struct ExerciseRow: Identifiable {
     let exerciseSets: Int
     let exerciseRepRangeTop: Int
     let exerciseRepRangeBot: Int
+    let exerciseNotes: String?
     
-    init(exerciseId: Exercise.ID, exerciseName: String, exerciseSets: Int, exerciseRepRangeTop: Int, exerciseRepRangeBot: Int) {
+    init(exerciseId: Exercise.ID, exerciseName: String, exerciseSets: Int, exerciseRepRangeTop: Int, exerciseRepRangeBot: Int, exerciseNotes: String?) {
         self.id = UUID()
         self.exerciseId = exerciseId
         self.exerciseName = exerciseName
         self.exerciseSets = exerciseSets
         self.exerciseRepRangeTop = exerciseRepRangeTop
         self.exerciseRepRangeBot = exerciseRepRangeBot
+        self.exerciseNotes = exerciseNotes
     }
 }
 
@@ -51,7 +53,7 @@ struct ExerciseListView: View {
                 continue
             }
             
-            exerciseRows.append(ExerciseRow(exerciseId: exercise.id, exerciseName: exercise.name, exerciseSets: exerciseSet.sets, exerciseRepRangeTop: exercise.repRangeTop, exerciseRepRangeBot: exercise.repRangeBot))
+            exerciseRows.append(ExerciseRow(exerciseId: exercise.id, exerciseName: exercise.name, exerciseSets: exerciseSet.sets, exerciseRepRangeTop: exercise.repRangeTop, exerciseRepRangeBot: exercise.repRangeBot, exerciseNotes: exercise.notes))
         }
     }
     
