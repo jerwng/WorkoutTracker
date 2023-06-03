@@ -14,21 +14,17 @@ struct ExerciseView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-
+            HStack {
+                Text(exercise.exerciseName).font(.title2).fontWeight(.bold)
                 
-                HStack {
-                    Text(exercise.exerciseName).font(.title2).fontWeight(.bold)
-                    
-                    ItalicFootnote(content: "0 of " + String(exercise.exerciseSets))
-
-//                    ItalicFootnote(content: String(exercise.repRangeBot) + "-" + String(exercise.repRangeTop) + " Reps")
-                }
+                ItalicFootnote(content: "0 of " + String(exercise.exerciseSets))
+            }
             
             VStack {
-                
                 ForEach(exerciseEntries) {
                     exerciseEntry in
-                    Text(String(exerciseEntry.reps) + " @ " + String(exerciseEntry.weight) + "lbs")
+                    Text(String(exerciseEntry.reps)) + Text(" @ ") +
+                    Text(String(exerciseEntry.weight)) + Text("lbs")
                 }
             }
             Divider().background(Color(.black))
