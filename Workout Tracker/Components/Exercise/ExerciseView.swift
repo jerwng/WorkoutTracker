@@ -25,16 +25,33 @@ struct ExerciseView: View {
                 
             }
             
-            VStack(alignment: .leading){
-                ForEach(exerciseEntries) {
-                    exerciseEntry in
-                    ExerciseEntryRow(exerciseEntry: exerciseEntry)
-                }.padding(.leading, 15.0)
-                
-                if (exercise.exerciseNotes != nil) {
-                    ExerciseNotes(exerciseNotes: exercise.exerciseNotes!)
+            HStack {
+                VStack(alignment: .leading){
+                    ForEach(exerciseEntries) {
+                        exerciseEntry in
+                        ExerciseEntryRow(exerciseEntry: exerciseEntry)
+                    }.padding(.leading, 15.0)
+                    
+                    if (exercise.exerciseNotes != nil) {
+                        ExerciseNotes(exerciseNotes: exercise.exerciseNotes!)
+                    }
                 }
+                
+                Spacer()
+                
+                VStack(alignment: .leading) {
+                    ItalicFootnote(content: "Previous: ")
+                    ForEach(exerciseEntries) {
+                        exerciseEntry in
+                        ExerciseEntryRow(exerciseEntry: exerciseEntry, isItalic: true
+                        )
+                    }
+                }
+                .padding(.bottom, 2.0)
+              
+                
             }
+     
             Divider().background(Color(.black))
             
         }

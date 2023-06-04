@@ -11,10 +11,12 @@ import SwiftUI
 struct ExerciseEntryRow: View {
     var exerciseEntry: ExerciseEntry
     
+    var isItalic: Bool? = false
+    
     @State var exerciseEntryRowString = ""
     
     func buildExerciseEntryRowString() {
-        var curExerciseEntryRowString = String(exerciseEntry.reps) + " @ " + String(exerciseEntry.weight)
+        var curExerciseEntryRowString = String(exerciseEntry.reps) + " @ " + String(exerciseEntry.weight) + "lbs"
         
         if (exerciseEntry.time != nil) {
             curExerciseEntryRowString += ", " + exerciseEntry.time!
@@ -24,8 +26,17 @@ struct ExerciseEntryRow: View {
     }
     
     var body: some View {
-        Text(exerciseEntryRowString).onAppear {
-            buildExerciseEntryRowString()
+        
+        if (isItalic == true) {
+            ItalicFootnote(
+                content: exerciseEntryRowString
+            ).onAppear{
+                buildExerciseEntryRowString()
+            }
+        } else {
+            Text(exerciseEntryRowString).onAppear {
+                buildExerciseEntryRowString()
+            }
         }
     }
 }
