@@ -17,9 +17,7 @@ struct ExerciseView: View {
             HStack {
                 Text(exercise.exerciseName).font(.title2).fontWeight(.bold)
                 
-                ItalicFootnote(content: "0 of " + String(exercise.exerciseSets))
-                
-                ExerciseRepRange(exercise: exercise)
+                ExerciseSetsAndRepRange(exercise: exercise)
             }
             
             VStack(alignment: .leading){
