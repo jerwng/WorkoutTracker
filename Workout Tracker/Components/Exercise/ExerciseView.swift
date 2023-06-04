@@ -18,6 +18,11 @@ struct ExerciseView: View {
                 Text(exercise.exerciseName).font(.title2).fontWeight(.bold)
                 
                 ExerciseSetsAndRepRange(exercise: exercise)
+                
+                Spacer()
+                Image(systemName: "plus.circle")
+                    .padding(.trailing, 5.0)
+                
             }
             
             VStack(alignment: .leading){
