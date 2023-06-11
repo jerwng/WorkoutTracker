@@ -29,6 +29,8 @@
 		C48342EE29E7A0A9002E781F /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48342ED29E7A0A9002E781F /* DayView.swift */; };
 		C48342F029E7A3A4002E781F /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48342EF29E7A3A4002E781F /* ExerciseView.swift */; };
 		C48342F329E7A8A6002E781F /* ItalicFootnote.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48342F229E7A8A6002E781F /* ItalicFootnote.swift */; };
+		C49B8EC92A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B8EC82A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift */; };
+		C49B8ECC2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B8ECB2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift */; };
 		C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EA44EC29E8F57B0072672A /* ExercistListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,8 @@
 		C48342ED29E7A0A9002E781F /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		C48342EF29E7A3A4002E781F /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		C48342F229E7A8A6002E781F /* ItalicFootnote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItalicFootnote.swift; sourceTree = "<group>"; };
+		C49B8EC82A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseExerciseInputSheetBody.swift; sourceTree = "<group>"; };
+		C49B8ECB2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntryInputSheetBody.swift; sourceTree = "<group>"; };
 		C4EA44EC29E8F57B0072672A /* ExercistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercistListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 		C40DFD8B29DD163300EC700C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C49B8ECA2A3666FE001C64A1 /* ExerciseInputSheet */,
 				C4365C1A2A2BEB89008BACCD /* Exercise */,
 				C48342F129E7A882002E781F /* Text */,
 				C40DFD8C29DD165700EC700C /* HeaderView.swift */,
@@ -229,6 +234,15 @@
 				C48342F229E7A8A6002E781F /* ItalicFootnote.swift */,
 			);
 			path = Text;
+			sourceTree = "<group>";
+		};
+		C49B8ECA2A3666FE001C64A1 /* ExerciseInputSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C49B8EC82A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift */,
+				C49B8ECB2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift */,
+			);
+			path = ExerciseInputSheet;
 			sourceTree = "<group>";
 		};
 		C4C0F94D29E654160090C0EE /* Pages */ = {
@@ -385,8 +399,10 @@
 				C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */,
 				C48342F329E7A8A6002E781F /* ItalicFootnote.swift in Sources */,
 				C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */,
+				C49B8EC92A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift in Sources */,
 				C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */,
 				C4365C1E2A2BF0C3008BACCD /* ExerciseNotes.swift in Sources */,
+				C49B8ECC2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

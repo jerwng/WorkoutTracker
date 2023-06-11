@@ -11,6 +11,12 @@ import SwiftUI
 struct ExerciseView: View {
     var exercise: ExerciseRow
     var exerciseEntries: [ExerciseEntry] = []
+    
+    @State var isSheetOpen = false
+    
+    func handleTapGesture() {
+        isSheetOpen = true
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -21,7 +27,9 @@ struct ExerciseView: View {
                 
                 Spacer()
                 Image(systemName: "plus.circle")
-                    .padding(.trailing, 5.0)
+                    .padding(.trailing, 5.0).onTapGesture {
+                        handleTapGesture()
+                    }
                 
             }
             
@@ -54,6 +62,8 @@ struct ExerciseView: View {
      
             Divider().background(Color(.black))
             
+        }.sheet(isPresented: $isSheetOpen) {
+            ExerciseEntryInputSheetBody()
         }
     }
 }
