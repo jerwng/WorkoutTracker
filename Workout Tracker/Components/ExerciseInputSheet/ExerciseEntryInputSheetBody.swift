@@ -11,7 +11,7 @@ import SwiftUI
 struct ExerciseEntryInputSheetBody: View {
     var body: some View {
         BaseExerciseInputSheetBody(
-            content: Text("hello"),
+            content: Text("Squat"),
             sheetTitle: "Squat"
         )
     }
