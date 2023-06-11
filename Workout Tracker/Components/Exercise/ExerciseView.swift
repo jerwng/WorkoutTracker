@@ -63,7 +63,9 @@ struct ExerciseView: View {
             Divider().background(Color(.black))
             
         }.sheet(isPresented: $isSheetOpen) {
-            ExerciseEntryInputSheetBody()
+            ExerciseEntryInputSheetBody(
+                isSheetOpen: $isSheetOpen
+            )
         }
     }
 }

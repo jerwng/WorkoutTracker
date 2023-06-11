@@ -12,13 +12,17 @@ struct BaseExerciseInputSheetBody<Content: View>: View {
     var content: Content
     var presentationDetents: Set<PresentationDetent> = [.fraction(0.85)]
     var sheetTitle: String
+
+    @Binding var isSheetOpen: Bool
     
     func handleCancelButtonTap() {
         print("tap cancel")
+        isSheetOpen = false
     }
     
     func handleDoneButtonTap() {
         print("tap done")
+        isSheetOpen = false
     }
     
     var body: some View {
@@ -28,6 +32,7 @@ struct BaseExerciseInputSheetBody<Content: View>: View {
                     handleCancelButtonTap()
                 } label: {
                     Text("Cancel")
+                // Add same frame width to Cancel/Done buttons to ensure title is aligned in the center
                 }.frame(width: 55.0, alignment: .leading)
                 
                 Spacer()

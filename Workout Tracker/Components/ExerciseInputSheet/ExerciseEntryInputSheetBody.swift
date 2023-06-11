@@ -9,10 +9,13 @@ import Foundation
 import SwiftUI
 
 struct ExerciseEntryInputSheetBody: View {
+    @Binding var isSheetOpen: Bool
+    
     var body: some View {
         BaseExerciseInputSheetBody(
             content: Text("Squat"),
-            sheetTitle: "Squat"
+            sheetTitle: "Squat",
+            isSheetOpen: $isSheetOpen
         )
     }
 }
