@@ -24,3 +24,9 @@ struct Exercises {
         4: Exercise(id: 4, name: "Hanging Leg Raise", repRangeBot: 5, repRangeTop: 10, notes: "Dropset")
     ]
 }
+
+func ExercisesGetter(exerciseId: Exercise.ID) -> Exercise? {
+    let exercises =  Exercises().exercises
+    
+    return exercises[exerciseId]
+}

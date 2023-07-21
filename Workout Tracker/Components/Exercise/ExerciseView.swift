@@ -63,9 +63,18 @@ struct ExerciseView: View {
             Divider().background(Color(.black))
             
         }.sheet(isPresented: $isSheetOpen) {
-            ExerciseEntryInputSheetBody(
-                isSheetOpen: $isSheetOpen
-            )
+            /**
+             Only render ExerciseEntryInputSheetBody if ExercisesGetter returns
+             a valid Exercise
+             */
+            if let selectedExercise = ExercisesGetter(
+                exerciseId: exercise.exerciseId)
+            {
+                ExerciseEntryInputSheetBody(
+                    isSheetOpen: $isSheetOpen,
+                    selectedExercise: selectedExercise
+                )
+            }
         }
     }
 }
