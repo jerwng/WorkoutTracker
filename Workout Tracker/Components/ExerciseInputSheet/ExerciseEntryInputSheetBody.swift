@@ -31,10 +31,10 @@ struct ExerciseEntryInputSheetFields: View {
     var body: some View {
         Form {
             Section {
-                BackgroundTextField(
+                DecimalPadTextField(
                     textValue: $weight, textPlaceholder: "lbs"
                 )
-                BackgroundTextField(
+                DecimalPadTextField(
                     textValue: $reps, textPlaceholder: "Reps"
                 )
                 BackgroundTextField(
