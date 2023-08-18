@@ -10,41 +10,51 @@ import SwiftUI
 
 struct ExerciseEntryInputSheetBody: View {
     @Binding var isSheetOpen: Bool
-    var selectedExercise: Exercise
+    var name: String
+
+    var weight: String?
+    var reps: String?
+    var time: String?
+    var notes: String?
     
     var body: some View {
         BaseExerciseInputSheetBody(
-            content: ExerciseEntryInputSheetFields(),
-            sheetTitle: selectedExercise.name,
+            content: ExerciseEntryInputSheetFields(
+                weight: weight,
+                reps: reps,
+                time: time,
+                notes: notes
+            ),
+            sheetTitle: name,
             isSheetOpen: $isSheetOpen
         )
     }
 }
 
 struct ExerciseEntryInputSheetFields: View {
-    @State private var weight: String = ""
-    @State private var reps: String = ""
-    @State private var time: String = ""
-    @State private var notes: String = ""
+    var weight: String?
+    var reps: String?
+    var time: String?
+    var notes: String?
     
 
     var body: some View {
         Form {
             Section {
                 DecimalPadTextField(
-                    textValue: $weight, textPlaceholder: "lbs"
+                    initialValue: weight, textPlaceholder: "lbs"
                 )
                 DecimalPadTextField(
-                    textValue: $reps, textPlaceholder: "Reps"
+                    initialValue: reps, textPlaceholder: "Reps"
                 )
                 BackgroundTextField(
-                    textValue: $time, textPlaceholder: "Time"
+                    initialValue: time, textPlaceholder: "Time"
                 )
             }
             
             Section {
                 BackgroundTextField(
-                    textValue: $notes, textPlaceholder: "Notes"
+                    initialValue: notes, textPlaceholder: "Notes"
                 ).lineLimit(4, reservesSpace: true)
             }
         }

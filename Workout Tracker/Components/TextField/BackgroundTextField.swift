@@ -10,8 +10,13 @@ import SwiftUI
 import Combine
 
 struct BackgroundTextField: View {
-    @Binding var textValue: String
-    var textPlaceholder: String
+    @State private var textValue: String
+    private let textPlaceholder: String
+    
+    init(initialValue: String?, textPlaceholder: String?) {
+        _textValue = State(initialValue: initialValue ?? "")
+        self.textPlaceholder = textPlaceholder ?? ""
+    }
     
     var body: some View {
         TextField(text: $textValue, prompt: Text(textPlaceholder), axis: .vertical) {
@@ -25,12 +30,17 @@ struct BackgroundTextField: View {
  Shows decimal pad keyboard.
  */
 struct DecimalPadTextField: View {
-    @Binding var textValue: String
-    var textPlaceholder: String
+    @State private var textValue: String
+    private let textPlaceholder: String
+    
+    init(initialValue: String?, textPlaceholder: String?) {
+        _textValue = State(initialValue: initialValue ?? "")
+        self.textPlaceholder = textPlaceholder ?? ""
+    }
     
     var body: some View {
         BackgroundTextField(
-            textValue: $textValue, textPlaceholder: textPlaceholder
+            initialValue: textValue, textPlaceholder: textPlaceholder
         )
         .keyboardType(.decimalPad)
         /**

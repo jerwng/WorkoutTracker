@@ -10,8 +10,20 @@ import SwiftUI
 
 struct ExerciseEntryRow: View {
     var exerciseEntry: ExerciseEntry
+    var exercise: ExerciseRow?
     
     var isItalic: Bool? = false
+
+    @State var isSheetOpen = false
+    
+    /**
+     Inteded to only display sheet if exercise value is provided.
+     */
+    func handleTapGesture() {
+        if (exercise != nil) {
+            isSheetOpen = true
+        }
+    }
     
     @State var exerciseEntryRowString = ""
     
@@ -36,6 +48,22 @@ struct ExerciseEntryRow: View {
         } else {
             Text(exerciseEntryRowString).onAppear {
                 buildExerciseEntryRowString()
+            }.onTapGesture {
+                handleTapGesture()
+            }.sheet(isPresented: $isSheetOpen) {
+                /**
+                 Only render ExerciseEntryInputSheetBody if ExercisesGetter returns
+                 a valid Exercise
+                 */
+                if let selectedExercise = ExercisesGetter(
+                    exerciseId: exercise?.exerciseId ?? -1)
+                {
+                    ExerciseInputSheet(
+                        isSheetOpen: $isSheetOpen,
+                        selectedExercise: selectedExercise,
+                        selectedExerciseEntry: nil
+                    )
+                }
             }
         }
     }

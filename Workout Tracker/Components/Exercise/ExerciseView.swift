@@ -37,7 +37,10 @@ struct ExerciseView: View {
                 VStack(alignment: .leading){
                     ForEach(exerciseEntries) {
                         exerciseEntry in
-                        ExerciseEntryRow(exerciseEntry: exerciseEntry)
+                        ExerciseEntryRow(
+                            exerciseEntry: exerciseEntry,
+                            exercise: exercise
+                        )
                     }.padding(.leading, 15.0)
                     
                     if (exercise.exerciseNotes != nil) {
@@ -70,9 +73,10 @@ struct ExerciseView: View {
             if let selectedExercise = ExercisesGetter(
                 exerciseId: exercise.exerciseId)
             {
-                ExerciseEntryInputSheetBody(
+                ExerciseInputSheet(
                     isSheetOpen: $isSheetOpen,
-                    selectedExercise: selectedExercise
+                    selectedExercise: selectedExercise,
+                    selectedExerciseEntry: nil
                 )
             }
         }
