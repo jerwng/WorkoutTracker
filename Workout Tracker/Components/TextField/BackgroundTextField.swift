@@ -19,8 +19,10 @@ struct BackgroundTextField: View {
     }
     
     var body: some View {
-        TextField(text: $textValue, prompt: Text(textPlaceholder), axis: .vertical) {
-        
+        LabeledContent {
+            TextField(text: $textValue, axis: .vertical) {}.multilineTextAlignment(.trailing)
+        } label : {
+            Text(textPlaceholder).foregroundColor(Color("BackgroundTextField - Label"))
         }.listRowBackground(Color("Background"))
     }
 }
