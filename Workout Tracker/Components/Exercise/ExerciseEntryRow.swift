@@ -61,7 +61,7 @@ struct ExerciseEntryRow: View {
                     ExerciseInputSheet(
                         isSheetOpen: $isSheetOpen,
                         selectedExercise: selectedExercise,
-                        selectedExerciseEntry: nil
+                        selectedExerciseEntry: exerciseEntry
                     )
                 }
             }
