@@ -42,6 +42,12 @@ struct ExerciseListView: View {
         guard let day = days[3] else {
             return
         }
+        
+        /**
+         Need to clear existing exerciseRows array to prevent stale data from showing when switching between
+         tab views.
+         */
+        exerciseRows = []
           
         let dayExerciseSetIds = day.exerciseSetIds
         for dayExerciseSetId in dayExerciseSetIds {

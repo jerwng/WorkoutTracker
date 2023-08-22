@@ -9,7 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        DayView(day: 3, week: 1)
+        TabView {
+            DayView(day: 3, week: 1).tabItem {
+                Text("Today")
+            }
+            
+            Text("Program").tabItem {
+                Text("Program")
+            }
+        }
     }
 }
 
