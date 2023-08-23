@@ -10,9 +10,14 @@ import SwiftUI
 
 struct MesocycleView: View {
     
+    // Add @ObservedModel for Mesocycle Model here
+    @ObservedObject var viewModel: MesocycleViewModel = MesocycleViewModel()
+    
     var body: some View {
         VStack {
             HeaderView(header: "MESOCYCLE", subHeader: "")
+            
+            Text(viewModel.test)
         } .frame(
             minWidth: 0,
             maxWidth: .infinity,
