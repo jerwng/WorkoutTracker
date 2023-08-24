@@ -22,7 +22,7 @@ struct CycleUtils {
         microcycles: [Int: Microcycle],
         days: [Int: Day]
     ) {
-        print("working")
+        print("getNextDay - Get Next Day placeholder")
     }
 }
 
