@@ -12,9 +12,22 @@ class MesocycleViewModel: ObservableObject {
     // Initialize the active Mesocycle
     @Published var activeMesocycle: Mesocycle?
     
-    @Published var test: String = "ASDF"
+    private let mesocycles = Mesocycles().mesocycle
     
+    init() {
+        initMesocycle()
+    }
+    
+    /**
+    Find the first not completed mesocycle and set it as the activeMesosycle
+     */
     func initMesocycle() {
-        print("hello World")
+        for mesocycle in mesocycles {
+            if (!mesocycle.value.isComplete) {
+                activeMesocycle = mesocycle.value
+                break
+               
+            }
+        }
     }
 }

@@ -17,7 +17,6 @@ struct MesocycleView: View {
         VStack {
             HeaderView(header: "MESOCYCLE", subHeader: "")
             
-            Text(viewModel.test)
         } .frame(
             minWidth: 0,
             maxWidth: .infinity,
