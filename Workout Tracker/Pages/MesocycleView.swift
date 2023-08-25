@@ -13,9 +13,23 @@ struct MesocycleView: View {
     // Add @ObservedModel for Mesocycle Model here
     @ObservedObject var viewModel: MesocycleViewModel = MesocycleViewModel()
     
+    func addWeekButtonAction() {
+        print("click add week")
+    }
+    
+    func completeButtonAction() {
+        print("click complete")
+    }
+    
     var body: some View {
         VStack {
             HeaderView(header: "MESOCYCLE", subHeader: "")
+            
+            HStack {
+                RoundPillButton(label: "Add Week", buttonAction: addWeekButtonAction)
+                Spacer()
+                RoundPillButton(label: "Complete", buttonAction: completeButtonAction)
+            }
             
         } .frame(
             minWidth: 0,
