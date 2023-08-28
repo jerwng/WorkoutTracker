@@ -32,7 +32,7 @@ struct MesocycleView: View {
             }
             
             if let activeMesocycle = viewModel.activeMesocycle {
-                MicrocycleList(microcycles: MesocycleUtils.getMesocycleMicrocycles(mesocycle: activeMesocycle))
+                MicrocycleList(microcycleIds: activeMesocycle.microcycleIds)
             }
             
         } .frame(

@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 
 struct MicrocycleListRow: View {
-    var microcycleId: Microcycle.ID
+    var microcycle: Microcycle
 
     var body: some View {
-        Text("Week")
+        Text(microcycle.microcycleName)
+        Text(String(microcycle.dayIds.count) + " Days")
     }
 }

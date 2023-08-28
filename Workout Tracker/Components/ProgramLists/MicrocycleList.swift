@@ -9,12 +9,15 @@ import Foundation
 import SwiftUI
 
 struct MicrocycleList: View {
-    var microcycles: [Microcycle]
+    var microcycleIds: [Microcycle.ID]
     
     var body: some View {
         VStack {
-            ForEach(microcycles) {
-                microcycle in Text(microcycle.microcycleName)
+            ForEach(microcycleIds, id: \.self) {
+                microcycleId in
+                    if let microcycle = MicrocycleUtils.getMicrocycleById(microcycleId: microcycleId) {
+                        MicrocycleListRow(microcycle: microcycle)
+                    }
             }
         }
     }
