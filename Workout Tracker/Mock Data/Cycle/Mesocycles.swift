@@ -15,5 +15,5 @@ struct Mesocycle: Identifiable {
 }
 
 struct Mesocycles {
-    let mesocycle = [0: Mesocycle(id: 0, mesocycleName: "Mesocycle 1", microcycleIds: [0], isComplete: false)]
+    let mesocycle = [0: Mesocycle(id: 0, mesocycleName: "Mesocycle 1", microcycleIds: [0, 1], isComplete: false)]
 }

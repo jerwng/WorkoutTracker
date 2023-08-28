@@ -31,6 +31,10 @@ struct MesocycleView: View {
                 RoundPillButton(label: "Complete", buttonAction: completeButtonAction)
             }
             
+            if let activeMesocycle = viewModel.activeMesocycle {
+                MicrocycleList(microcycles: MesocycleUtils.getMesocycleMicrocycles(mesocycle: activeMesocycle))
+            }
+            
         } .frame(
             minWidth: 0,
             maxWidth: .infinity,
