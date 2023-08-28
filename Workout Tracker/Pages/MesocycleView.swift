@@ -23,13 +23,13 @@ struct MesocycleView: View {
     
     var body: some View {
         VStack {
-            HeaderView(header: "MESOCYCLE", subHeader: "")
+            HeaderView(header: "MESOCYCLE", subHeader: "").padding(.bottom, 40)
             
             HStack {
                 RoundPillButton(label: "Add Week", buttonAction: addWeekButtonAction)
                 Spacer()
                 RoundPillButton(label: "Complete", buttonAction: completeButtonAction)
-            }
+            }.padding(.bottom, 10)
             
             if let activeMesocycle = viewModel.activeMesocycle {
                 MicrocycleList(microcycleIds: activeMesocycle.microcycleIds)
@@ -41,6 +41,10 @@ struct MesocycleView: View {
             minHeight: 0,
             maxHeight: .infinity,
             alignment: .top
-        ).background(Color("Background").ignoresSafeArea())
+        )
+        .padding(.horizontal, UIScreen.main.bounds.width * 0.1)
+        .padding(.top, 20)
+        .background(Color("Background").ignoresSafeArea())
+           
     }
 }
