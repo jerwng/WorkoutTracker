@@ -12,7 +12,12 @@ struct MicrocycleListRow: View {
     var microcycle: Microcycle
 
     var body: some View {
-        Text(microcycle.microcycleName)
-        Text(String(microcycle.dayIds.count) + " Days")
+        VStack {
+            HStack {
+                Text(microcycle.microcycleName).font(.system(size: 28, weight: .bold))
+                Spacer()
+                Text(String(microcycle.dayIds.count) + " Days")
+            }.padding(.bottom, 1)
+        }
     }
 }
