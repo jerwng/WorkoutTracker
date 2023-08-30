@@ -10,6 +10,12 @@ import SwiftUI
 
 struct MicrocycleListRow: View {
     var microcycle: Microcycle
+    
+    @EnvironmentObject var programRouter: ProgramRouter
+    
+    func handleTapRow() {
+        programRouter.navigateTo(to: .microcycle)
+    }
 
     var body: some View {
         VStack {
@@ -18,6 +24,9 @@ struct MicrocycleListRow: View {
                 Spacer()
                 Text(String(microcycle.dayIds.count) + " Days")
             }.padding(.bottom, 1)
+                .onTapGesture {
+                    handleTapRow()
+                }
         }
     }
 }

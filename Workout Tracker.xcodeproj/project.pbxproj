@@ -17,6 +17,9 @@
 		C40DFD8D29DD165700EC700C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD8C29DD165700EC700C /* HeaderView.swift */; };
 		C41478A02A9D054800CAC8E2 /* Microcycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414789F2A9D054800CAC8E2 /* Microcycle.swift */; };
 		C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428A7E42A23EB180050CEFC /* Cycle.swift */; };
+		C43390E52A9F9E8B00558403 /* ProgramRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43390E42A9F9E8B00558403 /* ProgramRouter.swift */; };
+		C43390EA2A9FA0B600558403 /* ProgramRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43390E92A9FA0B600558403 /* ProgramRoot.swift */; };
+		C43390EC2A9FA35600558403 /* MicrocycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43390EB2A9FA35600558403 /* MicrocycleView.swift */; };
 		C4365C192A2BE611008BACCD /* ExerciseEntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4365C182A2BE611008BACCD /* ExerciseEntryRow.swift */; };
 		C4365C1C2A2BEBA4008BACCD /* ExerciseSetsAndRepRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4365C1B2A2BEBA4008BACCD /* ExerciseSetsAndRepRange.swift */; };
 		C4365C1E2A2BF0C3008BACCD /* ExerciseNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4365C1D2A2BF0C3008BACCD /* ExerciseNotes.swift */; };
@@ -73,6 +76,9 @@
 		C40DFD8C29DD165700EC700C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C414789F2A9D054800CAC8E2 /* Microcycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microcycle.swift; sourceTree = "<group>"; };
 		C428A7E42A23EB180050CEFC /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
+		C43390E42A9F9E8B00558403 /* ProgramRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramRouter.swift; sourceTree = "<group>"; };
+		C43390E92A9FA0B600558403 /* ProgramRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramRoot.swift; sourceTree = "<group>"; };
+		C43390EB2A9FA35600558403 /* MicrocycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrocycleView.swift; sourceTree = "<group>"; };
 		C4365C182A2BE611008BACCD /* ExerciseEntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExerciseEntryRow.swift; path = "Workout Tracker/Components/Exercise/ExerciseEntryRow.swift"; sourceTree = SOURCE_ROOT; };
 		C4365C1B2A2BEBA4008BACCD /* ExerciseSetsAndRepRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetsAndRepRange.swift; sourceTree = "<group>"; };
 		C4365C1D2A2BF0C3008BACCD /* ExerciseNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNotes.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 		C40DFD5F29DD127800EC700C /* Workout Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				C43390E62A9F9EA800558403 /* Routers */,
 				C4E0027D2A967205008DD529 /* ViewModels */,
 				C4E0027C2A96683D008DD529 /* API */,
 				C428A7E32A23EAF10050CEFC /* Utils */,
@@ -206,6 +213,32 @@
 				C414789F2A9D054800CAC8E2 /* Microcycle.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C43390E62A9F9EA800558403 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				C43390E42A9F9E8B00558403 /* ProgramRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		C43390E72A9FA09700558403 /* ProgramTab */ = {
+			isa = PBXGroup;
+			children = (
+				C4E155FA2A95244900E106B0 /* MesocycleView.swift */,
+				C43390E92A9FA0B600558403 /* ProgramRoot.swift */,
+				C43390EB2A9FA35600558403 /* MicrocycleView.swift */,
+			);
+			path = ProgramTab;
+			sourceTree = "<group>";
+		};
+		C43390E82A9FA0A500558403 /* TodayTab */ = {
+			isa = PBXGroup;
+			children = (
+				C48342ED29E7A0A9002E781F /* DayView.swift */,
+			);
+			path = TodayTab;
 			sourceTree = "<group>";
 		};
 		C4365C1A2A2BEB89008BACCD /* Exercise */ = {
@@ -296,8 +329,8 @@
 		C4C0F94D29E654160090C0EE /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				C48342ED29E7A0A9002E781F /* DayView.swift */,
-				C4E155FA2A95244900E106B0 /* MesocycleView.swift */,
+				C43390E82A9FA0A500558403 /* TodayTab */,
+				C43390E72A9FA09700558403 /* ProgramTab */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -453,10 +486,12 @@
 				C4A09CDD2A69D8BE000E92D8 /* BackgroundTextField.swift in Sources */,
 				C4E155FB2A95244900E106B0 /* MesocycleView.swift in Sources */,
 				C40DFD6329DD127800EC700C /* ContentView.swift in Sources */,
+				C43390EC2A9FA35600558403 /* MicrocycleView.swift in Sources */,
 				C4365C192A2BE611008BACCD /* ExerciseEntryRow.swift in Sources */,
 				C4A2A7762A7C9C7E00B1BC85 /* ExerciseInputSheet.swift in Sources */,
 				C48342EE29E7A0A9002E781F /* DayView.swift in Sources */,
 				C476C53929E4FD2A000FCE2A /* Exercises.swift in Sources */,
+				C43390EA2A9FA0B600558403 /* ProgramRoot.swift in Sources */,
 				C41478A02A9D054800CAC8E2 /* Microcycle.swift in Sources */,
 				C40DFD8D29DD165700EC700C /* HeaderView.swift in Sources */,
 				C4E0027F2A967217008DD529 /* MesocycleViewModel.swift in Sources */,
@@ -468,6 +503,7 @@
 				C4595DA229F0D81200FA1D84 /* ExerciseRecords.swift in Sources */,
 				C43F72072A995E5700213521 /* MicrocycleList.swift in Sources */,
 				C40DFD6129DD127800EC700C /* Workout_TrackerApp.swift in Sources */,
+				C43390E52A9F9E8B00558403 /* ProgramRouter.swift in Sources */,
 				C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */,
 				C48342F329E7A8A6002E781F /* ItalicFootnote.swift in Sources */,
 				C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */,

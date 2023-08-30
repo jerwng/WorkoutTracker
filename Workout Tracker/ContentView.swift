@@ -15,7 +15,7 @@ struct ContentView: View {
                 Text("Today")
             }
             
-            MesocycleView().tabItem {
+            ProgramRoot().tabItem {
                 Image(systemName: "list.bullet")
                 Text("Program")
             }
