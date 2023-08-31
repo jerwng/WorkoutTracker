@@ -14,9 +14,31 @@ struct MicrocycleView: View {
     for router
      */
     var microcycleId: Microcycle.ID
+    
+    @State private var microcycle: Microcycle?
+    
+    func handleFetchMicrocycle() {
+        if microcycle?.id == microcycleId {
+            return
+        }
+
+        microcycle = MicrocycleUtils.getMicrocycleById(microcycleId: microcycleId)
+    }
 
     var body: some View {
-        Text("Microcycle")
-        Text(String(microcycleId))
+        VStack {
+            HeaderView(header: "MICROCYCLE", subHeader: microcycle?.microcycleName ?? "").padding(.bottom, 40)
+        
+            Text("Content")
+        }.onAppear() {
+            handleFetchMicrocycle()
+        } .microcycleViewBackgroundStylingModifier()
+    }
+}
+
+// Extend View to provide a convenient modifier function
+extension View {
+    func microcycleViewBackgroundStylingModifier() -> some View {
+        modifier(BackgroundStylingModifier())
     }
 }

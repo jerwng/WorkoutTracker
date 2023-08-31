@@ -35,16 +35,13 @@ struct MesocycleView: View {
                 MicrocycleList(microcycleIds: activeMesocycle.microcycleIds)
             }
             
-        } .frame(
-            minWidth: 0,
-            maxWidth: .infinity,
-            minHeight: 0,
-            maxHeight: .infinity,
-            alignment: .top
-        )
-        .padding(.horizontal, UIScreen.main.bounds.width * 0.1)
-        .padding(.top, 20)
-        .background(Color("Background").ignoresSafeArea())
+        }.mesocycleViewBackgroundStylingModifier()
            
+    }
+}
+
+extension View {
+    func mesocycleViewBackgroundStylingModifier() -> some View {
+        modifier(BackgroundStylingModifier())
     }
 }

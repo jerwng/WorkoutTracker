@@ -16,6 +16,7 @@
 		C40DFD7E29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD7D29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift */; };
 		C40DFD8D29DD165700EC700C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD8C29DD165700EC700C /* HeaderView.swift */; };
 		C41478A02A9D054800CAC8E2 /* Microcycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414789F2A9D054800CAC8E2 /* Microcycle.swift */; };
+		C42472972AA0FB0700F93C8A /* BackgroundStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */; };
 		C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428A7E42A23EB180050CEFC /* Cycle.swift */; };
 		C43390E52A9F9E8B00558403 /* ProgramRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43390E42A9F9E8B00558403 /* ProgramRouter.swift */; };
 		C43390EA2A9FA0B600558403 /* ProgramRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43390E92A9FA0B600558403 /* ProgramRoot.swift */; };
@@ -75,6 +76,7 @@
 		C40DFD7D29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C40DFD8C29DD165700EC700C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C414789F2A9D054800CAC8E2 /* Microcycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microcycle.swift; sourceTree = "<group>"; };
+		C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundStylingModifier.swift; sourceTree = "<group>"; };
 		C428A7E42A23EB180050CEFC /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
 		C43390E42A9F9E8B00558403 /* ProgramRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramRouter.swift; sourceTree = "<group>"; };
 		C43390E92A9FA0B600558403 /* ProgramRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramRoot.swift; sourceTree = "<group>"; };
@@ -206,6 +208,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		C42472952AA0FAE700F93C8A /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		C428A7E32A23EAF10050CEFC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +236,7 @@
 		C43390E72A9FA09700558403 /* ProgramTab */ = {
 			isa = PBXGroup;
 			children = (
+				C42472952AA0FAE700F93C8A /* Modifiers */,
 				C4E155FA2A95244900E106B0 /* MesocycleView.swift */,
 				C43390E92A9FA0B600558403 /* ProgramRoot.swift */,
 				C43390EB2A9FA35600558403 /* MicrocycleView.swift */,
@@ -489,6 +500,7 @@
 				C43390EC2A9FA35600558403 /* MicrocycleView.swift in Sources */,
 				C4365C192A2BE611008BACCD /* ExerciseEntryRow.swift in Sources */,
 				C4A2A7762A7C9C7E00B1BC85 /* ExerciseInputSheet.swift in Sources */,
+				C42472972AA0FB0700F93C8A /* BackgroundStylingModifier.swift in Sources */,
 				C48342EE29E7A0A9002E781F /* DayView.swift in Sources */,
 				C476C53929E4FD2A000FCE2A /* Exercises.swift in Sources */,
 				C43390EA2A9FA0B600558403 /* ProgramRoot.swift in Sources */,
