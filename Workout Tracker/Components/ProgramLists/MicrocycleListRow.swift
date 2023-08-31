@@ -14,7 +14,7 @@ struct MicrocycleListRow: View {
     @EnvironmentObject var programRouter: ProgramRouter
     
     func handleTapRow() {
-        programRouter.navigateTo(to: .microcycle)
+        programRouter.navigateTo(to: .microcycle(microcycleId: microcycle.id))
     }
 
     var body: some View {

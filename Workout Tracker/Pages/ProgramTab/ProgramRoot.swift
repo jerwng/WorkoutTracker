@@ -17,8 +17,8 @@ struct ProgramRoot: View {
             .navigationDestination(for: ProgramRouter.Destination.self) {
             destination in
             switch destination {
-                case .microcycle:
-                    MicrocycleView()
+                case .microcycle(let microcycleId):
+                    MicrocycleView(microcycleId: microcycleId)
                 case .day:
                     Text("Day")
                 default:
