@@ -17,6 +17,8 @@ struct MicrocycleView: View {
     
     @State private var microcycle: Microcycle?
     
+    @EnvironmentObject var programRouter: ProgramRouter
+    
     func handleFetchMicrocycle() {
         if microcycle?.id == microcycleId {
             return
@@ -24,15 +26,41 @@ struct MicrocycleView: View {
 
         microcycle = MicrocycleUtils.getMicrocycleById(microcycleId: microcycleId)
     }
+    
+    func addDayButtonAction() {
+        print("click add day")
+    }
+    
+    func handleTapBackChevron() {
+        programRouter.navigateBack()
+    }
 
     var body: some View {
         VStack {
-            HeaderView(header: "MICROCYCLE", subHeader: microcycle?.microcycleName ?? "").padding(.bottom, 40)
-        
-            Text("Content")
+            HStack(alignment: .top) {
+                Image(systemName: "chevron.left")
+                    .padding(.top, 9)
+                    .onTapGesture {
+                        handleTapBackChevron()
+                    }
+                Spacer()
+                HeaderView(header: "MICROCYCLE", subHeader: microcycle?.microcycleName ?? "").padding(.bottom, 40)
+                Spacer()
+            }
+            
+            HStack {
+                RoundPillButton(label: "Add Day", buttonAction: addDayButtonAction)
+                Spacer()
+            }.padding(.bottom, 10)
+       
+            if let microcycleDayIds = microcycle?.dayIds {
+                DayList(dayIds: microcycleDayIds)
+            }
         }.onAppear() {
             handleFetchMicrocycle()
-        } .microcycleViewBackgroundStylingModifier()
+        }
+        .microcycleViewBackgroundStylingModifier()
+        .navigationBarBackButtonHidden()
     }
 }
 
