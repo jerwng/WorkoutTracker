@@ -15,7 +15,9 @@ struct DayList: View {
         VStack {
             ForEach(dayIds, id: \.self) {
                 dayId in
-                    Text("Hello")
+                    if let day = DayUtils.getDayById(dayId: dayId) {
+                    DayListRow(day: day)
+                }
             }
         }
     }

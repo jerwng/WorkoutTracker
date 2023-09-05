@@ -44,6 +44,8 @@
 		C4DBE0322AA2457400B24AE6 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DBE0312AA2457400B24AE6 /* DayList.swift */; };
 		C4E0027F2A967217008DD529 /* MesocycleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */; };
 		C4E155FB2A95244900E106B0 /* MesocycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E155FA2A95244900E106B0 /* MesocycleView.swift */; };
+		C4E960282AA78ED80020FD83 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960272AA78ED80020FD83 /* Day.swift */; };
+		C4E9602A2AA78F570020FD83 /* DayListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960292AA78F570020FD83 /* DayListRow.swift */; };
 		C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EA44EC29E8F57B0072672A /* ExercistListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +107,8 @@
 		C4DBE0312AA2457400B24AE6 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesocycleViewModel.swift; sourceTree = "<group>"; };
 		C4E155FA2A95244900E106B0 /* MesocycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesocycleView.swift; sourceTree = "<group>"; };
+		C4E960272AA78ED80020FD83 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		C4E960292AA78F570020FD83 /* DayListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListRow.swift; sourceTree = "<group>"; };
 		C4EA44EC29E8F57B0072672A /* ExercistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercistListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +227,7 @@
 			children = (
 				C428A7E42A23EB180050CEFC /* Cycle.swift */,
 				C414789F2A9D054800CAC8E2 /* Microcycle.swift */,
+				C4E960272AA78ED80020FD83 /* Day.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				C43F72062A995E5700213521 /* MicrocycleList.swift */,
 				C43F72082A99603800213521 /* MicrocycleListRow.swift */,
 				C4DBE0312AA2457400B24AE6 /* DayList.swift */,
+				C4E960292AA78F570020FD83 /* DayListRow.swift */,
 			);
 			path = ProgramLists;
 			sourceTree = "<group>";
@@ -499,6 +505,7 @@
 				C4365C1C2A2BEBA4008BACCD /* ExerciseSetsAndRepRange.swift in Sources */,
 				C4A09CDD2A69D8BE000E92D8 /* BackgroundTextField.swift in Sources */,
 				C4E155FB2A95244900E106B0 /* MesocycleView.swift in Sources */,
+				C4E9602A2AA78F570020FD83 /* DayListRow.swift in Sources */,
 				C4DBE0322AA2457400B24AE6 /* DayList.swift in Sources */,
 				C40DFD6329DD127800EC700C /* ContentView.swift in Sources */,
 				C43390EC2A9FA35600558403 /* MicrocycleView.swift in Sources */,
@@ -522,6 +529,7 @@
 				C43390E52A9F9E8B00558403 /* ProgramRouter.swift in Sources */,
 				C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */,
 				C48342F329E7A8A6002E781F /* ItalicFootnote.swift in Sources */,
+				C4E960282AA78ED80020FD83 /* Day.swift in Sources */,
 				C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */,
 				C49B8EC92A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift in Sources */,
 				C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */,
