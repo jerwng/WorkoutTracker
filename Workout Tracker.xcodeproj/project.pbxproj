@@ -46,6 +46,7 @@
 		C4E155FB2A95244900E106B0 /* MesocycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E155FA2A95244900E106B0 /* MesocycleView.swift */; };
 		C4E960282AA78ED80020FD83 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960272AA78ED80020FD83 /* Day.swift */; };
 		C4E9602A2AA78F570020FD83 /* DayListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960292AA78F570020FD83 /* DayListRow.swift */; };
+		C4E960312AA7915A0020FD83 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960302AA7915A0020FD83 /* ListRow.swift */; };
 		C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EA44EC29E8F57B0072672A /* ExercistListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +110,7 @@
 		C4E155FA2A95244900E106B0 /* MesocycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesocycleView.swift; sourceTree = "<group>"; };
 		C4E960272AA78ED80020FD83 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		C4E960292AA78F570020FD83 /* DayListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListRow.swift; sourceTree = "<group>"; };
+		C4E960302AA7915A0020FD83 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		C4EA44EC29E8F57B0072672A /* ExercistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercistListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,6 +280,7 @@
 				C43F72082A99603800213521 /* MicrocycleListRow.swift */,
 				C4DBE0312AA2457400B24AE6 /* DayList.swift */,
 				C4E960292AA78F570020FD83 /* DayListRow.swift */,
+				C4E960302AA7915A0020FD83 /* ListRow.swift */,
 			);
 			path = ProgramLists;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				C4E9602A2AA78F570020FD83 /* DayListRow.swift in Sources */,
 				C4DBE0322AA2457400B24AE6 /* DayList.swift in Sources */,
 				C40DFD6329DD127800EC700C /* ContentView.swift in Sources */,
+				C4E960312AA7915A0020FD83 /* ListRow.swift in Sources */,
 				C43390EC2A9FA35600558403 /* MicrocycleView.swift in Sources */,
 				C4365C192A2BE611008BACCD /* ExerciseEntryRow.swift in Sources */,
 				C4A2A7762A7C9C7E00B1BC85 /* ExerciseInputSheet.swift in Sources */,

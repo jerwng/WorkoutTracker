@@ -19,11 +19,7 @@ struct MicrocycleListRow: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Text(microcycle.microcycleName).font(.system(size: 28, weight: .bold))
-                Spacer()
-                Text(String(microcycle.dayIds.count) + " Days")
-            }.padding(.bottom, 1)
+            ListRow(title: microcycle.microcycleName, description: String(microcycle.dayIds.count) + " Days").padding(.bottom, 1)
                 .onTapGesture {
                     handleTapRow()
                 }
