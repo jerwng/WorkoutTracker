@@ -11,8 +11,10 @@ import SwiftUI
 struct DayListRow: View {
     var day: Day
     
+    @EnvironmentObject var programRouter: ProgramRouter
+    
     func handleTapRow() {
-        print("tap day list row")
+        programRouter.navigateTo(to: .day(dayId: day.id))
     }
 
     var body: some View {
