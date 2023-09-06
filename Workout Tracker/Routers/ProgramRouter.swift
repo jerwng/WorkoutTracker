@@ -16,7 +16,7 @@ final class ProgramRouter: ObservableObject {
     public enum Destination: Codable, Hashable {
         case mesocycle
         case microcycle(microcycleId: Microcycle.ID)
-        case day(dayId: Day.ID)
+        case day(microcycleName: String, dayId: Day.ID)
     }
     
     @Published var navPath = NavigationPath()

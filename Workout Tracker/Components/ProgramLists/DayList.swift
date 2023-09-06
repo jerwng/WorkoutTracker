@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct DayList: View {
+    var microcycleName: String
     var dayIds: [Day.ID]
     
     var body: some View {
@@ -16,7 +17,7 @@ struct DayList: View {
             ForEach(dayIds, id: \.self) {
                 dayId in
                     if let day = DayUtils.getDayById(dayId: dayId) {
-                    DayListRow(day: day)
+                        DayListRow(microcycleName: microcycleName, day: day)
                 }
             }
         }

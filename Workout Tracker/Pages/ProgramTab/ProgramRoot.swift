@@ -19,8 +19,8 @@ struct ProgramRoot: View {
             switch destination {
                 case .microcycle(let microcycleId):
                     MicrocycleView(microcycleId: microcycleId)
-                case .day(let dayId):
-                    DayProgramView(dayId: dayId)
+                case .day(let microcycleName, let dayId):
+                    DayProgramView(microcycleName: microcycleName, dayId: dayId)
                 default:
                     MesocycleView()
                 }

@@ -9,12 +9,13 @@ import Foundation
 import SwiftUI
 
 struct DayListRow: View {
+    var microcycleName: String
     var day: Day
     
     @EnvironmentObject var programRouter: ProgramRouter
     
     func handleTapRow() {
-        programRouter.navigateTo(to: .day(dayId: day.id))
+        programRouter.navigateTo(to: .day(microcycleName: microcycleName, dayId: day.id))
     }
 
     var body: some View {
