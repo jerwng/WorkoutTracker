@@ -14,8 +14,15 @@ struct HeaderView: View {
 
     var body: some View {
         VStack{
-            Text(header).font(.title).fontWeight(.bold)
-            Text(subHeader).font(.headline).fontWeight(.bold)
+            Text(header)
+                .font(.title)
+                .fontWeight(.bold)
+                .textCase(.uppercase)
+
+            Text(subHeader)
+                .font(.headline)
+                .fontWeight(.bold)
+                .textCase(.uppercase)
         }
   
     }
