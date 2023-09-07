@@ -53,8 +53,8 @@ struct MicrocycleView: View {
                 Spacer()
             }.padding(.bottom, 10)
        
-            if let curMicrocycle = microcycle {
-                DayList(microcycleName: curMicrocycle.microcycleName, dayIds: curMicrocycle.dayIds)
+            if let microcycleName = microcycle?.microcycleName, let microcycleDayIds = microcycle?.dayIds {
+                DayList(microcycleName: microcycleName, dayIds: microcycleDayIds)
             }
         }.onAppear() {
             handleFetchMicrocycle()

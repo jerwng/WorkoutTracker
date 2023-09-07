@@ -14,6 +14,8 @@ struct DayProgramView: View {
     
     @State private var day: Day?
     
+    @EnvironmentObject var programRouter: ProgramRouter
+    
     func handleFetchDay() {
         if (day?.id == dayId) {
             return
@@ -21,15 +23,28 @@ struct DayProgramView: View {
         
         day = DayUtils.getDayById(dayId: dayId)
     }
+    
+    func handleTapBackChevron() {
+        programRouter.navigateBack()
+    }
 
     var body: some View {
         VStack {
-            Text(microcycleName)
-            Text(String(dayId))
+            HStack(alignment: .top) {
+                Image(systemName: "chevron.left")
+                    .padding(.top, 9)
+                    .onTapGesture {
+                        handleTapBackChevron()
+                    }
+                Spacer()
+                HeaderView(header: microcycleName, subHeader: day?.dayName ?? "").padding(.bottom, 40)
+                Spacer()
+            }
         }.onAppear() {
             handleFetchDay()
         }
         .microcycleViewBackgroundStylingModifier()
+        .navigationBarBackButtonHidden()
     }
 }
 
