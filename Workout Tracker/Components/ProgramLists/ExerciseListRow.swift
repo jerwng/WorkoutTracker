@@ -13,13 +13,20 @@ struct ExerciseListRow: View {
     var exerciseSet: ExerciseSet
 
     var body: some View {
-        ListRow(
-            title: exercise.name,
-            description: ExerciseUtils.getExerciseSetsRepRangeString(
-                            sets: exerciseSet.sets,
-                            repRangeTop: exercise.repRangeTop,
-                            repRangeBottom: exercise.repRangeBot
-                            )
-        ).padding(.bottom, 1)
+        VStack(alignment: .leading) {
+            ListRow(
+                title: exercise.name,
+                description: ExerciseUtils.getExerciseSetsRepRangeString(
+                                sets: exerciseSet.sets,
+                                repRangeTop: exercise.repRangeTop,
+                                repRangeBottom: exercise.repRangeBot
+                                )
+            )
+            if let exerciseNotes = exercise.notes {
+                ExerciseNotes(exerciseNotes: exerciseNotes).padding(
+                    .leading, 15
+                )
+            }
+        }.padding(.bottom, 1)
     }
 }
