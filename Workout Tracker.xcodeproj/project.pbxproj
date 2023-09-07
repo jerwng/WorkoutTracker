@@ -27,6 +27,9 @@
 		C43F72072A995E5700213521 /* MicrocycleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F72062A995E5700213521 /* MicrocycleList.swift */; };
 		C43F72092A99603800213521 /* MicrocycleListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F72082A99603800213521 /* MicrocycleListRow.swift */; };
 		C4595DA229F0D81200FA1D84 /* ExerciseRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4595DA129F0D81200FA1D84 /* ExerciseRecords.swift */; };
+		C464EE602AAA30250090CBB8 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C464EE5F2AAA30250090CBB8 /* ExerciseList.swift */; };
+		C464EE622AAA30E90090CBB8 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C464EE612AAA30E90090CBB8 /* Exercise.swift */; };
+		C464EE642AAA31C40090CBB8 /* ExerciseListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C464EE632AAA31C40090CBB8 /* ExerciseListRow.swift */; };
 		C476C53929E4FD2A000FCE2A /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C53829E4FD2A000FCE2A /* Exercises.swift */; };
 		C47A242F29F5AF19005C171B /* ExerciseEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A242E29F5AF19005C171B /* ExerciseEntries.swift */; };
 		C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A243229F5AF67005C171B /* Mesocycles.swift */; };
@@ -92,6 +95,9 @@
 		C43F72062A995E5700213521 /* MicrocycleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrocycleList.swift; sourceTree = "<group>"; };
 		C43F72082A99603800213521 /* MicrocycleListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrocycleListRow.swift; sourceTree = "<group>"; };
 		C4595DA129F0D81200FA1D84 /* ExerciseRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRecords.swift; sourceTree = "<group>"; };
+		C464EE5F2AAA30250090CBB8 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
+		C464EE612AAA30E90090CBB8 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		C464EE632AAA31C40090CBB8 /* ExerciseListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListRow.swift; sourceTree = "<group>"; };
 		C476C53829E4FD2A000FCE2A /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
 		C47A242E29F5AF19005C171B /* ExerciseEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntries.swift; sourceTree = "<group>"; };
 		C47A243229F5AF67005C171B /* Mesocycles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesocycles.swift; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 				C428A7E42A23EB180050CEFC /* Cycle.swift */,
 				C414789F2A9D054800CAC8E2 /* Microcycle.swift */,
 				C4E960272AA78ED80020FD83 /* Day.swift */,
+				C464EE612AAA30E90090CBB8 /* Exercise.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -284,6 +291,8 @@
 				C4DBE0312AA2457400B24AE6 /* DayList.swift */,
 				C4E960292AA78F570020FD83 /* DayListRow.swift */,
 				C4E960302AA7915A0020FD83 /* ListRow.swift */,
+				C464EE5F2AAA30250090CBB8 /* ExerciseList.swift */,
+				C464EE632AAA31C40090CBB8 /* ExerciseListRow.swift */,
 			);
 			path = ProgramLists;
 			sourceTree = "<group>";
@@ -534,12 +543,15 @@
 				C4595DA229F0D81200FA1D84 /* ExerciseRecords.swift in Sources */,
 				C43F72072A995E5700213521 /* MicrocycleList.swift in Sources */,
 				C40DFD6129DD127800EC700C /* Workout_TrackerApp.swift in Sources */,
+				C464EE642AAA31C40090CBB8 /* ExerciseListRow.swift in Sources */,
 				C43390E52A9F9E8B00558403 /* ProgramRouter.swift in Sources */,
 				C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */,
 				C48342F329E7A8A6002E781F /* ItalicFootnote.swift in Sources */,
+				C464EE602AAA30250090CBB8 /* ExerciseList.swift in Sources */,
 				C4E960282AA78ED80020FD83 /* Day.swift in Sources */,
 				C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */,
 				C49B8EC92A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift in Sources */,
+				C464EE622AAA30E90090CBB8 /* Exercise.swift in Sources */,
 				C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */,
 				C4365C1E2A2BF0C3008BACCD /* ExerciseNotes.swift in Sources */,
 				C49B8ECC2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift in Sources */,

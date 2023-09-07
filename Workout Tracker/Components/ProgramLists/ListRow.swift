@@ -14,7 +14,7 @@ struct ListRow: View {
     
     var body: some View {
         HStack {
-            Text(title).font(.system(size: 28, weight: .bold))
+            Text(title).font(.title2).fontWeight(.bold)
             Spacer()
             if ((description) != nil) {
                 Text(description!)

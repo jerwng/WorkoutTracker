@@ -24,6 +24,10 @@ struct DayProgramView: View {
         day = DayUtils.getDayById(dayId: dayId)
     }
     
+    func addExerciseButtonAction() {
+        print("click add exercise")
+    }
+    
     func handleTapBackChevron() {
         programRouter.navigateBack()
     }
@@ -39,6 +43,15 @@ struct DayProgramView: View {
                 Spacer()
                 HeaderView(header: microcycleName, subHeader: day?.dayName ?? "").padding(.bottom, 40)
                 Spacer()
+            }
+            
+            HStack {
+                RoundPillButton(label: "Add Exercise", buttonAction: addExerciseButtonAction)
+                Spacer()
+            }.padding(.bottom, 10)
+            
+            if let dayExerciseSetIds = day?.exerciseSetIds {
+                ExerciseList(exerciseSetIds: dayExerciseSetIds)
             }
         }.onAppear() {
             handleFetchDay()
