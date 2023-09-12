@@ -44,6 +44,7 @@
 		C49B8ECC2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B8ECB2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift */; };
 		C4A09CDD2A69D8BE000E92D8 /* BackgroundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A09CDC2A69D8BE000E92D8 /* BackgroundTextField.swift */; };
 		C4A2A7762A7C9C7E00B1BC85 /* ExerciseInputSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2A7752A7C9C7E00B1BC85 /* ExerciseInputSheet.swift */; };
+		C4A2E34F2AAB88A800675E09 /* CreateExerciseInputSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2E34E2AAB88A800675E09 /* CreateExerciseInputSheet.swift */; };
 		C4BBE90D2A97D1A600E9E13E /* RoundPillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BBE90C2A97D1A600E9E13E /* RoundPillButton.swift */; };
 		C4DBE0322AA2457400B24AE6 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DBE0312AA2457400B24AE6 /* DayList.swift */; };
 		C4E0027F2A967217008DD529 /* MesocycleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */; };
@@ -112,6 +113,7 @@
 		C49B8ECB2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntryInputSheetBody.swift; sourceTree = "<group>"; };
 		C4A09CDC2A69D8BE000E92D8 /* BackgroundTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTextField.swift; sourceTree = "<group>"; };
 		C4A2A7752A7C9C7E00B1BC85 /* ExerciseInputSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInputSheet.swift; sourceTree = "<group>"; };
+		C4A2E34E2AAB88A800675E09 /* CreateExerciseInputSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseInputSheet.swift; sourceTree = "<group>"; };
 		C4BBE90C2A97D1A600E9E13E /* RoundPillButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPillButton.swift; sourceTree = "<group>"; };
 		C4DBE0312AA2457400B24AE6 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesocycleViewModel.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		C40DFD8B29DD163300EC700C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C4A2E34D2AAB886800675E09 /* CreateExerciseInputSheet */,
 				C43F72052A995E1300213521 /* ProgramLists */,
 				C4BBE90B2A97D19900E9E13E /* Buttons */,
 				C4A09CDB2A69D894000E92D8 /* TextField */,
@@ -351,6 +354,14 @@
 				C4A09CDC2A69D8BE000E92D8 /* BackgroundTextField.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		C4A2E34D2AAB886800675E09 /* CreateExerciseInputSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C4A2E34E2AAB88A800675E09 /* CreateExerciseInputSheet.swift */,
+			);
+			path = CreateExerciseInputSheet;
 			sourceTree = "<group>";
 		};
 		C4BBE90B2A97D19900E9E13E /* Buttons */ = {
@@ -532,6 +543,7 @@
 				C48342EE29E7A0A9002E781F /* DayView.swift in Sources */,
 				C476C53929E4FD2A000FCE2A /* Exercises.swift in Sources */,
 				C43390EA2A9FA0B600558403 /* ProgramRoot.swift in Sources */,
+				C4A2E34F2AAB88A800675E09 /* CreateExerciseInputSheet.swift in Sources */,
 				C41478A02A9D054800CAC8E2 /* Microcycle.swift in Sources */,
 				C40DFD8D29DD165700EC700C /* HeaderView.swift in Sources */,
 				C4E0027F2A967217008DD529 /* MesocycleViewModel.swift in Sources */,

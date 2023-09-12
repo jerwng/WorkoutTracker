@@ -11,6 +11,12 @@ import SwiftUI
 struct ExerciseListRow: View {
     var exercise: Exercise
     var exerciseSet: ExerciseSet
+    
+    @State private var isSheetOpen: Bool = false
+    
+    func handleTapRow() {
+        isSheetOpen = true
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,6 +28,16 @@ struct ExerciseListRow: View {
                                 repRangeBottom: exercise.repRangeBot
                                 )
             )
+            .onTapGesture {
+                handleTapRow()
+            }
+            .sheet(isPresented: $isSheetOpen) {
+                CreateExerciseInputSheet(
+                    isSheetOpen: $isSheetOpen,
+                    selectedExercise: exercise,
+                    selectedExerciseSets: exerciseSet
+                )
+            }
             if let exerciseNotes = exercise.notes {
                 ExerciseNotes(exerciseNotes: exerciseNotes).padding(
                     .leading, 15
