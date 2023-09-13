@@ -40,10 +40,13 @@ struct CreateExerciseInputSheet: View {
     }
 
     var body: some View {
-        Text("hello")
-        Text(initialName)
-        Text(initialSets)
-        Text(initialRepRangeTop)
-        Text(initialRepRangeBot)
+        CreateExerciseInputSheetBody(
+            isSheetOpen: $isSheetOpen,
+            sets: initialSets,
+            repRangeTop: initialRepRangeTop,
+            repRangeBot: initialRepRangeBot,
+            notes: initialNotes,
+            name: initialName
+        )
     }
 }

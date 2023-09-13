@@ -45,6 +45,7 @@
 		C4A09CDD2A69D8BE000E92D8 /* BackgroundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A09CDC2A69D8BE000E92D8 /* BackgroundTextField.swift */; };
 		C4A2A7762A7C9C7E00B1BC85 /* ExerciseInputSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2A7752A7C9C7E00B1BC85 /* ExerciseInputSheet.swift */; };
 		C4A2E34F2AAB88A800675E09 /* CreateExerciseInputSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2E34E2AAB88A800675E09 /* CreateExerciseInputSheet.swift */; };
+		C4B937562AB0CA8B00B3AB40 /* CreateExerciseInputSheetBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B937552AB0CA8B00B3AB40 /* CreateExerciseInputSheetBody.swift */; };
 		C4BBE90D2A97D1A600E9E13E /* RoundPillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BBE90C2A97D1A600E9E13E /* RoundPillButton.swift */; };
 		C4DBE0322AA2457400B24AE6 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DBE0312AA2457400B24AE6 /* DayList.swift */; };
 		C4E0027F2A967217008DD529 /* MesocycleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */; };
@@ -114,6 +115,7 @@
 		C4A09CDC2A69D8BE000E92D8 /* BackgroundTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTextField.swift; sourceTree = "<group>"; };
 		C4A2A7752A7C9C7E00B1BC85 /* ExerciseInputSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInputSheet.swift; sourceTree = "<group>"; };
 		C4A2E34E2AAB88A800675E09 /* CreateExerciseInputSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseInputSheet.swift; sourceTree = "<group>"; };
+		C4B937552AB0CA8B00B3AB40 /* CreateExerciseInputSheetBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseInputSheetBody.swift; sourceTree = "<group>"; };
 		C4BBE90C2A97D1A600E9E13E /* RoundPillButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPillButton.swift; sourceTree = "<group>"; };
 		C4DBE0312AA2457400B24AE6 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesocycleViewModel.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A2E34E2AAB88A800675E09 /* CreateExerciseInputSheet.swift */,
+				C4B937552AB0CA8B00B3AB40 /* CreateExerciseInputSheetBody.swift */,
 			);
 			path = CreateExerciseInputSheet;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				C4E960282AA78ED80020FD83 /* Day.swift in Sources */,
 				C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */,
 				C49B8EC92A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift in Sources */,
+				C4B937562AB0CA8B00B3AB40 /* CreateExerciseInputSheetBody.swift in Sources */,
 				C464EE622AAA30E90090CBB8 /* Exercise.swift in Sources */,
 				C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */,
 				C4365C1E2A2BF0C3008BACCD /* ExerciseNotes.swift in Sources */,
