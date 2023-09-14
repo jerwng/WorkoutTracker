@@ -16,6 +16,7 @@ struct CreateExerciseInputSheet: View {
     private let initialRepRangeBot: String
     private let initialNotes: String
     private let initialName: String
+    private let initialTitle: String
     
     init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise?, selectedExerciseSets: ExerciseSet?) {
         _isSheetOpen = isSheetOpen
@@ -25,11 +26,13 @@ struct CreateExerciseInputSheet: View {
             self.initialRepRangeTop = String(exercise.repRangeTop)
             self.initialRepRangeBot = String(exercise.repRangeBot)
             self.initialNotes = exercise.notes ?? ""
+            self.initialTitle = exercise.name
         } else {
             self.initialName = ""
             self.initialRepRangeTop = ""
             self.initialRepRangeBot = ""
             self.initialNotes = ""
+            self.initialTitle = "Add Exercise"
         }
         
         if let exerciseSets = selectedExerciseSets {
@@ -46,7 +49,8 @@ struct CreateExerciseInputSheet: View {
             repRangeTop: initialRepRangeTop,
             repRangeBot: initialRepRangeBot,
             notes: initialNotes,
-            name: initialName
+            name: initialName,
+            title: initialTitle
         )
     }
 }

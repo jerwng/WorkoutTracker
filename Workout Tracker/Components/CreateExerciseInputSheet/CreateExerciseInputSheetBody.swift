@@ -16,6 +16,9 @@ struct CreateExerciseInputSheetBody: View {
     var repRangeBot: String
     var notes: String
     var name: String
+    // Title appears at the top of the sheet, can be different than the selected exercise's name
+    // An example of this is when adding a new exercise, where the name is not yet known
+    var title: String
     
     var body: some View {
         BaseExerciseInputSheetBody(
@@ -26,7 +29,7 @@ struct CreateExerciseInputSheetBody: View {
                 notes: notes,
                 name: name
             ),
-            sheetTitle: name,
+            sheetTitle: title,
             isSheetOpen: $isSheetOpen
         )
     }

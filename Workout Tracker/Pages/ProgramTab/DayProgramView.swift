@@ -14,6 +14,8 @@ struct DayProgramView: View {
     
     @State private var day: Day?
     
+    @State private var isSheetOpen: Bool = false
+    
     @EnvironmentObject var programRouter: ProgramRouter
     
     func handleFetchDay() {
@@ -25,7 +27,8 @@ struct DayProgramView: View {
     }
     
     func addExerciseButtonAction() {
-        print("click add exercise")
+        isSheetOpen = true
+
     }
     
     func handleTapBackChevron() {
@@ -55,6 +58,13 @@ struct DayProgramView: View {
             }
         }.onAppear() {
             handleFetchDay()
+        }
+        .sheet(isPresented: $isSheetOpen) {
+            CreateExerciseInputSheet(
+                isSheetOpen: $isSheetOpen,
+                selectedExercise: nil,
+                selectedExerciseSets: nil
+            )
         }
         .microcycleViewBackgroundStylingModifier()
         .navigationBarBackButtonHidden()
