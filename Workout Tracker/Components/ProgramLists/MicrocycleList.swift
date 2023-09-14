@@ -11,14 +11,25 @@ import SwiftUI
 struct MicrocycleList: View {
     var microcycleIds: [Microcycle.ID]
     
+    func handleDelete(at offsets: IndexSet) {
+        print("delete microcycle")
+    }
+    
     var body: some View {
-        VStack {
+        List {
             ForEach(microcycleIds, id: \.self) {
                 microcycleId in
                     if let microcycle = MicrocycleUtils.getMicrocycleById(microcycleId: microcycleId) {
                         MicrocycleListRow(microcycle: microcycle)
+                            .microcycleListListRowStylingModifier()
                     }
-            }
-        }
+            }.onDelete(perform: handleDelete)
+        }.listStyle(.plain)
+    }
+}
+
+extension View {
+    func microcycleListListRowStylingModifier() -> some View {
+        modifier(ListRowStylingModifier())
     }
 }

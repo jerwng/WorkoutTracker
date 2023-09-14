@@ -10,9 +10,13 @@ import SwiftUI
 
 struct ExerciseList: View {
     var exerciseSetIds: [ExerciseSet.ID]
+    
+    func handleDelete(at offsets: IndexSet) {
+        print("delete exercise")
+    }
 
     var body: some View {
-        VStack {
+        List {
             ForEach(exerciseSetIds, id: \.self) {
                 exerciseSetId in
                 if let exerciseSet = ExerciseUtils
@@ -25,8 +29,16 @@ struct ExerciseList: View {
                         exercise: exercise,
                         exerciseSet: exerciseSet
                     )
+                    .exerciseListListRowStylingModifier()
                 }
-            }
-        }
+            }.onDelete(perform: handleDelete)
+        }.listStyle(.plain)
+    }
+}
+
+// Extend View to provide a convenient modifier function
+extension View {
+    func exerciseListListRowStylingModifier() -> some View {
+        modifier(ListRowStylingModifier())
     }
 }
