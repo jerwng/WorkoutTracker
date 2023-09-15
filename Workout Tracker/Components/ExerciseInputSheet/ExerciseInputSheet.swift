@@ -34,16 +34,23 @@ struct ExerciseInputSheet: View {
         }
     }
     
+    func handleButtonTap() {
+        print("tap delete exercise entry button")
+    }
+    
     var body: some View {
-
-        ExerciseEntryInputSheetBody(
-            isSheetOpen: $isSheetOpen,
-            name: name,
-            weight: initialWeight,
-            reps: initialReps,
-            time: initialTime,
-            notes: initialNotes
-        )
+        VStack {
+            ExerciseEntryInputSheetBody(
+                isSheetOpen: $isSheetOpen,
+                name: name,
+                weight: initialWeight,
+                reps: initialReps,
+                time: initialTime,
+                notes: initialNotes
+            )
+            
+            Button("Delete Entry", action: handleButtonTap).foregroundColor(.red).padding(.bottom, 5.0)
+        }
     }
     
 }
