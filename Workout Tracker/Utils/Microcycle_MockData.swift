@@ -12,7 +12,7 @@ struct MicrocycleUtils {
         print("hello3")
     }
     
-    static func getMicrocycleById(microcycleId: Microcycle.ID) -> Microcycle? {
+    static func getMicrocycleById(microcycleId: Microcycle_MockData.ID) -> Microcycle_MockData? {
         let microcycles = Microcycles().microcycles
         
         return microcycles[microcycleId]

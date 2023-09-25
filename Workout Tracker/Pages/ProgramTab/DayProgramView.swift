@@ -10,9 +10,9 @@ import SwiftUI
 
 struct DayProgramView: View {
     var microcycleName: String
-    var dayId: Day.ID
+    var dayId: Day_MockData.ID
     
-    @State private var day: Day?
+    @State private var day: Day_MockData?
     
     @State private var isSheetOpen: Bool = false
     

@@ -10,7 +10,7 @@ import Foundation
 class MesocycleViewModel: ObservableObject {
     
     // Initialize the active Mesocycle
-    @Published var activeMesocycle: Mesocycle?
+    @Published var activeMesocycle: Mesocycle_MockData?
     
     private let mesocycles = Mesocycles().mesocycle
     

@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Mesocycle: Identifiable {
+struct Mesocycle_MockData: Identifiable {
     var id: Int
     var mesocycleName: String
-    var microcycleIds: [Microcycle.ID]
+    var microcycleIds: [Microcycle_MockData.ID]
     var isComplete: Bool
 }
 
 struct Mesocycles {
-    let mesocycle = [0: Mesocycle(id: 0, mesocycleName: "Mesocycle 1", microcycleIds: [0, 1], isComplete: false)]
+    let mesocycle = [0: Mesocycle_MockData(id: 0, mesocycleName: "Mesocycle 1", microcycleIds: [0, 1], isComplete: false)]
 }

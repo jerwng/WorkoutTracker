@@ -17,10 +17,10 @@ struct CycleUtils {
     }
     
     static func getNextDay(
-        curMicrocycleId: Microcycle.ID,
-        curDayId: Day.ID,
-        microcycles: [Int: Microcycle],
-        days: [Int: Day]
+        curMicrocycleId: Microcycle_MockData.ID,
+        curDayId: Day_MockData.ID,
+        microcycles: [Int: Microcycle_MockData],
+        days: [Int: Day_MockData]
     ) {
         print("getNextDay - Get Next Day placeholder")
     }

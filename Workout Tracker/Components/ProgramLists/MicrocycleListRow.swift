@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MicrocycleListRow: View {
-    var microcycle: Microcycle
+    var microcycle: Microcycle_MockData
     
     @EnvironmentObject var programRouter: ProgramRouter
     

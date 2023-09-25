@@ -10,14 +10,14 @@ import SwiftUI
 
 struct ExerciseRow: Identifiable {
     let id: UUID
-    let exerciseId: Exercise.ID
+    let exerciseId: Exercise_MockData.ID
     let exerciseName: String
     let exerciseSets: Int
     let exerciseRepRangeTop: Int
     let exerciseRepRangeBot: Int
     let exerciseNotes: String?
     
-    init(exerciseId: Exercise.ID, exerciseName: String, exerciseSets: Int, exerciseRepRangeTop: Int, exerciseRepRangeBot: Int, exerciseNotes: String?) {
+    init(exerciseId: Exercise_MockData.ID, exerciseName: String, exerciseSets: Int, exerciseRepRangeTop: Int, exerciseRepRangeBot: Int, exerciseNotes: String?) {
         self.id = UUID()
         self.exerciseId = exerciseId
         self.exerciseName = exerciseName
@@ -36,7 +36,7 @@ struct ExerciseListView: View {
     let exerciseEntries = ExerciseEntries().exerciseEntries
     
     @State var exerciseRows: [ExerciseRow] = []
-    @State var exerciseEntriesByExercise: [Exercise.ID: [ExerciseEntry]] = [:]
+    @State var exerciseEntriesByExercise: [Exercise_MockData.ID: [ExerciseEntry_MockData]] = [:]
 
     func initializeExercises() {
         guard let day = days[3] else {
@@ -70,7 +70,7 @@ struct ExerciseListView: View {
         let dayId = day.id
         
         for exerciseRecord in exerciseRecords {
-            var exerciseExerciseEntries: [ExerciseEntry] = []
+            var exerciseExerciseEntries: [ExerciseEntry_MockData] = []
             
             for exerciseEntryId in exerciseRecord.value.exerciseEntryIds {
                 guard let exerciseEntry = exerciseEntries[exerciseEntryId] else {

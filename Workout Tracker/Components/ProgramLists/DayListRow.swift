@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DayListRow: View {
     var microcycleName: String
-    var day: Day
+    var day: Day_MockData
     
     @EnvironmentObject var programRouter: ProgramRouter
     

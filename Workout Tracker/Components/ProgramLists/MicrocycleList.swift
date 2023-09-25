@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MicrocycleList: View {
-    var microcycleIds: [Microcycle.ID]
+    var microcycleIds: [Microcycle_MockData.ID]
     
     func handleDelete(at offsets: IndexSet) {
         print("delete microcycle")

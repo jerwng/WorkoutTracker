@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ExerciseList: View {
-    var exerciseSetIds: [ExerciseSet.ID]
+    var exerciseSetIds: [ExerciseSet_MockData.ID]
     
     func handleDelete(at offsets: IndexSet) {
         print("delete exercise")

@@ -15,36 +15,36 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     
     var body: some View {
-        VStack {
-            List(exercises) {exercise in
-                Text(exercise.name ?? "")
-            }
-            
-            Button("Add") {
-                let firstNames = ["A", "B", "C", "D", "E"]
-                let lastNames = ["1", "2", "3", "4", "5"]
-                
-                let chosenFirstName = firstNames.randomElement()!
-                let chosenLastName = lastNames.randomElement()!
-                
-                let exercise = ExerciseTest(context: moc)
-                exercise.id = UUID()
-                exercise.name = "\(chosenFirstName) \(chosenLastName)"
-                
-                try? moc.save() // add except to handle potential errors
-            }
-        }
-//        TabView {
-//            DayView(day: 3, week: 1).tabItem {
-//                Image(systemName: "calendar")
-//                Text("Today")
+//        VStack {
+//            List(exercises) {exercise in
+//                Text(exercise.name ?? "")
 //            }
 //
-//            ProgramRoot().tabItem {
-//                Image(systemName: "list.bullet")
-//                Text("Program")
+//            Button("Add") {
+//                let firstNames = ["A", "B", "C", "D", "E"]
+//                let lastNames = ["1", "2", "3", "4", "5"]
+//
+//                let chosenFirstName = firstNames.randomElement()!
+//                let chosenLastName = lastNames.randomElement()!
+//
+//                let exercise = ExerciseTest(context: moc)
+//                exercise.id = UUID()
+//                exercise.name = "\(chosenFirstName) \(chosenLastName)"
+//
+//                try? moc.save() // add except to handle potential errors
 //            }
 //        }
+        TabView {
+            DayView(day: 3, week: 1).tabItem {
+                Image(systemName: "calendar")
+                Text("Today")
+            }
+
+            ProgramRoot().tabItem {
+                Image(systemName: "list.bullet")
+                Text("Program")
+            }
+        }
     }
 }
 

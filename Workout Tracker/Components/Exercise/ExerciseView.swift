@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ExerciseView: View {
     var exercise: ExerciseRow
-    var exerciseEntries: [ExerciseEntry] = []
+    var exerciseEntries: [ExerciseEntry_MockData] = []
     
     @State var isSheetOpen = false
     

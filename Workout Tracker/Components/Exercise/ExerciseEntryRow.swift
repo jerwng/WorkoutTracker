@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ExerciseEntryRow: View {
-    var exerciseEntry: ExerciseEntry
+    var exerciseEntry: ExerciseEntry_MockData
     var exercise: ExerciseRow?
     
     var isItalic: Bool? = false

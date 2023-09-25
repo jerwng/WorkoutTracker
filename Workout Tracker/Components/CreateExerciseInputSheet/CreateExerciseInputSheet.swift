@@ -18,7 +18,7 @@ struct CreateExerciseInputSheet: View {
     private let initialName: String
     private let initialTitle: String
     
-    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise?, selectedExerciseSets: ExerciseSet?) {
+    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise_MockData?, selectedExerciseSets: ExerciseSet_MockData?) {
         _isSheetOpen = isSheetOpen
         
         if let exercise = selectedExercise {

@@ -13,9 +13,9 @@ struct MicrocycleView: View {
     Accepts microcycleId instead of microcycle since Microcycle type is not Codable
     for router
      */
-    var microcycleId: Microcycle.ID
+    var microcycleId: Microcycle_MockData.ID
     
-    @State private var microcycle: Microcycle?
+    @State private var microcycle: Microcycle_MockData?
     
     @EnvironmentObject var programRouter: ProgramRouter
     

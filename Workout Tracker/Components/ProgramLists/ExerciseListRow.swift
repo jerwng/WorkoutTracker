@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct ExerciseListRow: View {
-    var exercise: Exercise
-    var exerciseSet: ExerciseSet
+    var exercise: Exercise_MockData
+    var exerciseSet: ExerciseSet_MockData
     
     @State private var isSheetOpen: Bool = false
     

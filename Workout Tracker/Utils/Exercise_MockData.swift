@@ -12,13 +12,13 @@ struct ExerciseUtils {
         print("hello3")
     }
     
-    static func getExerciseSetById(exerciseSetId: ExerciseSet.ID) -> ExerciseSet? {
+    static func getExerciseSetById(exerciseSetId: ExerciseSet_MockData.ID) -> ExerciseSet_MockData? {
         let exerciseSets = ExerciseSets().exerciseSets
         
         return exerciseSets[exerciseSetId]
     }
     
-    static func getExerciseById(exerciseId: Exercise.ID) -> Exercise? {
+    static func getExerciseById(exerciseId: Exercise_MockData.ID) -> Exercise_MockData? {
         let exercises = Exercises().exercises
         
         return exercises[exerciseId]

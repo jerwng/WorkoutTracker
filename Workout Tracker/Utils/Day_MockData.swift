@@ -12,7 +12,7 @@ struct DayUtils {
         print("hello3")
     }
     
-    static func getDayById(dayId: Day.ID) -> Day? {
+    static func getDayById(dayId: Day_MockData.ID) -> Day_MockData? {
         let days = Days().days
         
         return days[dayId]

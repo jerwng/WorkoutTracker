@@ -15,7 +15,7 @@
 		C40DFD7C29DD127900EC700C /* Workout_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD7B29DD127900EC700C /* Workout_TrackerUITests.swift */; };
 		C40DFD7E29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD7D29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift */; };
 		C40DFD8D29DD165700EC700C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD8C29DD165700EC700C /* HeaderView.swift */; };
-		C41478A02A9D054800CAC8E2 /* Microcycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414789F2A9D054800CAC8E2 /* Microcycle.swift */; };
+		C41478A02A9D054800CAC8E2 /* Microcycle_MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414789F2A9D054800CAC8E2 /* Microcycle_MockData.swift */; };
 		C420B3692AB36F00006C9D22 /* ListRowStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420B3682AB36F00006C9D22 /* ListRowStylingModifier.swift */; };
 		C42472972AA0FB0700F93C8A /* BackgroundStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */; };
 		C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428A7E42A23EB180050CEFC /* Cycle.swift */; };
@@ -31,7 +31,7 @@
 		C4647DA82ABA08AB00042770 /* ExerciseTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4647DA62ABA08AB00042770 /* ExerciseTest.xcdatamodeld */; };
 		C4647DAA2ABA098300042770 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4647DA92ABA098300042770 /* DataController.swift */; };
 		C464EE602AAA30250090CBB8 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C464EE5F2AAA30250090CBB8 /* ExerciseList.swift */; };
-		C464EE622AAA30E90090CBB8 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C464EE612AAA30E90090CBB8 /* Exercise.swift */; };
+		C464EE622AAA30E90090CBB8 /* Exercise_MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C464EE612AAA30E90090CBB8 /* Exercise_MockData.swift */; };
 		C464EE642AAA31C40090CBB8 /* ExerciseListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C464EE632AAA31C40090CBB8 /* ExerciseListRow.swift */; };
 		C476C53929E4FD2A000FCE2A /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476C53829E4FD2A000FCE2A /* Exercises.swift */; };
 		C47A242F29F5AF19005C171B /* ExerciseEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A242E29F5AF19005C171B /* ExerciseEntries.swift */; };
@@ -53,7 +53,9 @@
 		C4DBE0322AA2457400B24AE6 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DBE0312AA2457400B24AE6 /* DayList.swift */; };
 		C4E0027F2A967217008DD529 /* MesocycleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */; };
 		C4E155FB2A95244900E106B0 /* MesocycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E155FA2A95244900E106B0 /* MesocycleView.swift */; };
-		C4E960282AA78ED80020FD83 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960272AA78ED80020FD83 /* Day.swift */; };
+		C4E58E2B2AC1F24400E03FE0 /* DayViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E58E2A2AC1F24400E03FE0 /* DayViewVM.swift */; };
+		C4E58E2E2AC1F6A100E03FE0 /* Cycle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4E58E2C2AC1F6A100E03FE0 /* Cycle.xcdatamodeld */; };
+		C4E960282AA78ED80020FD83 /* Day_MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960272AA78ED80020FD83 /* Day_MockData.swift */; };
 		C4E9602A2AA78F570020FD83 /* DayListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960292AA78F570020FD83 /* DayListRow.swift */; };
 		C4E960312AA7915A0020FD83 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E960302AA7915A0020FD83 /* ListRow.swift */; };
 		C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EA44EC29E8F57B0072672A /* ExercistListView.swift */; };
@@ -88,7 +90,7 @@
 		C40DFD7B29DD127900EC700C /* Workout_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_TrackerUITests.swift; sourceTree = "<group>"; };
 		C40DFD7D29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C40DFD8C29DD165700EC700C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		C414789F2A9D054800CAC8E2 /* Microcycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microcycle.swift; sourceTree = "<group>"; };
+		C414789F2A9D054800CAC8E2 /* Microcycle_MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microcycle_MockData.swift; sourceTree = "<group>"; };
 		C420B3682AB36F00006C9D22 /* ListRowStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowStylingModifier.swift; sourceTree = "<group>"; };
 		C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundStylingModifier.swift; sourceTree = "<group>"; };
 		C428A7E42A23EB180050CEFC /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 		C4647DA72ABA08AB00042770 /* ExerciseTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExerciseTest.xcdatamodel; sourceTree = "<group>"; };
 		C4647DA92ABA098300042770 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		C464EE5F2AAA30250090CBB8 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
-		C464EE612AAA30E90090CBB8 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		C464EE612AAA30E90090CBB8 /* Exercise_MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise_MockData.swift; sourceTree = "<group>"; };
 		C464EE632AAA31C40090CBB8 /* ExerciseListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListRow.swift; sourceTree = "<group>"; };
 		C476C53829E4FD2A000FCE2A /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
 		C47A242E29F5AF19005C171B /* ExerciseEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntries.swift; sourceTree = "<group>"; };
@@ -126,7 +128,9 @@
 		C4DBE0312AA2457400B24AE6 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesocycleViewModel.swift; sourceTree = "<group>"; };
 		C4E155FA2A95244900E106B0 /* MesocycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesocycleView.swift; sourceTree = "<group>"; };
-		C4E960272AA78ED80020FD83 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		C4E58E2A2AC1F24400E03FE0 /* DayViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewVM.swift; sourceTree = "<group>"; };
+		C4E58E2D2AC1F6A100E03FE0 /* Cycle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cycle.xcdatamodel; sourceTree = "<group>"; };
+		C4E960272AA78ED80020FD83 /* Day_MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_MockData.swift; sourceTree = "<group>"; };
 		C4E960292AA78F570020FD83 /* DayListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListRow.swift; sourceTree = "<group>"; };
 		C4E960302AA7915A0020FD83 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		C4EA44EC29E8F57B0072672A /* ExercistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercistListView.swift; sourceTree = "<group>"; };
@@ -256,9 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				C428A7E42A23EB180050CEFC /* Cycle.swift */,
-				C414789F2A9D054800CAC8E2 /* Microcycle.swift */,
-				C4E960272AA78ED80020FD83 /* Day.swift */,
-				C464EE612AAA30E90090CBB8 /* Exercise.swift */,
+				C414789F2A9D054800CAC8E2 /* Microcycle_MockData.swift */,
+				C4E960272AA78ED80020FD83 /* Day_MockData.swift */,
+				C464EE612AAA30E90090CBB8 /* Exercise_MockData.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -268,6 +272,7 @@
 			children = (
 				C4647DA62ABA08AB00042770 /* ExerciseTest.xcdatamodeld */,
 				C4647DA92ABA098300042770 /* DataController.swift */,
+				C4E58E2C2AC1F6A100E03FE0 /* Cycle.xcdatamodeld */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				C4E0027E2A967217008DD529 /* MesocycleViewModel.swift */,
+				C4E58E2A2AC1F24400E03FE0 /* DayViewVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -557,6 +563,7 @@
 				C48342F029E7A3A4002E781F /* ExerciseView.swift in Sources */,
 				C47A243529F5AF95005C171B /* Microcycles.swift in Sources */,
 				C4365C1C2A2BEBA4008BACCD /* ExerciseSetsAndRepRange.swift in Sources */,
+				C4E58E2B2AC1F24400E03FE0 /* DayViewVM.swift in Sources */,
 				C4A09CDD2A69D8BE000E92D8 /* BackgroundTextField.swift in Sources */,
 				C4E155FB2A95244900E106B0 /* MesocycleView.swift in Sources */,
 				C4647DA82ABA08AB00042770 /* ExerciseTest.xcdatamodeld in Sources */,
@@ -573,7 +580,7 @@
 				C476C53929E4FD2A000FCE2A /* Exercises.swift in Sources */,
 				C43390EA2A9FA0B600558403 /* ProgramRoot.swift in Sources */,
 				C4A2E34F2AAB88A800675E09 /* CreateExerciseInputSheet.swift in Sources */,
-				C41478A02A9D054800CAC8E2 /* Microcycle.swift in Sources */,
+				C41478A02A9D054800CAC8E2 /* Microcycle_MockData.swift in Sources */,
 				C40DFD8D29DD165700EC700C /* HeaderView.swift in Sources */,
 				C4E0027F2A967217008DD529 /* MesocycleViewModel.swift in Sources */,
 				C47A243929F5B457005C171B /* ExerciseSets.swift in Sources */,
@@ -583,17 +590,18 @@
 				C47A243729F5AFB0005C171B /* Days.swift in Sources */,
 				C4595DA229F0D81200FA1D84 /* ExerciseRecords.swift in Sources */,
 				C43F72072A995E5700213521 /* MicrocycleList.swift in Sources */,
+				C4E58E2E2AC1F6A100E03FE0 /* Cycle.xcdatamodeld in Sources */,
 				C40DFD6129DD127800EC700C /* Workout_TrackerApp.swift in Sources */,
 				C464EE642AAA31C40090CBB8 /* ExerciseListRow.swift in Sources */,
 				C43390E52A9F9E8B00558403 /* ProgramRouter.swift in Sources */,
 				C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */,
 				C48342F329E7A8A6002E781F /* ItalicFootnote.swift in Sources */,
 				C464EE602AAA30250090CBB8 /* ExerciseList.swift in Sources */,
-				C4E960282AA78ED80020FD83 /* Day.swift in Sources */,
+				C4E960282AA78ED80020FD83 /* Day_MockData.swift in Sources */,
 				C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */,
 				C49B8EC92A3666F3001C64A1 /* BaseExerciseInputSheetBody.swift in Sources */,
 				C4B937562AB0CA8B00B3AB40 /* CreateExerciseInputSheetBody.swift in Sources */,
-				C464EE622AAA30E90090CBB8 /* Exercise.swift in Sources */,
+				C464EE622AAA30E90090CBB8 /* Exercise_MockData.swift in Sources */,
 				C4647DAA2ABA098300042770 /* DataController.swift in Sources */,
 				C420B3692AB36F00006C9D22 /* ListRowStylingModifier.swift in Sources */,
 				C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */,
@@ -926,6 +934,16 @@
 			);
 			currentVersion = C4647DA72ABA08AB00042770 /* ExerciseTest.xcdatamodel */;
 			path = ExerciseTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		C4E58E2C2AC1F6A100E03FE0 /* Cycle.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C4E58E2D2AC1F6A100E03FE0 /* Cycle.xcdatamodel */,
+			);
+			currentVersion = C4E58E2D2AC1F6A100E03FE0 /* Cycle.xcdatamodel */;
+			path = Cycle.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
