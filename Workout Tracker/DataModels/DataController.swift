@@ -10,7 +10,7 @@ import Foundation
 
 class DataController: ObservableObject {
     // Core data type responsible for loading model, prepares Core Data to load the model
-    let container = NSPersistentContainer(name: "ExerciseTest")
+    let container = NSPersistentContainer(name: "Cycle")
     
     init() {
         // Load Core Data
