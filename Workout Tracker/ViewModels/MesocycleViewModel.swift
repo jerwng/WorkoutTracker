@@ -7,26 +7,28 @@
 
 import Foundation
 
-class MesocycleViewModel: ObservableObject {
+extension MesocycleView {
     
-    // Initialize the active Mesocycle
-    @Published var activeMesocycle: Mesocycle_MockData?
-    
-    private let mesocycles = Mesocycles().mesocycle
-    
-    init() {
-        initMesocycle()
-    }
-    
-    /**
-    Find the first not completed mesocycle and set it as the activeMesosycle
-     */
-    func initMesocycle() {
-        for mesocycle in mesocycles {
-            if (!mesocycle.value.isComplete) {
-                activeMesocycle = mesocycle.value
-                break
-               
+    @MainActor class MesocycleViewModel: ObservableObject {
+        // Initialize the active Mesocycle
+        @Published var activeMesocycle: Mesocycle_MockData?
+        
+        private let mesocycles = Mesocycles().mesocycle
+        
+        init() {
+            initMesocycle()
+        }
+        
+        /**
+        Find the first not completed mesocycle and set it as the activeMesosycle
+         */
+        func initMesocycle() {
+            for mesocycle in mesocycles {
+                if (!mesocycle.value.isComplete) {
+                    activeMesocycle = mesocycle.value
+                    break
+                   
+                }
             }
         }
     }
