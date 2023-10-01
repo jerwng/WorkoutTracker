@@ -7,11 +7,15 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct MesocycleView: View {
-    
     // Add @ObservedModel for Mesocycle Model here
-    @ObservedObject var viewModel: MesocycleViewModel = MesocycleViewModel()
+    @ObservedObject private var viewModel: MesocycleViewModel
+
+    init(context: NSManagedObjectContext) {
+        viewModel = MesocycleViewModel(context: context)
+    }
     
     func addWeekButtonAction() {
         print("click add week")
@@ -31,11 +35,13 @@ struct MesocycleView: View {
                 RoundPillButton(label: "Complete", buttonAction: completeButtonAction)
             }.padding(.bottom, 10)
             
-            if let activeMesocycle = viewModel.activeMesocycle {
-                MicrocycleList(microcycleIds: activeMesocycle.microcycleIds)
-            }
+//            if let activeMesocycle = viewModel.activeMesocycle {
+//                MicrocycleList(microcycles: activeMesocycle.mesocycleMicrocycles)
+//            }
             
-        }.mesocycleViewBackgroundStylingModifier()
+        }.mesocycleViewBackgroundStylingModifier().onAppear{
+            viewModel.fetch()
+        }
            
     }
 }

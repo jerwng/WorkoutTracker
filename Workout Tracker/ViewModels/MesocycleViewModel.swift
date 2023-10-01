@@ -6,29 +6,43 @@
 //
 
 import Foundation
+import SwiftUI
+import CoreData
 
 extension MesocycleView {
     
     @MainActor class MesocycleViewModel: ObservableObject {
-        // Initialize the active Mesocycle
-        @Published var activeMesocycle: Mesocycle_MockData?
+        private let managedObjectContext: NSManagedObjectContext
         
-        private let mesocycles = Mesocycles().mesocycle
+        @Published var activeMesocycle: Mesocycle?
         
-        init() {
-            initMesocycle()
+//        @FetchRequest(sortDescriptors: []) var mesocycles: FetchedResults<Mesocycle>
+//        
+//        @FetchRequest(
+//            sortDescriptors: [SortDescriptor(\.isComplete)],
+//            predicate: NSPredicate(format: "isComplete == %@", NSNumber(value: true))
+//        ) var activeMesocycle: FetchedResults<Mesocycle>
+        
+        init(context: NSManagedObjectContext) {
+            self.managedObjectContext = context
         }
         
-        /**
-        Find the first not completed mesocycle and set it as the activeMesosycle
-         */
-        func initMesocycle() {
-            for mesocycle in mesocycles {
-                if (!mesocycle.value.isComplete) {
-                    activeMesocycle = mesocycle.value
-                    break
-                   
+        func fetch() {
+            let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
+            let predicate = NSPredicate(format: "isComplete == %@", NSNumber(value: true))
+            
+            fetchRequest.predicate = predicate
+            
+            do {
+                let fetchResult = try managedObjectContext.fetch(fetchRequest)
+
+                if !(fetchResult.isEmpty) {
+                    activeMesocycle = fetchResult[0]
+                } else {
+                    // If no active mesocycle, auto create a new mesocycle
                 }
+            } catch {
+                print("Error fetching active mesocycle: \(error)")
             }
         }
     }

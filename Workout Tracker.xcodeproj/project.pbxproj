@@ -16,6 +16,8 @@
 		C40DFD7E29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD7D29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift */; };
 		C40DFD8D29DD165700EC700C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40DFD8C29DD165700EC700C /* HeaderView.swift */; };
 		C41478A02A9D054800CAC8E2 /* Microcycle_MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414789F2A9D054800CAC8E2 /* Microcycle_MockData.swift */; };
+		C41FE59E2AC60870009A8896 /* Microcycle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41FE59D2AC60870009A8896 /* Microcycle+Extension.swift */; };
+		C41FE5A02AC61487009A8896 /* Mesocycle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41FE59F2AC61487009A8896 /* Mesocycle+Extension.swift */; };
 		C420B3692AB36F00006C9D22 /* ListRowStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420B3682AB36F00006C9D22 /* ListRowStylingModifier.swift */; };
 		C42472972AA0FB0700F93C8A /* BackgroundStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */; };
 		C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428A7E42A23EB180050CEFC /* Cycle.swift */; };
@@ -91,6 +93,8 @@
 		C40DFD7D29DD127900EC700C /* Workout_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C40DFD8C29DD165700EC700C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C414789F2A9D054800CAC8E2 /* Microcycle_MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microcycle_MockData.swift; sourceTree = "<group>"; };
+		C41FE59D2AC60870009A8896 /* Microcycle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Microcycle+Extension.swift"; sourceTree = "<group>"; };
+		C41FE59F2AC61487009A8896 /* Mesocycle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mesocycle+Extension.swift"; sourceTree = "<group>"; };
 		C420B3682AB36F00006C9D22 /* ListRowStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowStylingModifier.swift; sourceTree = "<group>"; };
 		C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundStylingModifier.swift; sourceTree = "<group>"; };
 		C428A7E42A23EB180050CEFC /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
@@ -184,10 +188,9 @@
 		C40DFD5F29DD127800EC700C /* Workout Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				C42A31842ABA05CF00F161D2 /* DataModels */,
 				C43390E62A9F9EA800558403 /* Routers */,
 				C4E0027D2A967205008DD529 /* ViewModels */,
-				C4E0027C2A96683D008DD529 /* API */,
+				C4E0027C2A96683D008DD529 /* Data */,
 				C428A7E32A23EAF10050CEFC /* Utils */,
 				C4C0F94D29E654160090C0EE /* Pages */,
 				C476C53729E4FC93000FCE2A /* Mock Data */,
@@ -238,6 +241,22 @@
 				C40DFD8C29DD165700EC700C /* HeaderView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		C41FE59C2AC6084F009A8896 /* EntityExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				C41FE59D2AC60870009A8896 /* Microcycle+Extension.swift */,
+				C41FE59F2AC61487009A8896 /* Mesocycle+Extension.swift */,
+			);
+			path = EntityExtensions;
+			sourceTree = "<group>";
+		};
+		C41FE5A22AC6161A009A8896 /* DataUtils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataUtils;
 			sourceTree = "<group>";
 		};
 		C420B3672AB36EEC006C9D22 /* Modifiers */ = {
@@ -414,11 +433,14 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
-		C4E0027C2A96683D008DD529 /* API */ = {
+		C4E0027C2A96683D008DD529 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C41FE5A22AC6161A009A8896 /* DataUtils */,
+				C41FE59C2AC6084F009A8896 /* EntityExtensions */,
+				C42A31842ABA05CF00F161D2 /* DataModels */,
 			);
-			path = API;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		C4E0027D2A967205008DD529 /* ViewModels */ = {
@@ -567,6 +589,7 @@
 				C4A09CDD2A69D8BE000E92D8 /* BackgroundTextField.swift in Sources */,
 				C4E155FB2A95244900E106B0 /* MesocycleView.swift in Sources */,
 				C4647DA82ABA08AB00042770 /* ExerciseTest.xcdatamodeld in Sources */,
+				C41FE5A02AC61487009A8896 /* Mesocycle+Extension.swift in Sources */,
 				C4E9602A2AA78F570020FD83 /* DayListRow.swift in Sources */,
 				C4DBE0322AA2457400B24AE6 /* DayList.swift in Sources */,
 				C40DFD6329DD127800EC700C /* ContentView.swift in Sources */,
@@ -596,6 +619,7 @@
 				C43390E52A9F9E8B00558403 /* ProgramRouter.swift in Sources */,
 				C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */,
 				C48342F329E7A8A6002E781F /* ItalicFootnote.swift in Sources */,
+				C41FE59E2AC60870009A8896 /* Microcycle+Extension.swift in Sources */,
 				C464EE602AAA30250090CBB8 /* ExerciseList.swift in Sources */,
 				C4E960282AA78ED80020FD83 /* Day_MockData.swift in Sources */,
 				C47A243329F5AF67005C171B /* Mesocycles.swift in Sources */,

@@ -18,50 +18,50 @@ struct ContentView: View {
     // moc: Managed object context provided by Core Data, responsible for loading and saving data
     @Environment(\.managedObjectContext) var moc
     
-    var body: some git View {
-        VStack {
- 
-            List {
-                ForEach(microcycles, id: \.self) { microcycle in
-                    Section(microcycle.microcycleName ?? "Unknown Microcycle") {
-
-                    }
-                }
-            }
-            
-            List(days) {day in
-                Text(day.dayName ?? "")
-            }
-
-            Button("Add") {
-                let firstNames = ["A", "B", "C", "D", "E"]
-                let lastNames = ["1", "2", "3", "4", "5"]
-
-                let chosenFirstName = firstNames.randomElement()!
-                let chosenLastName = lastNames.randomElement()!
+    var body: some View {
+//        VStack {
+// 
+//            List {
+//                ForEach(microcycles, id: \.self) { microcycle in
+//                    Section(microcycle.actualName) {
 //
-//                let exercise = ExerciseTest(context: moc)
-//                exercise.id = UUID()
-//                exercise.name = "\(chosenFirstName) \(chosenLastName)"
-                
-                let microcycle = Microcycle(context: moc)
-                microcycle.id = UUID()
-                microcycle.microcycleName = "\(chosenFirstName) \(chosenLastName)"
-
-                try? moc.save() // add except to handle potential errors
-            }
-        }
-//        TabView {
-//            DayView(day: 3, week: 1).tabItem {
-//                Image(systemName: "calendar")
-//                Text("Today")
+//                    }
+//                }
+//            }
+//            
+//            List(days) {day in
+//                Text(day.dayName ?? "")
 //            }
 //
-//            ProgramRoot().tabItem {
-//                Image(systemName: "list.bullet")
-//                Text("Program")
+//            Button("Add") {
+//                let firstNames = ["A", "B", "C", "D", "E"]
+//                let lastNames = ["1", "2", "3", "4", "5"]
+//
+//                let chosenFirstName = firstNames.randomElement()!
+//                let chosenLastName = lastNames.randomElement()!
+////
+////                let exercise = ExerciseTest(context: moc)
+////                exercise.id = UUID()
+////                exercise.name = "\(chosenFirstName) \(chosenLastName)"
+//                
+//                let microcycle = Microcycle(context: moc)
+//                microcycle.id = UUID()
+//                microcycle.microcycleName = "\(chosenFirstName) \(chosenLastName)"
+//
+//                try? moc.save() // add except to handle potential errors
 //            }
 //        }
+        TabView {
+            DayView(day: 3, week: 1).tabItem {
+                Image(systemName: "calendar")
+                Text("Today")
+            }
+
+            ProgramRoot().tabItem {
+                Image(systemName: "list.bullet")
+                Text("Program")
+            }
+        }
     }
 }
 

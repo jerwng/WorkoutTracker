@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 
 struct ProgramRoot: View {
+    @Environment(\.managedObjectContext) var moc
     @ObservedObject var programRouter = ProgramRouter()
     
     var body: some View {
         NavigationStack(path: $programRouter.navPath) {
-            MesocycleView()
+            MesocycleView(context: moc)
             .navigationDestination(for: ProgramRouter.Destination.self) {
             destination in
             switch destination {
@@ -22,7 +23,7 @@ struct ProgramRoot: View {
                 case .day(let microcycleName, let dayId):
                     DayProgramView(microcycleName: microcycleName, dayId: dayId)
                 default:
-                    MesocycleView()
+                MesocycleView(context: moc)
                 }
             }
         }.environmentObject(programRouter)
