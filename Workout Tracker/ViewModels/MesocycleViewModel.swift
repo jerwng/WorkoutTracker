@@ -16,20 +16,13 @@ extension MesocycleView {
         
         @Published var activeMesocycle: Mesocycle?
         
-//        @FetchRequest(sortDescriptors: []) var mesocycles: FetchedResults<Mesocycle>
-//        
-//        @FetchRequest(
-//            sortDescriptors: [SortDescriptor(\.isComplete)],
-//            predicate: NSPredicate(format: "isComplete == %@", NSNumber(value: true))
-//        ) var activeMesocycle: FetchedResults<Mesocycle>
-        
         init(context: NSManagedObjectContext) {
             self.managedObjectContext = context
         }
         
         func fetch() {
             let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
-            let predicate = NSPredicate(format: "isComplete == %@", NSNumber(value: true))
+            let predicate = NSPredicate(format: "isComplete == %@", NSNumber(value: false))
             
             fetchRequest.predicate = predicate
             
@@ -40,10 +33,15 @@ extension MesocycleView {
                     activeMesocycle = fetchResult[0]
                 } else {
                     // If no active mesocycle, auto create a new mesocycle
+                    add()
                 }
             } catch {
                 print("Error fetching active mesocycle: \(error)")
             }
+        }
+        
+        func add() {
+            _ = Mesocycle.create(context: managedObjectContext)
         }
     }
 }

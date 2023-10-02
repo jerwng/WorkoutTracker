@@ -21,6 +21,7 @@
 		C420B3692AB36F00006C9D22 /* ListRowStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420B3682AB36F00006C9D22 /* ListRowStylingModifier.swift */; };
 		C42472972AA0FB0700F93C8A /* BackgroundStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */; };
 		C428A7E52A23EB180050CEFC /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428A7E42A23EB180050CEFC /* Cycle.swift */; };
+		C42E506B2ACB5D50005AE769 /* EntityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E506A2ACB5D50005AE769 /* EntityUtils.swift */; };
 		C43390E52A9F9E8B00558403 /* ProgramRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43390E42A9F9E8B00558403 /* ProgramRouter.swift */; };
 		C43390EA2A9FA0B600558403 /* ProgramRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43390E92A9FA0B600558403 /* ProgramRoot.swift */; };
 		C43390EC2A9FA35600558403 /* MicrocycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43390EB2A9FA35600558403 /* MicrocycleView.swift */; };
@@ -98,6 +99,7 @@
 		C420B3682AB36F00006C9D22 /* ListRowStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowStylingModifier.swift; sourceTree = "<group>"; };
 		C42472962AA0FB0700F93C8A /* BackgroundStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundStylingModifier.swift; sourceTree = "<group>"; };
 		C428A7E42A23EB180050CEFC /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
+		C42E506A2ACB5D50005AE769 /* EntityUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityUtils.swift; sourceTree = "<group>"; };
 		C43390E42A9F9E8B00558403 /* ProgramRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramRouter.swift; sourceTree = "<group>"; };
 		C43390E92A9FA0B600558403 /* ProgramRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramRoot.swift; sourceTree = "<group>"; };
 		C43390EB2A9FA35600558403 /* MicrocycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrocycleView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		C41FE5A22AC6161A009A8896 /* DataUtils */ = {
 			isa = PBXGroup;
 			children = (
+				C42E506A2ACB5D50005AE769 /* EntityUtils.swift */,
 			);
 			path = DataUtils;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				C4647DAA2ABA098300042770 /* DataController.swift in Sources */,
 				C420B3692AB36F00006C9D22 /* ListRowStylingModifier.swift in Sources */,
 				C4EA44ED29E8F57B0072672A /* ExercistListView.swift in Sources */,
+				C42E506B2ACB5D50005AE769 /* EntityUtils.swift in Sources */,
 				C4365C1E2A2BF0C3008BACCD /* ExerciseNotes.swift in Sources */,
 				C49B8ECC2A366934001C64A1 /* ExerciseEntryInputSheetBody.swift in Sources */,
 			);

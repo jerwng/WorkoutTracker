@@ -22,8 +22,23 @@ extension Mesocycle {
     }
     
     // Static func since Mesocycle won't be defined during creation
-    static func create(moc: NSManagedObjectContext) -> Mesocycle {
-        return Mesocycle(context: moc)
+    static func create(context: NSManagedObjectContext) -> Mesocycle? {
+        
+        let mesocycleCount = EntityUtils().getEntityRecordsCount(context: context, entityName: "Mesocycle")
+        
+        // Prevent creating Mesocycle if current Mesocycle count is not valid
+        if (mesocycleCount < 0) {
+            return nil
+        }
+        
+        let newMesocycle = Mesocycle(context: context)
+        newMesocycle.id = UUID()
+        newMesocycle.name = "Mesocycle \(mesocycleCount + 1)"
+        newMesocycle.isComplete = false
+        
+        try? context.save()
+        
+        return newMesocycle
     }
     
     func update(newName: String?, newIsComplete: Bool?) {
