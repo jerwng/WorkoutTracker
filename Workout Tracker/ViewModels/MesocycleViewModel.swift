@@ -14,13 +14,26 @@ extension MesocycleView {
     @MainActor class MesocycleViewModel: ObservableObject {
         private let managedObjectContext: NSManagedObjectContext
         
+        @Published var mesocycles: [Mesocycle] = []
         @Published var activeMesocycle: Mesocycle?
         
         init(context: NSManagedObjectContext) {
             self.managedObjectContext = context
         }
         
-        func fetch() {
+        func fetchAllMesocycles() {
+            let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
+            
+            do {
+                let fetchResult = try managedObjectContext.fetch(fetchRequest)
+                mesocycles = fetchResult
+              
+            } catch {
+                print("Error fetching mesocycles: \(error)")
+            }
+        }
+        
+        func fetchActiveMesocycle() {
             let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
             let predicate = NSPredicate(format: "isComplete == %@", NSNumber(value: false))
             
