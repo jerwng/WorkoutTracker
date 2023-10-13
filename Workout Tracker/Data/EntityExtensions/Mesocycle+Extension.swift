@@ -8,7 +8,11 @@
 import Foundation
 import CoreData
 
-extension Mesocycle {
+/**
+Ensure Mesocycle conforms to protocols
+ - EntityWithSequence protocol ensures type contains "sequence" property
+ */
+extension Mesocycle: EntityWithSequence {
     var mesocycleName: String {
         return "\(name ?? "Unknown Mesocycle")"
     }
@@ -23,18 +27,23 @@ extension Mesocycle {
     
     // Static func since Mesocycle won't be defined during creation
     static func create(context: NSManagedObjectContext) -> Mesocycle? {
-        
-        let mesocycleCount = EntityUtils().getEntityRecordsCount(context: context, entityName: "Mesocycle")
-        
-        // Prevent creating Mesocycle if current Mesocycle count is not valid
-        if (mesocycleCount < 0) {
+        let highestMesocycleSequenceFetchRequest: NSFetchRequest<Mesocycle> = NSFetchRequest(entityName: "Mesocycle")
+        let highestMesocycleSequence = EntityUtils().getEntityHighestSequence(
+            context: context,
+            fetchRequest: highestMesocycleSequenceFetchRequest
+        )
+
+        // Highest mesocycle sequence returns -1 if error occured fetching highest sequence value
+        // Prevent creating new mesocycle to prevent corrupting sequence order
+        if (highestMesocycleSequence < 0) {
             return nil
         }
         
         let newMesocycle = Mesocycle(context: context)
         newMesocycle.id = UUID()
-        newMesocycle.name = "Mesocycle \(mesocycleCount + 1)"
+        newMesocycle.name = "Mesocycle \(highestMesocycleSequence + 1)"
         newMesocycle.isComplete = false
+        newMesocycle.sequence = Int16(highestMesocycleSequence + 1)
         
         try? context.save()
         

@@ -8,16 +8,28 @@
 import Foundation
 import CoreData
 
+protocol EntityWithSequence {
+    var sequence: Int16 { get } // set { get } to have property as read-only
+}
+
 struct EntityUtils {
-    func getEntityRecordsCount(context: NSManagedObjectContext, entityName: String) -> Int {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+    func getEntityHighestSequence<T: EntityWithSequence>(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<T>) -> Int16 {
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sequence", ascending: false)]
+    
         do {
-            let count = try context.count(for: fetchRequest)
-            return count
+            let results = try context.fetch(fetchRequest)
+            
+            if (!results.isEmpty) {
+                return results[0].sequence
+            }
+            
+            return 0
         } catch {
-            print(error.localizedDescription)
+            print("Error fetching entity with highest sequence: \(error)")
         }
 
         return -1
     }
+
+
 }
