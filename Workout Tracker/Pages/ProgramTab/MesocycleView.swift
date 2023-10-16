@@ -42,7 +42,7 @@ struct MesocycleView: View {
                 }
 
                 Button("Add") {
-                    viewModel.add()
+                    viewModel.createMesocycle()
                     viewModel.fetchAllMesocycles()
                 }
             }.onAppear(){

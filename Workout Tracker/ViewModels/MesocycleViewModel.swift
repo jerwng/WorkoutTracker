@@ -21,18 +21,7 @@ extension MesocycleView {
             self.managedObjectContext = context
         }
         
-        func fetchAllMesocycles() {
-            let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
-            
-            do {
-                let fetchResult = try managedObjectContext.fetch(fetchRequest)
-                mesocycles = fetchResult
-              
-            } catch {
-                print("Error fetching mesocycles: \(error)")
-            }
-        }
-        
+        // ---------------------------------------- Active Mesocycle Functions ----------------------------------------
         func fetchActiveMesocycle() {
             let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
             let predicate = NSPredicate(format: "isComplete == %@", NSNumber(value: false))
@@ -46,15 +35,32 @@ extension MesocycleView {
                     activeMesocycle = fetchResult[0]
                 } else {
                     // If no active mesocycle, auto create a new mesocycle
-                    add()
+                    createMesocycle()
                 }
             } catch {
                 print("Error fetching active mesocycle: \(error)")
             }
         }
         
-        func add() {
+        func getActiveMesocycleMicrocycles() -> [Microcycle] {
+            return activeMesocycle?.mesocycleMicrocycles ?? []
+        }
+        
+        // ---------------------------------------- CRUD Mesocycles ----------------------------------------
+        func createMesocycle() {
             _ = Mesocycle.create(context: managedObjectContext)
+        }
+        
+        func fetchAllMesocycles() {
+            let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
+            
+            do {
+                let fetchResult = try managedObjectContext.fetch(fetchRequest)
+                mesocycles = fetchResult
+              
+            } catch {
+                print("Error fetching mesocycles: \(error)")
+            }
         }
     }
 }
