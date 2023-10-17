@@ -45,6 +45,7 @@ extension MesocycleView {
         func createMicrocycleToActiveMesocycle() {
             if let newMicrocycle = Microcycle.create(context: managedObjectContext, mesocycleId: activeMesocycle?.id) {
                 activeMesocycle?.addMicrocycle(newMicrocycle: newMicrocycle)
+                fetchActiveMesocycle()
             }
         }
         
@@ -55,8 +56,10 @@ extension MesocycleView {
         // ---------------------------------------- CRUD Mesocycles ----------------------------------------
         func createMesocycle() {
             _ = Mesocycle.create(context: managedObjectContext)
+            fetchAllMesocycles()
         }
         
+        // Note: This function is not used currently used by any app components. Only used for debugging purposes.
         func fetchAllMesocycles() {
             let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
             

@@ -52,7 +52,6 @@ struct MesocycleView: View {
 
                 Button("Add Mesocycle") {
                     viewModel.createMesocycle()
-                    viewModel.fetchAllMesocycles()
                 }
             }.onAppear(){
                 viewModel.fetchAllMesocycles()
@@ -68,7 +67,6 @@ struct MesocycleView: View {
 
                 Button("Add Microcycle") {
                     viewModel.createMicrocycleToActiveMesocycle()
-                    viewModel.fetchActiveMesocycle()
                 }
             }.onAppear(){
                 viewModel.fetchActiveMesocycle()
