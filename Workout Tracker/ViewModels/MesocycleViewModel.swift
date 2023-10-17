@@ -42,6 +42,12 @@ extension MesocycleView {
             }
         }
         
+        func createMicrocycleToActiveMesocycle() {
+            if let newMicrocycle = Microcycle.create(context: managedObjectContext) {
+                activeMesocycle?.addMicrocycle(newMicrocycle: newMicrocycle)
+            }
+        }
+        
         func getActiveMesocycleMicrocycles() -> [Microcycle] {
             return activeMesocycle?.mesocycleMicrocycles ?? []
         }

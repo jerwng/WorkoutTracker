@@ -58,6 +58,12 @@ extension Mesocycle: EntityWithSequence {
         try? context?.save()
     }
     
+    func addMicrocycle(newMicrocycle: Microcycle) {
+        addToMicrocycles(newMicrocycle)
+    
+        try? managedObjectContext?.save()
+    }
+    
     func delete() {
         let context = managedObjectContext
         context?.delete(self)

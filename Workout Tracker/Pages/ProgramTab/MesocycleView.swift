@@ -31,6 +31,14 @@ struct MesocycleView: View {
         viewModel.fetchAllMesocycles()
     }
     
+    func handleDeleteMicrocycle(at offsets: IndexSet) {
+        let activeMesocycleMicrocycles = viewModel.getActiveMesocycleMicrocycles()
+        let microcycleToBeDeleted = activeMesocycleMicrocycles[offsets.first!]
+        
+        microcycleToBeDeleted.delete()
+        viewModel.fetchActiveMesocycle()
+    }
+    
     var body: some View {
         // Mesocycle Dashboard, which helps visualize mesocycle values
         if (FeatureFlags.mesocycleDashboard) {
@@ -41,12 +49,28 @@ struct MesocycleView: View {
                     }.onDelete(perform: handleDeleteMesocycle)
                 }
 
-                Button("Add") {
+                Button("Add Mesocycle") {
                     viewModel.createMesocycle()
                     viewModel.fetchAllMesocycles()
                 }
             }.onAppear(){
                 viewModel.fetchAllMesocycles()
+            }
+            
+        } else if (FeatureFlags.microcycleDashboard) {
+            VStack {
+                List {
+                    ForEach(viewModel.getActiveMesocycleMicrocycles(), id: \.self) { microcycle in
+                        Text(microcycle.microcycleName)
+                    }.onDelete(perform: handleDeleteMicrocycle)
+                }
+
+                Button("Add Microcycle") {
+                    viewModel.createMicrocycleToActiveMesocycle()
+                    viewModel.fetchActiveMesocycle()
+                }
+            }.onAppear(){
+                viewModel.fetchActiveMesocycle()
             }
             
         } else {

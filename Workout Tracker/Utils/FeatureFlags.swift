@@ -8,5 +8,6 @@
 import Foundation
 
 struct FeatureFlags {
-    static let mesocycleDashboard = true
+    static let mesocycleDashboard = false
+    static let microcycleDashboard = true
 }
