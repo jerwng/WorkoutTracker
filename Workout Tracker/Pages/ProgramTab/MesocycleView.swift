@@ -24,6 +24,7 @@ struct MesocycleView: View {
     
     func completeButtonAction() {
         print("click complete")
+        viewModel.setActiveMesocycleComplete()
     }
     
     func handleDeleteMesocycle(at offsets: IndexSet) {
@@ -52,6 +53,7 @@ struct MesocycleView: View {
 
                 Button("Add Mesocycle") {
                     viewModel.createMesocycle()
+                    viewModel.fetchAllMesocycles()
                 }
             }.onAppear(){
                 viewModel.fetchAllMesocycles()
@@ -74,7 +76,7 @@ struct MesocycleView: View {
             
         } else {
             VStack {
-                HeaderView(header: "MESOCYCLE", subHeader: "").padding(.bottom, 40)
+                HeaderView(header: "MESOCYCLE", subHeader: viewModel.activeMesocycle?.mesocycleName ?? "").padding(.bottom, 40)
                 
                 HStack {
                     RoundPillButton(label: "Add Week", buttonAction: addWeekButtonAction)

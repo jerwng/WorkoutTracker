@@ -13,6 +13,10 @@ Ensure Mesocycle conforms to protocols
  - EntityWithSequence protocol ensures type contains "sequence" property
  */
 extension Mesocycle: EntityWithSequence {
+    var mesocycleUUIDString: String {
+        return "\(id?.uuidString ?? "Unknown Mesocycle")"
+    }
+    
     var mesocycleName: String {
         return "\(name ?? "Unknown Mesocycle")"
     }
@@ -62,6 +66,18 @@ extension Mesocycle: EntityWithSequence {
         addToMicrocycles(newMicrocycle)
     
         try? managedObjectContext?.save()
+    }
+    
+    func setIsComplete() {
+        let context = managedObjectContext
+        
+        isComplete = true
+        
+        do {
+            try context?.save()
+        } catch {
+            print("Error setting Mesocycle \(mesocycleUUIDString) to complete: \(error)")
+        }
     }
     
     func delete() {

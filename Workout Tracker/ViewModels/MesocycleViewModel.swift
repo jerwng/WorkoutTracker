@@ -53,10 +53,16 @@ extension MesocycleView {
             return activeMesocycle?.mesocycleMicrocycles ?? []
         }
         
+        func setActiveMesocycleComplete() {
+            activeMesocycle?.setIsComplete()
+            fetchActiveMesocycle()
+        }
+        
         // ---------------------------------------- CRUD Mesocycles ----------------------------------------
         func createMesocycle() {
-            _ = Mesocycle.create(context: managedObjectContext)
-            fetchAllMesocycles()
+            if let newMesocycle = Mesocycle.create(context: managedObjectContext) {
+                activeMesocycle = newMesocycle
+            }
         }
         
         // Note: This function is not used currently used by any app components. Only used for debugging purposes.

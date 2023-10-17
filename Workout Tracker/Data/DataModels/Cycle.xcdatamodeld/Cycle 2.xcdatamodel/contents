@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Day" representedClassName="Day" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="microcycle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Microcycle" inverseName="days" inverseEntity="Microcycle"/>
+    </entity>
+    <entity name="Mesocycle" representedClassName="Mesocycle" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="microcycles" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Microcycle" inverseName="mesocycle" inverseEntity="Microcycle"/>
+    </entity>
+    <entity name="Microcycle" representedClassName="Microcycle" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="microcycle" inverseEntity="Day"/>
+        <relationship name="mesocycle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mesocycle" inverseName="microcycles" inverseEntity="Mesocycle"/>
+    </entity>
+</model>
