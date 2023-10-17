@@ -19,6 +19,7 @@ struct MesocycleView: View {
     
     func addWeekButtonAction() {
         print("click add week")
+        viewModel.createMicrocycleToActiveMesocycle()
     }
     
     func completeButtonAction() {
