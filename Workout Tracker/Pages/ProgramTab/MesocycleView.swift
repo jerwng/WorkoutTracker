@@ -84,9 +84,9 @@ struct MesocycleView: View {
                     RoundPillButton(label: "Complete", buttonAction: completeButtonAction)
                 }.padding(.bottom, 10)
                 
-    //            if let activeMesocycle = viewModel.activeMesocycle {
-    //                MicrocycleList(microcycles: activeMesocycle.mesocycleMicrocycles)
-    //            }
+                if let activeMesocycle = viewModel.activeMesocycle {
+                    MicrocycleList(microcycles: activeMesocycle.mesocycleMicrocycles)
+                }
                 
             }.mesocycleViewBackgroundStylingModifier().onAppear{
                 viewModel.fetchActiveMesocycle()

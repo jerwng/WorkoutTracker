@@ -15,7 +15,7 @@ import SwiftUI
 final class ProgramRouter: ObservableObject {
     public enum Destination: Codable, Hashable {
         case mesocycle
-        case microcycle(microcycleId: Microcycle_MockData.ID)
+        case microcycle(microcycleId: Microcycle.ID)
         case day(microcycleName: String, dayId: Day_MockData.ID)
     }
     

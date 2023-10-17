@@ -12,19 +12,21 @@ struct MicrocycleView: View {
     /**
     Accepts microcycleId instead of microcycle since Microcycle type is not Codable
     for router
+     
+     TODO: Create MicrocycleViewModel
      */
-    var microcycleId: Microcycle_MockData.ID
+    var microcycleId: Microcycle.ID
     
     @State private var microcycle: Microcycle_MockData?
     
     @EnvironmentObject var programRouter: ProgramRouter
     
     func handleFetchMicrocycle() {
-        if microcycle?.id == microcycleId {
-            return
-        }
-
-        microcycle = MicrocycleUtils.getMicrocycleById(microcycleId: microcycleId)
+//        if microcycle?.id == microcycleId {
+//            return
+//        }
+//
+//        microcycle = MicrocycleUtils.getMicrocycleById(microcycleId: microcycleId)
     }
     
     func addDayButtonAction() {

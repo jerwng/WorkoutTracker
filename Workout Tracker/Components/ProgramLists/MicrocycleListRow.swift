@@ -9,17 +9,19 @@ import Foundation
 import SwiftUI
 
 struct MicrocycleListRow: View {
-    var microcycle: Microcycle_MockData
+    var microcycle: Microcycle
     
     @EnvironmentObject var programRouter: ProgramRouter
     
     func handleTapRow() {
-        programRouter.navigateTo(to: .microcycle(microcycleId: microcycle.id))
+        if let microcycleId = microcycle.id {
+            programRouter.navigateTo(to: .microcycle(microcycleId: microcycleId))
+        }
     }
 
     var body: some View {
         VStack {
-            ListRow(title: microcycle.microcycleName, description: String(microcycle.dayIds.count) + " Days").padding(.bottom, 1)
+            ListRow(title: microcycle.microcycleName, description: String(microcycle.micorcycleDays.count) + " Days").padding(.bottom, 1)
                 .onTapGesture {
                     handleTapRow()
                 }

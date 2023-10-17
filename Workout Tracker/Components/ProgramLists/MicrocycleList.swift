@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MicrocycleList: View {
-    var microcycleIds: [Microcycle_MockData.ID]
+    var microcycles: [Microcycle]
     
     func handleDelete(at offsets: IndexSet) {
         print("delete microcycle")
@@ -17,12 +17,10 @@ struct MicrocycleList: View {
     
     var body: some View {
         List {
-            ForEach(microcycleIds, id: \.self) {
-                microcycleId in
-                    if let microcycle = MicrocycleUtils.getMicrocycleById(microcycleId: microcycleId) {
-                        MicrocycleListRow(microcycle: microcycle)
-                            .microcycleListListRowStylingModifier()
-                    }
+            ForEach(microcycles, id: \.self) {
+                microcycle in
+                    MicrocycleListRow(microcycle: microcycle)
+                        .microcycleListListRowStylingModifier()
             }.onDelete(perform: handleDelete)
         }.listStyle(.plain)
     }
