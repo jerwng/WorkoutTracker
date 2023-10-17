@@ -22,8 +22,13 @@ extension Microcycle: EntityWithSequence {
     }
     
     // Static func since Microcycle won't be defined during creation
-    static func create(context: NSManagedObjectContext) -> Microcycle? {
+    static func create(context: NSManagedObjectContext, mesocycleId: Mesocycle.ID) -> Microcycle? {
         let highestMicrocycleSequenceFetchRequest: NSFetchRequest<Microcycle> = NSFetchRequest(entityName: "Microcycle")
+     
+        if let requiredMesocycleId = mesocycleId {
+            highestMicrocycleSequenceFetchRequest.predicate = NSPredicate(format: "mesocycle.id == %@", requiredMesocycleId.uuidString)
+        }
+        
         let highestMicrocycleSequence = EntityUtils().getEntityHighestSequence(
             context: context,
             fetchRequest: highestMicrocycleSequenceFetchRequest
