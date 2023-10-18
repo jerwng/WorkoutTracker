@@ -35,7 +35,7 @@ extension Microcycle: EntityWithSequence {
         )
 
         // Highest microcycle sequence returns -1 if error occured fetching highest sequence value
-        // Prevent creating new mesocycle to prevent corrupting sequence order
+        // Prevent creating new microcycle to prevent corrupting sequence order
         if (highestMicrocycleSequence < 0) {
             return nil
         }
