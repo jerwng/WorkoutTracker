@@ -7,26 +7,18 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct MicrocycleView: View {
     /**
     Accepts microcycleId instead of microcycle since Microcycle type is not Codable
     for router
-     
-     TODO: Create MicrocycleViewModel
      */
-    var microcycleId: Microcycle.ID
-    
-    @State private var microcycle: Microcycle_MockData?
-    
+    @ObservedObject private var viewModel: MicrocycleViewModel
     @EnvironmentObject var programRouter: ProgramRouter
     
-    func handleFetchMicrocycle() {
-//        if microcycle?.id == microcycleId {
-//            return
-//        }
-//
-//        microcycle = MicrocycleUtils.getMicrocycleById(microcycleId: microcycleId)
+    init(context: NSManagedObjectContext, microcycleId: Microcycle.ID) {
+        viewModel = MicrocycleViewModel(context: context, microcycleId: microcycleId)
     }
     
     func addDayButtonAction() {
@@ -46,7 +38,7 @@ struct MicrocycleView: View {
                         handleTapBackChevron()
                     }
                 Spacer()
-                HeaderView(header: "MICROCYCLE", subHeader: microcycle?.microcycleName ?? "").padding(.bottom, 40)
+                HeaderView(header: "MICROCYCLE", subHeader: viewModel.microcycle?.microcycleName ?? "").padding(.bottom, 40)
                 Spacer()
             }
             
@@ -55,11 +47,9 @@ struct MicrocycleView: View {
                 Spacer()
             }.padding(.bottom, 10)
        
-            if let microcycleName = microcycle?.microcycleName, let microcycleDayIds = microcycle?.dayIds {
-                DayList(microcycleName: microcycleName, dayIds: microcycleDayIds)
-            }
-        }.onAppear() {
-            handleFetchMicrocycle()
+//            if let microcycleName = viewModel.microcycle?.microcycleName, let microcycleDayIds = viewModel.microcycle?.dayIds {
+//                DayList(microcycleName: microcycleName, dayIds: microcycleDayIds)
+//            }
         }
         .microcycleViewBackgroundStylingModifier()
         .navigationBarBackButtonHidden()
