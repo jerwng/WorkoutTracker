@@ -17,7 +17,7 @@ struct MicrocycleList: View {
     
     var body: some View {
         List {
-            ForEach(microcycles, id: \.self) {
+            ForEach(microcycles, id: \.self.id) {
                 microcycle in
                     MicrocycleListRow(microcycle: microcycle)
                         .microcycleListListRowStylingModifier()

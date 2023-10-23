@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DayList: View {
     var microcycleName: String
-    var dayIds: [Day_MockData.ID]
+    var days: [Day]
     
     func handleDelete(at offsets: IndexSet) {
         print("delete day")
@@ -18,12 +18,10 @@ struct DayList: View {
     
     var body: some View {
         List {
-            ForEach(dayIds, id: \.self) {
-                dayId in
-                    if let day = DayUtils.getDayById(dayId: dayId) {
-                        DayListRow(microcycleName: microcycleName, day: day)
-                            .dayListListRowStylingModifier()
-                }
+            ForEach(days, id: \.self.id) {
+                day in
+                    DayListRow(microcycleName: microcycleName, day: day)
+                    .dayListListRowStylingModifier()
             }.onDelete(perform: handleDelete)
         }.listStyle(.plain)
     }

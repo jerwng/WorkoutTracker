@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DayListRow: View {
     var microcycleName: String
-    var day: Day_MockData
+    var day: Day
     
     @EnvironmentObject var programRouter: ProgramRouter
     
@@ -22,7 +22,7 @@ struct DayListRow: View {
         VStack {
             ListRow(
                 title: day.dayName,
-                description: String(day.exerciseSetIds.count) + " Exercises"
+                description: String(day.dayExercises.count) + " Exercises"
             ).padding(.bottom, 1)
         }.onTapGesture {
             handleTapRow()

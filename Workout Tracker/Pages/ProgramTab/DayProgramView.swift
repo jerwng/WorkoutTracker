@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DayProgramView: View {
     var microcycleName: String
-    var dayId: Day_MockData.ID
+    var dayId: Day.ID
     
     @State private var day: Day_MockData?
     
@@ -19,11 +19,11 @@ struct DayProgramView: View {
     @EnvironmentObject var programRouter: ProgramRouter
     
     func handleFetchDay() {
-        if (day?.id == dayId) {
-            return
-        }
-        
-        day = DayUtils.getDayById(dayId: dayId)
+//        if (day?.id == dayId) {
+//            return
+//        }
+//        
+//        day = DayUtils.getDayById(dayId: dayId)
     }
     
     func addExerciseButtonAction() {

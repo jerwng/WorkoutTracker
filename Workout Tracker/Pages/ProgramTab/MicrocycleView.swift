@@ -48,9 +48,9 @@ struct MicrocycleView: View {
                 Spacer()
             }.padding(.bottom, 10)
        
-//            if let microcycleName = viewModel.microcycle?.microcycleName, let microcycleDayIds = viewModel.microcycle?.dayIds {
-//                DayList(microcycleName: microcycleName, dayIds: microcycleDayIds)
-//            }
+            if let microcycle = viewModel.microcycle {
+                DayList(microcycleName: microcycle.microcycleName, days: microcycle.microcycleDays)
+            }
         }
         .microcycleViewBackgroundStylingModifier()
         .navigationBarBackButtonHidden()
