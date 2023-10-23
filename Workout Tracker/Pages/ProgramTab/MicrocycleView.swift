@@ -10,10 +10,6 @@ import SwiftUI
 import CoreData
 
 struct MicrocycleView: View {
-    /**
-    Accepts microcycleId instead of microcycle since Microcycle type is not Codable
-    for router
-     */
     @ObservedObject private var viewModel: MicrocycleViewModel
     @EnvironmentObject var programRouter: ProgramRouter
     

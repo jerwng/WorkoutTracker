@@ -7,23 +7,20 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct DayProgramView: View {
     var microcycleName: String
-    var dayId: Day.ID
-    
-    @State private var day: Day_MockData?
     
     @State private var isSheetOpen: Bool = false
     
     @EnvironmentObject var programRouter: ProgramRouter
     
-    func handleFetchDay() {
-//        if (day?.id == dayId) {
-//            return
-//        }
-//        
-//        day = DayUtils.getDayById(dayId: dayId)
+    @ObservedObject private var viewModel: DayProgramViewModel
+    
+    init(context: NSManagedObjectContext, dayId: Day.ID, microcycleName: String) {
+        viewModel = DayProgramViewModel(context: context, dayId: dayId)
+        self.microcycleName = microcycleName
     }
     
     func addExerciseButtonAction() {
@@ -44,7 +41,7 @@ struct DayProgramView: View {
                         handleTapBackChevron()
                     }
                 Spacer()
-                HeaderView(header: microcycleName, subHeader: day?.dayName ?? "").padding(.bottom, 40)
+                HeaderView(header: microcycleName, subHeader: viewModel.day?.dayName ?? "").padding(.bottom, 40)
                 Spacer()
             }
             
@@ -53,11 +50,9 @@ struct DayProgramView: View {
                 Spacer()
             }.padding(.bottom, 10)
             
-            if let dayExerciseSetIds = day?.exerciseSetIds {
-                ExerciseList(exerciseSetIds: dayExerciseSetIds)
-            }
-        }.onAppear() {
-            handleFetchDay()
+//            if let dayExerciseSetIds = day?.exerciseSetIds {
+//                ExerciseList(exerciseSetIds: dayExerciseSetIds)
+//            }
         }
         .sheet(isPresented: $isSheetOpen) {
             CreateExerciseInputSheet(
