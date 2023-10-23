@@ -14,6 +14,10 @@ struct DayList: View {
     
     func handleDelete(at offsets: IndexSet) {
         print("delete day")
+        
+        let dayToBeDeleted = days[offsets.first!]
+        
+        dayToBeDeleted.delete()
     }
     
     var body: some View {

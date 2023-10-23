@@ -13,6 +13,9 @@ struct MicrocycleList: View {
     
     func handleDelete(at offsets: IndexSet) {
         print("delete microcycle")
+        let microcycleToBeDeleted = microcycles[offsets.first!]
+        
+        microcycleToBeDeleted.delete()
     }
     
     var body: some View {

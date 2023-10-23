@@ -48,4 +48,10 @@ extension Day: EntityWithSequence {
         
         return newDay
     }
+    
+    func delete() {
+        managedObjectContext?.delete(self)
+        
+        try? managedObjectContext?.save()
+    }
 }
