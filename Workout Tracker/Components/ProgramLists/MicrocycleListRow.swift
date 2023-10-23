@@ -21,7 +21,7 @@ struct MicrocycleListRow: View {
 
     var body: some View {
         VStack {
-            ListRow(title: microcycle.microcycleName, description: String(microcycle.micorcycleDays.count) + " Days").padding(.bottom, 1)
+            ListRow(title: microcycle.microcycleName, description: String(microcycle.microcycleDays.count) + " Days").padding(.bottom, 1)
                 .onTapGesture {
                     handleTapRow()
                 }

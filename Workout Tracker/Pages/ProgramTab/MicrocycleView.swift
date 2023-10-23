@@ -23,6 +23,7 @@ struct MicrocycleView: View {
     
     func addDayButtonAction() {
         print("click add day")
+        viewModel.createDayToSelectedMicrocycle()
     }
     
     func handleTapBackChevron() {

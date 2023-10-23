@@ -13,7 +13,7 @@ extension Microcycle: EntityWithSequence {
         return "\(name ?? "Unknown Microcycle")"
     }
     
-    var micorcycleDays: [Day] {
+    var microcycleDays: [Day] {
         let daysSet = days as? Set<Day> ?? []
         
         return daysSet.sorted {
@@ -55,5 +55,11 @@ extension Microcycle: EntityWithSequence {
         context?.delete(self)
         
         try? context?.save()
+    }
+    
+    func addDay(newDay: Day) {
+        addToDays(newDay)
+    
+        try? managedObjectContext?.save()
     }
 }

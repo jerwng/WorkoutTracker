@@ -20,6 +20,17 @@ extension MicrocycleView {
             self.microcycle = fetchMicrocycleById(microcycleId: microcycleId)
         }
         
+        // ---------------------------------------- Selected Microcycle Functions ----------------------------------------
+        func createDayToSelectedMicrocycle() {
+            if let newDay = Day.create(context: context, microcycleId: microcycle?.id) {
+                microcycle?.addDay(newDay: newDay)
+            }
+        }
+        
+        func getSelectedMicrocycleDays() -> [Day] {
+            return microcycle?.microcycleDays ?? []
+        }
+        
         // ---------------------------------------- CRUD Microcycles ----------------------------------------
         func fetchMicrocycleById(microcycleId: Microcycle.ID) -> Microcycle? {
             if let _microcycleId = microcycleId {
