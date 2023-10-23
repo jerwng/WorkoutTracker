@@ -24,6 +24,7 @@ extension MicrocycleView {
         func createDayToSelectedMicrocycle() {
             if let newDay = Day.create(context: context, microcycleId: microcycle?.id) {
                 microcycle?.addDay(newDay: newDay)
+                self.microcycle = microcycle
             }
         }
         
