@@ -54,4 +54,14 @@ extension Day: EntityWithSequence {
         
         try? managedObjectContext?.save()
     }
+    
+    func addExercise(newExercise: Exercise) {
+        addToExercises(newExercise)
+        
+        do {
+            try managedObjectContext?.save()
+        } catch {
+            print("Error adding Exercise \(newExercise.id?.uuidString ?? "") to day: \(error)")
+        }
+    }
 }

@@ -21,6 +21,20 @@ extension DayProgramView {
         }
         
         // ---------------------------------------- Selected Day Functions ----------------------------------------
+        func createExerciseToSelectedDay(name: String, notes: String, repRangeTop: Int16, repRangeBot: Int16, sets: Int16) {
+            if let newExercise = Exercise.create(
+                context: context,
+                name: name,
+                notes: notes,
+                repRangeTop: repRangeTop,
+                repRangeBot: repRangeBot,
+                sets: sets
+            ) {
+                day?.addToExercises(newExercise)
+                self.day = day
+            }
+        }
+        
         func getSelectedDayExercises() -> [Exercise] {
             return day?.dayExercises ?? []
         }

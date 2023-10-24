@@ -22,7 +22,8 @@ extension Exercise {
         name: String,
         notes: String,
         repRangeTop: Int16,
-        repRangeBot: Int16
+        repRangeBot: Int16,
+        sets: Int16
     ) -> Exercise? {
             
         let newExercise = Exercise(context: context)
@@ -30,6 +31,7 @@ extension Exercise {
         newExercise.notes = notes
         newExercise.repRangeTop = repRangeTop
         newExercise.repRangeBot = repRangeBot
+        newExercise.sets = sets
         
         do {
             try context.save()
