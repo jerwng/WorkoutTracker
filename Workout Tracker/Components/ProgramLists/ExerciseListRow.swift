@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ExerciseListRow: View {
-    var exercise: Exercise_MockData
-    var exerciseSet: ExerciseSet_MockData
+    var exercise: Exercise
     
     @State private var isSheetOpen: Bool = false
     
@@ -21,11 +20,11 @@ struct ExerciseListRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             ListRow(
-                title: exercise.name,
+                title: exercise.exerciseName,
                 description: ExerciseUtils.getExerciseSetsRepRangeString(
-                                sets: exerciseSet.sets,
-                                repRangeTop: exercise.repRangeTop,
-                                repRangeBottom: exercise.repRangeBot
+                    sets: Int(exercise.sets),
+                    repRangeTop: Int(exercise.repRangeTop),
+                    repRangeBottom: Int(exercise.repRangeBot)
                                 )
             )
             .onTapGesture {
@@ -34,8 +33,7 @@ struct ExerciseListRow: View {
             .sheet(isPresented: $isSheetOpen) {
                 CreateExerciseInputSheet(
                     isSheetOpen: $isSheetOpen,
-                    selectedExercise: exercise,
-                    selectedExerciseSets: exerciseSet
+                    selectedExercise: exercise
                 )
             }
             if let exerciseNotes = exercise.notes {

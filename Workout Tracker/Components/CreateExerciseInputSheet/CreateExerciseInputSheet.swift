@@ -18,26 +18,22 @@ struct CreateExerciseInputSheet: View {
     private let initialName: String
     private let initialTitle: String
     
-    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise_MockData?, selectedExerciseSets: ExerciseSet_MockData?) {
+    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise?) {
         _isSheetOpen = isSheetOpen
         
         if let exercise = selectedExercise {
-            self.initialName = exercise.name
+            self.initialName = exercise.exerciseName
             self.initialRepRangeTop = String(exercise.repRangeTop)
             self.initialRepRangeBot = String(exercise.repRangeBot)
-            self.initialNotes = exercise.notes ?? ""
-            self.initialTitle = exercise.name
+            self.initialNotes = exercise.exerciseNotes
+            self.initialTitle = exercise.exerciseName
+            self.initialSets = String(exercise.sets)
         } else {
             self.initialName = ""
             self.initialRepRangeTop = ""
             self.initialRepRangeBot = ""
             self.initialNotes = ""
             self.initialTitle = "Add Exercise"
-        }
-        
-        if let exerciseSets = selectedExerciseSets {
-            self.initialSets = String(exerciseSets.sets)
-        } else {
             self.initialSets = ""
         }
     }

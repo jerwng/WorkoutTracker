@@ -13,6 +13,7 @@
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="repRangeBot" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="repRangeTop" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="exercises" inverseEntity="Day"/>
     </entity>
     <entity name="Mesocycle" representedClassName="Mesocycle" syncable="YES" codeGenerationType="class">

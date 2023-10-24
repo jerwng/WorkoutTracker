@@ -50,15 +50,14 @@ struct DayProgramView: View {
                 Spacer()
             }.padding(.bottom, 10)
             
-//            if let dayExerciseSetIds = day?.exerciseSetIds {
-//                ExerciseList(exerciseSetIds: dayExerciseSetIds)
-//            }
+            if let day = viewModel.day {
+                ExerciseList(exercises: day.dayExercises)
+            }
         }
         .sheet(isPresented: $isSheetOpen) {
             CreateExerciseInputSheet(
                 isSheetOpen: $isSheetOpen,
-                selectedExercise: nil,
-                selectedExerciseSets: nil
+                selectedExercise: nil
             )
         }
         .microcycleViewBackgroundStylingModifier()

@@ -20,6 +20,11 @@ extension DayProgramView {
             self.day = fetchDayById(dayId: dayId)
         }
         
+        // ---------------------------------------- Selected Day Functions ----------------------------------------
+        func getSelectedDayExercises() -> [Exercise] {
+            return day?.dayExercises ?? []
+        }
+
         // ---------------------------------------- CRUD Days ----------------------------------------
         func fetchDayById(dayId: Day.ID) -> Day? {
             if let _dayId = dayId {

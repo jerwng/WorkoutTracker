@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ExerciseList: View {
-    var exerciseSetIds: [ExerciseSet_MockData.ID]
+    var exercises: [Exercise]
     
     func handleDelete(at offsets: IndexSet) {
         print("delete exercise")
@@ -17,20 +17,12 @@ struct ExerciseList: View {
 
     var body: some View {
         List {
-            ForEach(exerciseSetIds, id: \.self) {
-                exerciseSetId in
-                if let exerciseSet = ExerciseUtils
-                        .getExerciseSetById(exerciseSetId:
-                        exerciseSetId),
-                    let exercise = ExerciseUtils
-                        .getExerciseById(exerciseId:
-                        exerciseSet.exerciseId) {
+            ForEach(exercises, id: \.self) {
+                exercise in
                     ExerciseListRow(
-                        exercise: exercise,
-                        exerciseSet: exerciseSet
+                        exercise: exercise
                     )
                     .exerciseListListRowStylingModifier()
-                }
             }.onDelete(perform: handleDelete)
         }.listStyle(.plain)
     }
