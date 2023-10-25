@@ -11,26 +11,26 @@ import SwiftUI
 struct ExerciseInputSheet: View {
     @Binding var isSheetOpen: Bool
     
-    private let initialWeight: String
-    private let initialReps: String
-    private let initialTime: String
-    private let initialNotes: String
-    private let name: String
+    @State private var weight: String
+    @State private var reps: String
+    @State private var time: String
+    @State private var notes: String
+    @State private var name: String
     
     init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise_MockData, selectedExerciseEntry: ExerciseEntry_MockData?) {
 
         _isSheetOpen = isSheetOpen
         self.name = selectedExercise.name
-        self.initialNotes = selectedExercise.notes ?? ""
+        self.notes = selectedExercise.notes ?? ""
 
         if let a = selectedExerciseEntry {
-            self.initialWeight = String(a.weight)
-            self.initialReps = String(a.reps)
-            self.initialTime = a.time ?? ""
+            self.weight = String(a.weight)
+            self.reps = String(a.reps)
+            self.time = a.time ?? ""
         } else {
-            self.initialWeight = ""
-            self.initialReps = ""
-            self.initialTime = ""
+            self.weight = ""
+            self.reps = ""
+            self.time = ""
         }
     }
     
@@ -42,11 +42,11 @@ struct ExerciseInputSheet: View {
         VStack {
             ExerciseEntryInputSheetBody(
                 isSheetOpen: $isSheetOpen,
-                name: name,
-                weight: initialWeight,
-                reps: initialReps,
-                time: initialTime,
-                notes: initialNotes
+                name: $name,
+                weight: $weight,
+                reps: $reps,
+                time: $time,
+                notes: $notes
             )
             
             Button("Delete Entry", action: handleButtonTap).foregroundColor(.red).padding(.bottom, 5.0)

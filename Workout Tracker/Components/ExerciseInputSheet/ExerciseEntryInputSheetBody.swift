@@ -10,20 +10,19 @@ import SwiftUI
 
 struct ExerciseEntryInputSheetBody: View {
     @Binding var isSheetOpen: Bool
-    var name: String
-
-    var weight: String?
-    var reps: String?
-    var time: String?
-    var notes: String?
+    @Binding var name: String
+    @Binding var weight: String
+    @Binding var reps: String
+    @Binding var time: String
+    @Binding var notes: String
     
     var body: some View {
         BaseExerciseInputSheetBody(
             content: ExerciseEntryInputSheetFields(
-                weight: weight,
-                reps: reps,
-                time: time,
-                notes: notes
+                weight: $weight,
+                reps: $reps,
+                time: $time,
+                notes: $notes
             ),
             sheetTitle: name,
             isSheetOpen: $isSheetOpen
@@ -32,29 +31,28 @@ struct ExerciseEntryInputSheetBody: View {
 }
 
 struct ExerciseEntryInputSheetFields: View {
-    var weight: String?
-    var reps: String?
-    var time: String?
-    var notes: String?
-    
+    @Binding var weight: String
+    @Binding var reps: String
+    @Binding var time: String
+    @Binding var notes: String
 
     var body: some View {
         Form {
             Section {
                 DecimalPadTextField(
-                    initialValue: weight, textPlaceholder: "lbs"
+                    textValue: $weight, textPlaceholder: "lbs"
                 )
                 DecimalPadTextField(
-                    initialValue: reps, textPlaceholder: "Reps"
+                    textValue: $reps, textPlaceholder: "Reps"
                 )
                 BackgroundTextField(
-                    initialValue: time, textPlaceholder: "Time"
+                    textValue: $time, textPlaceholder: "Time"
                 )
             }
             
             Section {
                 BackgroundTextField(
-                    initialValue: notes, textPlaceholder: "Notes"
+                    textValue: $notes, textPlaceholder: "Notes"
                 ).lineLimit(4, reservesSpace: true)
             }
         }

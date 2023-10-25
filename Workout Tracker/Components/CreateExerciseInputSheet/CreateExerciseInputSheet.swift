@@ -11,42 +11,42 @@ import SwiftUI
 struct CreateExerciseInputSheet: View {
     @Binding var isSheetOpen: Bool
 
-    private let initialSets: String
-    private let initialRepRangeTop: String
-    private let initialRepRangeBot: String
-    private let initialNotes: String
-    private let initialName: String
-    private let initialTitle: String
+    @State private var sets: String
+    @State private var repRangeTop: String
+    @State private var repRangeBot: String
+    @State private var notes: String
+    @State private var name: String
+    @State private var title: String
     
     init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise?) {
         _isSheetOpen = isSheetOpen
         
         if let exercise = selectedExercise {
-            self.initialName = exercise.exerciseName
-            self.initialRepRangeTop = String(exercise.repRangeTop)
-            self.initialRepRangeBot = String(exercise.repRangeBot)
-            self.initialNotes = exercise.exerciseNotes
-            self.initialTitle = exercise.exerciseName
-            self.initialSets = String(exercise.sets)
+            self.name = exercise.exerciseName
+            self.repRangeTop = String(exercise.repRangeTop)
+            self.repRangeBot = String(exercise.repRangeBot)
+            self.notes = exercise.exerciseNotes
+            self.title = exercise.exerciseName
+            self.sets = String(exercise.sets)
         } else {
-            self.initialName = ""
-            self.initialRepRangeTop = ""
-            self.initialRepRangeBot = ""
-            self.initialNotes = ""
-            self.initialTitle = "Add Exercise"
-            self.initialSets = ""
+            self.name = ""
+            self.repRangeTop = ""
+            self.repRangeBot = ""
+            self.notes = ""
+            self.title = "Add Exercise"
+            self.sets = ""
         }
     }
 
     var body: some View {
         CreateExerciseInputSheetBody(
             isSheetOpen: $isSheetOpen,
-            sets: initialSets,
-            repRangeTop: initialRepRangeTop,
-            repRangeBot: initialRepRangeBot,
-            notes: initialNotes,
-            name: initialName,
-            title: initialTitle
+            sets: $sets,
+            repRangeTop: $repRangeTop,
+            repRangeBot: $repRangeBot,
+            notes: $notes,
+            name: $name,
+            title: title
         )
     }
 }

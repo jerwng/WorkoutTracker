@@ -10,19 +10,14 @@ import SwiftUI
 import Combine
 
 struct BackgroundTextField: View {
-    @State private var textValue: String
-    private let textPlaceholder: String
-    
-    init(initialValue: String?, textPlaceholder: String?) {
-        _textValue = State(initialValue: initialValue ?? "")
-        self.textPlaceholder = textPlaceholder ?? ""
-    }
+    @Binding var textValue: String
+    let textPlaceholder: String?
     
     var body: some View {
         LabeledContent {
             TextField(text: $textValue, axis: .vertical) {}.multilineTextAlignment(.trailing)
         } label : {
-            Text(textPlaceholder).foregroundColor(Color("BackgroundTextField - Label"))
+            Text(textPlaceholder ?? "").foregroundColor(Color("BackgroundTextField - Label"))
         }.listRowBackground(Color("Background"))
     }
 }
@@ -32,17 +27,12 @@ struct BackgroundTextField: View {
  Shows decimal pad keyboard.
  */
 struct DecimalPadTextField: View {
-    @State private var textValue: String
-    private let textPlaceholder: String
-    
-    init(initialValue: String?, textPlaceholder: String?) {
-        _textValue = State(initialValue: initialValue ?? "")
-        self.textPlaceholder = textPlaceholder ?? ""
-    }
+    @Binding var textValue: String
+    let textPlaceholder: String?
     
     var body: some View {
         BackgroundTextField(
-            initialValue: textValue, textPlaceholder: textPlaceholder
+            textValue: $textValue, textPlaceholder: textPlaceholder
         )
         .keyboardType(.decimalPad)
         /**
