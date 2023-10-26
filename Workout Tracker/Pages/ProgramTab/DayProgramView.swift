@@ -31,6 +31,20 @@ struct DayProgramView: View {
     func handleTapBackChevron() {
         programRouter.navigateBack()
     }
+    
+    func handleCreateExercise(name: String, sets: String, repRangeBot: String, repRangeTop: String, notes: String) {
+        if (sets.isEmpty || repRangeBot.isEmpty || repRangeTop.isEmpty || name.isEmpty) {
+            return
+        }
+
+        viewModel.createExerciseToSelectedDay(
+            name: name,
+            sets: Int16(sets)!,
+            repRangeBot: Int16(repRangeBot)!,
+            repRangeTop: Int16(repRangeTop)!,
+            notes: notes
+        )
+    }
 
     var body: some View {
         VStack {
@@ -57,7 +71,8 @@ struct DayProgramView: View {
         .sheet(isPresented: $isSheetOpen) {
             CreateExerciseInputSheet(
                 isSheetOpen: $isSheetOpen,
-                selectedExercise: nil
+                selectedExercise: nil,
+                handleCreateExercise: handleCreateExercise
             )
         }
         .microcycleViewBackgroundStylingModifier()

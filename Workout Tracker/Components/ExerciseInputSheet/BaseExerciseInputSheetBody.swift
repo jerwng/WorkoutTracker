@@ -14,6 +14,8 @@ struct BaseExerciseInputSheetBody<Content: View>: View {
     var sheetTitle: String
 
     @Binding var isSheetOpen: Bool
+
+    var handleSubmit: (() -> Void)?
     
     func handleCancelButtonTap() {
         print("tap cancel")
@@ -23,6 +25,10 @@ struct BaseExerciseInputSheetBody<Content: View>: View {
     func handleDoneButtonTap() {
         print("tap done")
         isSheetOpen = false
+        
+        if let _handleSubmit = handleSubmit {
+            _handleSubmit()
+        }
     }
     
     var body: some View {

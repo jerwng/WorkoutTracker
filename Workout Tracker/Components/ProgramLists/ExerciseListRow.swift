@@ -31,10 +31,11 @@ struct ExerciseListRow: View {
                 handleTapRow()
             }
             .sheet(isPresented: $isSheetOpen) {
-                CreateExerciseInputSheet(
-                    isSheetOpen: $isSheetOpen,
-                    selectedExercise: exercise
-                )
+                // TODO: Update to pass in function handleCreateExercise
+//                CreateExerciseInputSheet(
+//                    isSheetOpen: $isSheetOpen,
+//                    selectedExercise: exercise
+//                )
             }
             if let exerciseNotes = exercise.notes {
                 ExerciseNotes(exerciseNotes: exerciseNotes).padding(

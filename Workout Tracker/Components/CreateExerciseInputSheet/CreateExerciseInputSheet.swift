@@ -18,8 +18,24 @@ struct CreateExerciseInputSheet: View {
     @State private var name: String
     @State private var title: String
     
-    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise?) {
+    typealias handleCreateExerciseType = (String, String, String, String, String) -> Void
+    var handleCreateExercise: handleCreateExerciseType
+    
+    func handleSubmit() {
+        handleCreateExercise(
+            name,
+            sets,
+            repRangeBot,
+            repRangeTop,
+            notes
+        )
+    }
+    
+    // @escaping handleCreateExercise since it is defined and passed in from outside of scope
+    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise?, handleCreateExercise: @escaping handleCreateExerciseType) {
         _isSheetOpen = isSheetOpen
+        
+        self.handleCreateExercise = handleCreateExercise
         
         if let exercise = selectedExercise {
             self.name = exercise.exerciseName
@@ -46,7 +62,8 @@ struct CreateExerciseInputSheet: View {
             repRangeBot: $repRangeBot,
             notes: $notes,
             name: $name,
-            title: title
+            title: title,
+            handleSubmit: handleSubmit
         )
     }
 }
