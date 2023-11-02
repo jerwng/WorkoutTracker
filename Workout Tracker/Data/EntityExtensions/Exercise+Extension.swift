@@ -43,4 +43,10 @@ extension Exercise {
         
         return nil
     }
+    
+    func delete() {
+        managedObjectContext?.delete(self)
+        
+        try? managedObjectContext?.save()
+    }
 }

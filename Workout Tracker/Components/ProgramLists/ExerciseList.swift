@@ -13,6 +13,9 @@ struct ExerciseList: View {
     
     func handleDelete(at offsets: IndexSet) {
         print("delete exercise")
+        let exerciseToBeDeleted = exercises[offsets.first!]
+        
+        exerciseToBeDeleted.delete()
     }
 
     var body: some View {
