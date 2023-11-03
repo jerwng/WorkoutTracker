@@ -17,7 +17,7 @@ extension Day: EntityWithSequence {
         let exersiesSet = exercises as? Set<Exercise> ?? []
         
         return exersiesSet.sorted {
-            $0.name ?? "" < $1.name ?? ""
+            $0.sequence < $1.sequence
         }
     }
 
