@@ -11,6 +11,7 @@ import CoreData
 
 struct DayProgramView: View {
     var microcycleName: String
+    private let context: NSManagedObjectContext
     
     @State private var isSheetOpen: Bool = false
     
@@ -21,6 +22,7 @@ struct DayProgramView: View {
     init(context: NSManagedObjectContext, dayId: Day.ID, microcycleName: String) {
         viewModel = DayProgramViewModel(context: context, dayId: dayId)
         self.microcycleName = microcycleName
+        self.context = context
     }
     
     func addExerciseButtonAction() {
@@ -69,11 +71,14 @@ struct DayProgramView: View {
             }
         }
         .sheet(isPresented: $isSheetOpen) {
-            CreateExerciseInputSheet(
-                isSheetOpen: $isSheetOpen,
-                selectedExercise: nil,
-                handleCreateExercise: handleCreateExercise
-            )
+            if let _day = viewModel.day {
+                CreateExerciseInputSheet(
+                    context: context,
+                    isSheetOpen: $isSheetOpen,
+                    selectedExercise: nil,
+                    day: _day
+                )
+            }
         }
         .microcycleViewBackgroundStylingModifier()
         .navigationBarBackButtonHidden()
