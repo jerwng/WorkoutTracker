@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-extension Exercise {
+extension Exercise: EntityWithSequence {
     var exerciseName: String {
         return "\(name ?? "Unknown Exercise")"
     }
@@ -19,12 +19,29 @@ extension Exercise {
     
     static func create(
         context: NSManagedObjectContext,
+        dayId: Day.ID,
         name: String,
         notes: String,
         repRangeTop: Int16,
         repRangeBot: Int16,
         sets: Int16
     ) -> Exercise? {
+        let highestExerciseSequenceFetchRequest: NSFetchRequest<Exercise> = NSFetchRequest(entityName: "Exercise")
+     
+        if let _dayId = dayId {
+            highestExerciseSequenceFetchRequest.predicate = NSPredicate(format: "day.id == %@", _dayId.uuidString)
+        }
+        
+        let highestExerciseSequence = EntityUtils().getEntityHighestSequence(
+            context: context,
+            fetchRequest: highestExerciseSequenceFetchRequest
+        )
+
+        // Highest exercise sequence returns -1 if error occured fetching highest sequence value
+        // Prevent creating new exercise to prevent corrupting sequence order
+        if (highestExerciseSequence < 0) {
+            return nil
+        }
             
         let newExercise = Exercise(context: context)
         newExercise.name = name
@@ -32,6 +49,7 @@ extension Exercise {
         newExercise.repRangeTop = repRangeTop
         newExercise.repRangeBot = repRangeBot
         newExercise.sets = sets
+        newExercise.sequence = Int16(highestExerciseSequence + 1)
         
         do {
             try context.save()

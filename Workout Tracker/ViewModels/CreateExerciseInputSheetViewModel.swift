@@ -68,6 +68,7 @@ extension CreateExerciseInputSheet {
             
             if let newExercise = Exercise.create(
                 context: context,
+                dayId: day.id,
                 name: name,
                 notes: notes,
                 repRangeTop: Int16(repRangeTop)!,

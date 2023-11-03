@@ -19,25 +19,6 @@ extension DayProgramView {
             self.context = context
             self.day = fetchDayById(dayId: dayId)
         }
-        
-        // ---------------------------------------- Selected Day Functions ----------------------------------------
-        func createExerciseToSelectedDay(name: String, sets: Int16, repRangeBot: Int16, repRangeTop: Int16, notes: String) {
-            if let newExercise = Exercise.create(
-                context: context,
-                name: name,
-                notes: notes,
-                repRangeTop: repRangeTop,
-                repRangeBot: repRangeBot,
-                sets: sets
-            ) {
-                day?.addExercise(newExercise: newExercise)
-                self.day = day
-            }
-        }
-        
-        func getSelectedDayExercises() -> [Exercise] {
-            return day?.dayExercises ?? []
-        }
 
         // ---------------------------------------- CRUD Days ----------------------------------------
         func fetchDayById(dayId: Day.ID) -> Day? {
