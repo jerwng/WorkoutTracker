@@ -7,9 +7,12 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct ExerciseList: View {
+    var context: NSManagedObjectContext
     var exercises: [Exercise]
+    var day: Day
     
     func handleDelete(at offsets: IndexSet) {
         print("delete exercise")
@@ -23,7 +26,9 @@ struct ExerciseList: View {
             ForEach(exercises, id: \.self) {
                 exercise in
                     ExerciseListRow(
-                        exercise: exercise
+                        context: context,
+                        exercise: exercise,
+                        day: day
                     )
                     .exerciseListListRowStylingModifier()
             }.onDelete(perform: handleDelete)

@@ -24,10 +24,15 @@ extension CreateExerciseInputSheet {
         @Published var name: String
         @Published var title: String
         
+        var isNewExercise: Bool
+        
+        private let selectedExercise: Exercise?
+        
         init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise?, day: Day) {
             self.context = context
             self.day = day
             self._isSheetOpen = isSheetOpen
+            self.selectedExercise = selectedExercise
             
             if let exercise = selectedExercise {
                 self.name = exercise.exerciseName
@@ -36,6 +41,7 @@ extension CreateExerciseInputSheet {
                 self.notes = exercise.exerciseNotes
                 self.title = exercise.exerciseName
                 self.sets = String(exercise.sets)
+                isNewExercise = false
             } else {
                 self.name = ""
                 self.repRangeTop = ""
@@ -43,6 +49,15 @@ extension CreateExerciseInputSheet {
                 self.notes = ""
                 self.title = "Add Exercise"
                 self.sets = ""
+                isNewExercise = true
+            }
+        }
+        
+        func handleCreateExerciseInputSheetSubmit() {
+            if (isNewExercise) {
+                createExerciseToSelectedDay()
+            } else {
+                updateExercise()
             }
         }
         
@@ -62,6 +77,21 @@ extension CreateExerciseInputSheet {
                 day.addExercise(newExercise: newExercise)
                 self.day = day
             }
+        }
+        
+        func updateExercise() {
+            if (sets.isEmpty || repRangeBot.isEmpty || repRangeTop.isEmpty || name.isEmpty) {
+                return
+            }
+            
+            selectedExercise?.update(
+                context: context,
+                newName: name,
+                newNotes: notes,
+                newRepRangeTop: Int16(repRangeTop)!,
+                newRepRangeBot: Int16(repRangeBot)!,
+                newSets: Int16(sets)!
+            )
         }
     }
 }

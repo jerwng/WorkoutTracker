@@ -67,7 +67,7 @@ struct DayProgramView: View {
             }.padding(.bottom, 10)
             
             if let day = viewModel.day {
-                ExerciseList(exercises: day.dayExercises)
+                ExerciseList(context: context, exercises: day.dayExercises, day: day)
             }
         }
         .sheet(isPresented: $isSheetOpen) {

@@ -7,9 +7,12 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct ExerciseListRow: View {
+    var context: NSManagedObjectContext
     var exercise: Exercise
+    var day: Day
     
     @State private var isSheetOpen: Bool = false
     
@@ -31,11 +34,12 @@ struct ExerciseListRow: View {
                 handleTapRow()
             }
             .sheet(isPresented: $isSheetOpen) {
-                // TODO: Update to pass in function handleCreateExercise
-//                CreateExerciseInputSheet(
-//                    isSheetOpen: $isSheetOpen,
-//                    selectedExercise: exercise
-//                )
+                CreateExerciseInputSheet(
+                    context: context,
+                    isSheetOpen: $isSheetOpen,
+                    selectedExercise: exercise,
+                    day: day
+                )
             }
             if let exerciseNotes = exercise.notes {
                 ExerciseNotes(exerciseNotes: exerciseNotes).padding(

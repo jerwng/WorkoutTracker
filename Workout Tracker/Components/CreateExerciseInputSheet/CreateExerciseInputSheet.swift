@@ -30,7 +30,7 @@ struct CreateExerciseInputSheet: View {
             notes: $viewModel.notes,
             name: $viewModel.name,
             title: viewModel.title,
-            handleSubmit: viewModel.createExerciseToSelectedDay
+            handleSubmit: viewModel.handleCreateExerciseInputSheetSubmit
         )
     }
 }

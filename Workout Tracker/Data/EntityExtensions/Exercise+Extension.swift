@@ -44,6 +44,27 @@ extension Exercise {
         return nil
     }
     
+    func update(
+        context: NSManagedObjectContext,
+        newName: String?,
+        newNotes: String?,
+        newRepRangeTop: Int16?,
+        newRepRangeBot: Int16?,
+        newSets: Int16?
+    ) {
+        name = newName ?? name
+        notes = newNotes ?? notes
+        repRangeTop = newRepRangeTop ?? repRangeTop
+        repRangeBot = newRepRangeBot ?? repRangeBot
+        sets = newSets ?? sets
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error updating Exercise \(exerciseName): \(error)")
+        }
+    }
+    
     func delete() {
         managedObjectContext?.delete(self)
         
