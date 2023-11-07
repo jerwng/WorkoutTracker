@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var context
+    
     var body: some View {
         TabView {
             DayView(day: 3, week: 1).tabItem {
@@ -18,6 +20,13 @@ struct ContentView: View {
             ProgramRoot().tabItem {
                 Image(systemName: "list.bullet")
                 Text("Program")
+            }
+            
+            if (FeatureFlags.entitiesTab) {
+                EntityListView(context: context).tabItem {
+                    Image(systemName: "rectangle.and.text.magnifyingglass")
+                    Text("Entities")
+                }
             }
         }
     }
