@@ -17,7 +17,12 @@ struct DayView: View {
     
     var body: some View {
         VStack {
-            HeaderView(header: "WEEK " + String(week), subHeader: "DAY " + String(day))
+            HStack(alignment: .top) {
+                Image(systemName: "chevron.left").padding(.top, 8)
+                HeaderView(header: "WEEK " + String(week), subHeader: "DAY " + String(day))
+                Image(systemName: "chevron.right").padding(.top, 8)
+            }
+   
             ExerciseListView()
 
         } .frame(
