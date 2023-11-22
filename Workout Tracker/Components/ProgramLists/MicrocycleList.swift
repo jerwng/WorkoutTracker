@@ -10,12 +10,13 @@ import SwiftUI
 
 struct MicrocycleList: View {
     var microcycles: [Microcycle]
+    var onMicrocycleDelete: (() -> Void)?
     
     func handleDelete(at offsets: IndexSet) {
-        print("delete microcycle")
         let microcycleToBeDeleted = microcycles[offsets.first!]
         
         microcycleToBeDeleted.delete()
+        onMicrocycleDelete?()
     }
     
     var body: some View {

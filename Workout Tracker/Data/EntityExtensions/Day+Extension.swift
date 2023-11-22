@@ -52,7 +52,11 @@ extension Day: EntityWithSequence {
     func delete() {
         managedObjectContext?.delete(self)
         
-        try? managedObjectContext?.save()
+        do {
+            try managedObjectContext?.save()
+        } catch {
+            print("Error deleting Day \(dayName): \(error)")
+        }
     }
     
     func addExercise(newExercise: Exercise) {

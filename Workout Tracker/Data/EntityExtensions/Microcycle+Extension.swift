@@ -51,10 +51,13 @@ extension Microcycle: EntityWithSequence {
     }
     
     func delete() {
-        let context = managedObjectContext
-        context?.delete(self)
+        managedObjectContext?.delete(self)
         
-        try? context?.save()
+        do {
+            try managedObjectContext?.save()
+        } catch {
+            print("Error deleting Microcycle \(microcycleName): \(error)")
+        }
     }
     
     func addDay(newDay: Day) {

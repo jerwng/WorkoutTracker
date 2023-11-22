@@ -13,12 +13,11 @@ extension MesocycleView {
     
     @MainActor class MesocycleViewModel: ObservableObject {
         private let managedObjectContext: NSManagedObjectContext
-        
-        @Published var mesocycles: [Mesocycle] = []
         @Published var activeMesocycle: Mesocycle?
         
         init(context: NSManagedObjectContext) {
             self.managedObjectContext = context
+            fetchActiveMesocycle()
         }
         
         // ---------------------------------------- Active Mesocycle Functions ----------------------------------------
@@ -62,19 +61,6 @@ extension MesocycleView {
         func createMesocycle() {
             if let newMesocycle = Mesocycle.create(context: managedObjectContext) {
                 activeMesocycle = newMesocycle
-            }
-        }
-        
-        // Note: This function is not used currently used by any app components. Only used for debugging purposes.
-        func fetchAllMesocycles() {
-            let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
-            
-            do {
-                let fetchResult = try managedObjectContext.fetch(fetchRequest)
-                mesocycles = fetchResult
-              
-            } catch {
-                print("Error fetching mesocycles: \(error)")
             }
         }
     }
