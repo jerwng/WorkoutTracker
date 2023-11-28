@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            DayView(day: 3, week: 1).tabItem {
+            DayView(context: context).tabItem {
                 Image(systemName: "calendar")
                 Text("Today")
             }
