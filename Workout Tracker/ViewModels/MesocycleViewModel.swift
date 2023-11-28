@@ -22,10 +22,7 @@ extension MesocycleView {
         
         // ---------------------------------------- Active Mesocycle Functions ----------------------------------------
         func fetchActiveMesocycle() {
-            let fetchRequest: NSFetchRequest<Mesocycle> = Mesocycle.fetchRequest()
-            let predicate = NSPredicate(format: "isComplete == %@", NSNumber(value: false))
-            
-            fetchRequest.predicate = predicate
+            let fetchRequest = FetchRequestUtils.getActiveMesocycleFetchRequest()
             
             do {
                 let fetchResult = try managedObjectContext.fetch(fetchRequest)
