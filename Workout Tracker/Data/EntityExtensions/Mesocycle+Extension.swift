@@ -29,6 +29,41 @@ extension Mesocycle: EntityWithSequence {
         }
     }
     
+    /**
+    Find the given Microcycle's index in the mesocycleMicrocycles array
+    */
+    func findMesocycleMicrocyclesIndex(microcycle: Microcycle) -> Array<Microcycle>.Index? {
+        return mesocycleMicrocycles.firstIndex(of: microcycle)
+    }
+    
+    func getNextSequencedMesocycleMicrocycle(microcycle: Microcycle) -> Microcycle? {
+        let currentMicrocycleIndex = findMesocycleMicrocyclesIndex(microcycle: microcycle)
+        
+        if (currentMicrocycleIndex == nil) {
+            return nil
+        }
+        
+        if (currentMicrocycleIndex! == mesocycleMicrocycles.count - 1) {
+            return nil
+        }
+        
+        return mesocycleMicrocycles[currentMicrocycleIndex! + 1]
+    }
+    
+    func getPreviousSequencedMesocycleMicrocycle(microcycle: Microcycle) -> Microcycle? {
+        let currentMicrocycleIndex = findMesocycleMicrocyclesIndex(microcycle: microcycle)
+        
+        if (currentMicrocycleIndex == nil) {
+            return nil
+        }
+        
+        if (currentMicrocycleIndex! == 0) {
+            return nil
+        }
+        
+        return mesocycleMicrocycles[currentMicrocycleIndex! - 1]
+    }
+    
     // Static func since Mesocycle won't be defined during creation
     static func create(context: NSManagedObjectContext) -> Mesocycle? {
         let highestMesocycleSequenceFetchRequest: NSFetchRequest<Mesocycle> = NSFetchRequest(entityName: "Mesocycle")

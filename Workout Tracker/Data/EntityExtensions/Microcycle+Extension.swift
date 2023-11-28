@@ -21,6 +21,42 @@ extension Microcycle: EntityWithSequence {
         }
     }
     
+    /**
+    Find the given Day's index in the microcycleDays array
+    */
+    func findMicrocycleDayIndex(day: Day) -> Array<Day>.Index? {
+        return microcycleDays.firstIndex(of: day)
+    }
+    
+    func getNextSequencedMicrocycleDay(day: Day) -> Day? {
+        let currentDayIndex = findMicrocycleDayIndex(day: day)
+        
+        if (currentDayIndex == nil) {
+            return nil
+        }
+        
+        if (currentDayIndex! == microcycleDays.count - 1) {
+            return nil
+        }
+        
+        return microcycleDays[currentDayIndex! + 1]
+    }
+    
+    func getPreviousSequencedMicrocycleDay(day: Day) -> Day? {
+        let currentDayIndex = findMicrocycleDayIndex(day: day)
+        
+        if (currentDayIndex == nil) {
+            return nil
+        }
+        
+        if (currentDayIndex! == 0) {
+            return nil
+        }
+        
+        return microcycleDays[currentDayIndex! - 1]
+        
+    }
+    
     // Static func since Microcycle won't be defined during creation
     static func create(context: NSManagedObjectContext, mesocycleId: Mesocycle.ID) -> Microcycle? {
         let highestMicrocycleSequenceFetchRequest: NSFetchRequest<Microcycle> = NSFetchRequest(entityName: "Microcycle")

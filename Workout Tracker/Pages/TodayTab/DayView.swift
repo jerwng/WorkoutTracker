@@ -10,10 +10,10 @@ import SwiftUI
 import CoreData
 
 struct DayView: View {
-    @ObservedObject private var viewModel: DayViewViewModel
+    @ObservedObject private var viewModel: DayViewModel
 
     init(context: NSManagedObjectContext) {
-        viewModel = DayViewViewModel(context: context)
+        viewModel = DayViewModel(context: context)
     }
     
     var body: some View {

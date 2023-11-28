@@ -1,5 +1,5 @@
 //
-//  DayViewViewModel.swift
+//  DayViewModel.swift
 //  Workout Tracker
 //
 //  Created by Jerry  on 2023-11-27.
@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 extension DayView {
-    @MainActor class DayViewViewModel: ObservableObject {
+    @MainActor class DayViewModel: ObservableObject {
         private let context: NSManagedObjectContext
         @Published var selectedDay: Day?
         
@@ -70,20 +70,59 @@ extension DayView {
         /**
          Fetch the day after the selectedDay in the current active mesocycle
          */
-        func fetchNextDay() {
+        func fetchNextDay() -> Day? {
             // Get current Day's sequence, if day with a larger sequence exists in microcycle, return
+            let currentMicrocycle = selectedDay?.microcycle
+            
+            if (currentMicrocycle == nil || selectedDay == nil) {
+                return nil
+            }
+            
+            if let nextDayInMicrocycle =  currentMicrocycle!.getNextSequencedMicrocycleDay(day: selectedDay!) {
+                return nextDayInMicrocycle
+            }
             
             // Get current Microcycle's sequence, if microcycle with larger sequence exists in mesocycle, return day with lowest sequence
+            let currentMesocycle = currentMicrocycle!.mesocycle
+            
+            if (currentMesocycle == nil) {
+                return nil
+            }
+            
+            if let nextMicrocycleInMesocycle = currentMesocycle!.getNextSequencedMesocycleMicrocycle(microcycle: currentMicrocycle!) {
+                return nextMicrocycleInMesocycle.microcycleDays.first
+            }
+            
+            return nil
         }
         
         /**
          Fetch the day before the selectedDay in the current active mesocycle
          */
-        func fetchPrevDay() {
+        func fetchPrevDay() -> Day? {
             // Get current Day's sequence, return day with next smallest sequence, if exists
+            let currentMicrocycle = selectedDay?.microcycle
+            
+            if (currentMicrocycle == nil || selectedDay == nil) {
+                return nil
+            }
+            
+            if let previousDayInMicrocycle =  currentMicrocycle!.getPreviousSequencedMicrocycleDay(day: selectedDay!) {
+                return previousDayInMicrocycle
+            }
             
             // Get current Microcycle's sequence, return last day of microcycle with next smallest sequence, if exists
+            let currentMesocycle = currentMicrocycle!.mesocycle
             
+            if (currentMesocycle == nil) {
+                return nil
+            }
+            
+            if let previousMicrocycleInMesocycle = currentMesocycle!.getPreviousSequencedMesocycleMicrocycle(microcycle: currentMicrocycle!) {
+                return previousMicrocycleInMesocycle.microcycleDays.last
+            }
+            
+            return nil
         }
     }
 }
