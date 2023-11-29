@@ -19,22 +19,26 @@ struct DayView: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                
-                if let previousDay = viewModel.previousDay {
-                    Image(systemName: "chevron.left").padding(.top, 8).onTapGesture {
+
+                Image(systemName: "chevron.left")
+                    .padding(.top, 8)
+                    .onTapGesture {
                         viewModel.handleTapPreviousDay()
                     }
-                }
+                    .opacity(viewModel.previousDay != nil ? 1 : 0)
+                
                 
                 if let selectedDay = viewModel.selectedDay {
                     HeaderView(header: selectedDay.dayMicrocycleName, subHeader: selectedDay.dayName)
                 }
                 
-                if let nextDay = viewModel.nextDay {
-                    Image(systemName: "chevron.right").padding(.top, 8).onTapGesture {
+                Image(systemName: "chevron.right")
+                    .padding(.top, 8)
+                    .onTapGesture {
                         viewModel.handleTapNextDay()
                     }
-                }
+                    .opacity(viewModel.nextDay != nil ? 1 : 0)
+                
             }
    
             ExerciseListView()
