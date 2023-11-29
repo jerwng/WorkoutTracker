@@ -29,7 +29,7 @@ struct DayView: View {
                 
                 
                 if let selectedDay = viewModel.selectedDay {
-                    HeaderView(header: selectedDay.dayMicrocycleName, subHeader: selectedDay.dayName)
+                    HeaderView(header: selectedDay.dayName, subHeader: selectedDay.dayMicrocycleName)
                 }
                 
                 Image(systemName: "chevron.right")

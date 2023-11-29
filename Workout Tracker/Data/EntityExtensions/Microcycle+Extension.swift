@@ -78,7 +78,7 @@ extension Microcycle: EntityWithSequence {
         
         let newMicrocycle = Microcycle(context: context)
         newMicrocycle.id = UUID()
-        newMicrocycle.name = "Microcycle \(highestMicrocycleSequence + 1)"
+        newMicrocycle.name = "Week \(highestMicrocycleSequence + 1)"
         newMicrocycle.sequence = Int16(highestMicrocycleSequence + 1)
         
         try? context.save()
