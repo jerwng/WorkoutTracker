@@ -19,10 +19,21 @@ struct DayView: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
+                
+                if let previousDay = viewModel.previousDay {
+                    Image(systemName: "chevron.left").padding(.top, 8).onTapGesture {
+                        viewModel.handleTapPreviousDay()
+                    }
+                }
+                
                 if let selectedDay = viewModel.selectedDay {
-                    Image(systemName: "chevron.left").padding(.top, 8)
                     HeaderView(header: selectedDay.dayMicrocycleName, subHeader: selectedDay.dayName)
-                    Image(systemName: "chevron.right").padding(.top, 8)
+                }
+                
+                if let nextDay = viewModel.nextDay {
+                    Image(systemName: "chevron.right").padding(.top, 8).onTapGesture {
+                        viewModel.handleTapNextDay()
+                    }
                 }
             }
    
@@ -36,7 +47,7 @@ struct DayView: View {
             alignment: .top
         ).background(Color("Background").ignoresSafeArea()
         ).onAppear{
-            viewModel.setSelectedDay()
+            viewModel.initializeSelectedDay()
         }
     }
 }

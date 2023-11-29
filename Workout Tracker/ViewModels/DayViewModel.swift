@@ -13,15 +13,46 @@ extension DayView {
     @MainActor class DayViewModel: ObservableObject {
         private let context: NSManagedObjectContext
         @Published var selectedDay: Day?
+        @Published var nextDay: Day?
+        @Published var previousDay: Day?
         
         init(context: NSManagedObjectContext) {
             // Current default to Day 1 Week 1 (first day)
             self.context = context
-            setSelectedDay()
+            initializeSelectedDay()
         }
         
-        func setSelectedDay() {
-            self.selectedDay = fetchActiveMesocycleFirstDay()
+        func initializeSelectedDay() {
+            if let mesocycleFirstDay = fetchActiveMesocycleFirstDay() {
+                setSelectedDay(day: mesocycleFirstDay)
+            }
+        }
+        
+        func setSelectedDay(day: Day) {
+            self.selectedDay = day
+
+            setNextDay()
+            setPreviousDay()
+        }
+        
+        func setNextDay() {
+            self.nextDay = fetchNextDay()
+        }
+        
+        func setPreviousDay() {
+            self.previousDay = fetchPrevDay()
+        }
+        
+        func handleTapNextDay() {
+            if let nextDay = self.nextDay {
+                setSelectedDay(day: nextDay)
+            }
+        }
+        
+        func handleTapPreviousDay() {
+            if let previousDay = self.previousDay {
+                setSelectedDay(day: previousDay)
+            }
         }
 
         /**
