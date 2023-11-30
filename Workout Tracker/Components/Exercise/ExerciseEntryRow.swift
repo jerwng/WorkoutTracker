@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ExerciseEntryRow: View {
     var exerciseEntry: ExerciseEntry_MockData
-    var exercise: ExerciseRow?
+    var exercise: Exercise?
     
     var isItalic: Bool? = false
 
@@ -51,16 +51,10 @@ struct ExerciseEntryRow: View {
             }.onTapGesture {
                 handleTapGesture()
             }.sheet(isPresented: $isSheetOpen) {
-                /**
-                 Only render ExerciseEntryInputSheetBody if ExercisesGetter returns
-                 a valid Exercise
-                 */
-                if let selectedExercise = ExercisesGetter(
-                    exerciseId: exercise?.exerciseId ?? -1)
-                {
+                if let _exercise = exercise {
                     ExerciseInputSheet(
                         isSheetOpen: $isSheetOpen,
-                        selectedExercise: selectedExercise,
+                        selectedExercise: _exercise,
                         selectedExerciseEntry: exerciseEntry
                     )
                 }

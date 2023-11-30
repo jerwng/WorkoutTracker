@@ -17,10 +17,10 @@ struct ExerciseInputSheet: View {
     @State private var notes: String
     @State private var name: String
     
-    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise_MockData, selectedExerciseEntry: ExerciseEntry_MockData?) {
+    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise, selectedExerciseEntry: ExerciseEntry_MockData?) {
 
         _isSheetOpen = isSheetOpen
-        self.name = selectedExercise.name
+        self.name = selectedExercise.exerciseName
         self.notes = selectedExercise.notes ?? ""
 
         if let a = selectedExerciseEntry {

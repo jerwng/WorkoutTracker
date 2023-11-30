@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ExerciseView: View {
-    var exercise: ExerciseRow
+    var exercise: Exercise
     var exerciseEntries: [ExerciseEntry_MockData] = []
     
     @State var isSheetOpen = false
@@ -43,8 +43,8 @@ struct ExerciseView: View {
                         )
                     }.padding(.leading, 15.0)
                     
-                    if (exercise.exerciseNotes != nil) {
-                        ExerciseNotes(exerciseNotes: exercise.exerciseNotes!)
+                    if (!exercise.exerciseNotes.isEmpty) {
+                        ExerciseNotes(exerciseNotes: exercise.exerciseNotes)
                     }
                 }
                 
@@ -66,19 +66,11 @@ struct ExerciseView: View {
             Divider().background(Color(.black))
             
         }.sheet(isPresented: $isSheetOpen) {
-            /**
-             Only render ExerciseEntryInputSheetBody if ExercisesGetter returns
-             a valid Exercise
-             */
-            if let selectedExercise = ExercisesGetter(
-                exerciseId: exercise.exerciseId)
-            {
-                ExerciseInputSheet(
-                    isSheetOpen: $isSheetOpen,
-                    selectedExercise: selectedExercise,
-                    selectedExerciseEntry: nil
-                )
-            }
+            ExerciseInputSheet(
+                isSheetOpen: $isSheetOpen,
+                selectedExercise: exercise,
+                selectedExerciseEntry: nil
+            )
         }
     }
 }

@@ -9,16 +9,16 @@ import Foundation
 import SwiftUI
 
 struct ExerciseSetsAndRepRange: View {
-    var exercise: ExerciseRow
+    var exercise: Exercise
     
     @State var exerciseRepRangeString = ""
 
     func buildExerciseRepRangeString() {        
-        exerciseRepRangeString = String(exercise.exerciseRepRangeBot) + "-" + String(exercise.exerciseRepRangeTop)
+        exerciseRepRangeString = String(exercise.repRangeBot) + "-" + String(exercise.repRangeTop)
     }
     
     var body: some View {
-        ItalicFootnote(content: String(exercise.exerciseSets) + " x " + exerciseRepRangeString).onAppear{
+        ItalicFootnote(content: String(exercise.sets) + " x " + exerciseRepRangeString).onAppear{
             buildExerciseRepRangeString()
         }
     }

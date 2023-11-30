@@ -11,9 +11,11 @@ import CoreData
 
 struct DayView: View {
     @ObservedObject private var viewModel: DayViewModel
+    private let context: NSManagedObjectContext
 
     init(context: NSManagedObjectContext) {
         viewModel = DayViewModel(context: context)
+        self.context = context
     }
     
     var body: some View {
@@ -40,9 +42,9 @@ struct DayView: View {
                     .opacity(viewModel.nextDay != nil ? 1 : 0)
                 
             }
-   
-            ExerciseListView()
-
+            if let selectedDay = viewModel.selectedDay {
+                ExerciseListView(context: context, day: selectedDay)
+            }
         } .frame(
             minWidth: 0,
             maxWidth: .infinity,
