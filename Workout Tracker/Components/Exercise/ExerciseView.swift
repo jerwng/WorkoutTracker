@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct ExerciseView: View {
+    @Environment(\.managedObjectContext) var moc
+
     var exercise: Exercise
     var exerciseEntries: [ExerciseEntry_MockData] = []
     
@@ -67,6 +69,7 @@ struct ExerciseView: View {
             
         }.sheet(isPresented: $isSheetOpen) {
             ExerciseInputSheet(
+                context: moc,
                 isSheetOpen: $isSheetOpen,
                 selectedExercise: exercise,
                 selectedExerciseEntry: nil

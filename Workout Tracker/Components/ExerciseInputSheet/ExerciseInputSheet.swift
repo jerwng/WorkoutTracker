@@ -7,31 +7,18 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct ExerciseInputSheet: View {
-    @Binding var isSheetOpen: Bool
-    
-    @State private var weight: String
-    @State private var reps: String
-    @State private var time: String
-    @State private var notes: String
-    @State private var name: String
-    
-    init(isSheetOpen: Binding<Bool>, selectedExercise: Exercise, selectedExerciseEntry: ExerciseEntry_MockData?) {
+    @ObservedObject private var viewModel: ExerciseInputSheetViewModel
 
-        _isSheetOpen = isSheetOpen
-        self.name = selectedExercise.exerciseName
-        self.notes = selectedExercise.notes ?? ""
-
-        if let a = selectedExerciseEntry {
-            self.weight = String(a.weight)
-            self.reps = String(a.reps)
-            self.time = a.time ?? ""
-        } else {
-            self.weight = ""
-            self.reps = ""
-            self.time = ""
-        }
+    init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise, selectedExerciseEntry: ExerciseEntry_MockData?) {
+        viewModel = ExerciseInputSheetViewModel(
+            context: context,
+            isSheetOpen: isSheetOpen,
+            selectedExercise: selectedExercise,
+            selectedExerciseEntry: nil
+        )
     }
     
     func handleButtonTap() {
@@ -41,12 +28,12 @@ struct ExerciseInputSheet: View {
     var body: some View {
         VStack {
             ExerciseEntryInputSheetBody(
-                isSheetOpen: $isSheetOpen,
-                name: $name,
-                weight: $weight,
-                reps: $reps,
-                time: $time,
-                notes: $notes
+                isSheetOpen: $viewModel.isSheetOpen,
+                name: $viewModel.name,
+                weight: $viewModel.weight,
+                reps: $viewModel.reps,
+                time: $viewModel.time,
+                notes: $viewModel.notes
             )
             
             Button("Delete Entry", action: handleButtonTap).foregroundColor(.red).padding(.bottom, 5.0)
