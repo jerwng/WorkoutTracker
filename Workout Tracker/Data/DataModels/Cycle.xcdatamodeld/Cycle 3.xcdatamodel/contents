@@ -19,6 +19,7 @@
         <relationship name="exerciseEntry" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ExerciseEntry" inverseName="exercise" inverseEntity="ExerciseEntry"/>
     </entity>
     <entity name="ExerciseEntry" representedClassName="ExerciseEntry" syncable="YES" codeGenerationType="class">
+        <attribute name="exerciseNameSequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>

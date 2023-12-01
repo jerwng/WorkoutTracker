@@ -23,7 +23,7 @@ extension ExerciseEntry: EntityWithSequence {
     
     static func create(
         context: NSManagedObjectContext,
-        exerciseId: Exercise.ID,
+        exercise: Exercise,
         reps: Int16,
         weight: Int16,
         time: String,
@@ -31,8 +31,8 @@ extension ExerciseEntry: EntityWithSequence {
     ) -> ExerciseEntry? {
         let highestExerciseEntrySequenceFetchRequest: NSFetchRequest<ExerciseEntry> = NSFetchRequest(entityName: "ExerciseEntry")
      
-        if let _exerciseId = exerciseId {
-            highestExerciseEntrySequenceFetchRequest.predicate = NSPredicate(format: "exercise.id == %@", _exerciseId.uuidString)
+        if let exerciseId = exercise.id {
+            highestExerciseEntrySequenceFetchRequest.predicate = NSPredicate(format: "exercise.id == %@", exerciseId.uuidString)
         }
         
         let highestExerciseEntrySequence = EntityUtils().getEntityHighestSequence(
@@ -46,12 +46,32 @@ extension ExerciseEntry: EntityWithSequence {
             return nil
         }
         
+        // Note: Calculate the exerciseNameSequence property in ExerciseEntry entity. Build a sequence based on the exercise name.
+        // This is used to sequence exercise entries of exercises under the same name, but with different ids, across different days.
+        let highestExerciseEntryNameSequenceFetchRequest: NSFetchRequest<ExerciseEntry> = NSFetchRequest(entityName: "ExerciseEntry")
+     
+        if let exerciseName = exercise.name {
+            highestExerciseEntryNameSequenceFetchRequest.predicate = NSPredicate(format: "exercise.name == %@", exerciseName)
+        }
+        
+        let highestExerciseEntryNameSequence = EntityUtils().getEntityHighestSequence(
+            context: context,
+            fetchRequest: highestExerciseEntryNameSequenceFetchRequest
+        )
+
+        // Highest exercise entry name sequence returns -1 if error occured fetching highest name sequence value
+        // Prevent creating new exercise entry to prevent corrupting sequence order
+        if (highestExerciseEntryNameSequence < 0) {
+            return nil
+        }
+        
         let newExerciseEntry = ExerciseEntry(context: context)
         newExerciseEntry.reps = reps
         newExerciseEntry.weight = weight
         newExerciseEntry.time = time
         newExerciseEntry.notes = notes
         newExerciseEntry.sequence = Int16(highestExerciseEntrySequence + 1)
+        newExerciseEntry.exerciseNameSequence = Int16(highestExerciseEntryNameSequence + 1)
         
         do {
             try context.save()
