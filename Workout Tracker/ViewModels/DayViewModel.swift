@@ -23,12 +23,11 @@ extension DayView {
         }
         
         func initializeSelectedDay() {
-            if let mesocycleFirstDay = fetchActiveMesocycleFirstDay() {
-                setSelectedDay(day: mesocycleFirstDay)
-            }
+            let mesocycleFirstDay = fetchActiveMesocycleFirstDay()
+            setSelectedDay(day: mesocycleFirstDay)
         }
         
-        func setSelectedDay(day: Day) {
+        func setSelectedDay(day: Day?) {
             self.selectedDay = day
 
             setNextDay()
