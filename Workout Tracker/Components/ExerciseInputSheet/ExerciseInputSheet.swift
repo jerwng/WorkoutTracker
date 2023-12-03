@@ -12,12 +12,21 @@ import CoreData
 struct ExerciseInputSheet: View {
     @ObservedObject private var viewModel: ExerciseInputSheetViewModel
 
-    init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise, selectedExerciseEntry: ExerciseEntry?) {
+    init(
+        context: NSManagedObjectContext,
+        isSheetOpen: Binding<Bool>,
+        selectedExercise: Exercise,
+        selectedExerciseEntry: ExerciseEntry? = nil,
+        onExerciseEntryCreate: (() -> Void)? = nil,
+        onExerciseEntryUpdate: (() -> Void)? = nil
+    ) {
         viewModel = ExerciseInputSheetViewModel(
             context: context,
             isSheetOpen: isSheetOpen,
             selectedExercise: selectedExercise,
-            selectedExerciseEntry: selectedExerciseEntry
+            selectedExerciseEntry: selectedExerciseEntry,
+            onExerciseEntryCreate: onExerciseEntryCreate,
+            onExerciseEntryUpdate: onExerciseEntryUpdate
         )
     }
     

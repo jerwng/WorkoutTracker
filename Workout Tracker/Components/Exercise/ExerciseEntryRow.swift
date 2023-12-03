@@ -10,56 +10,45 @@ import SwiftUI
 
 struct ExerciseEntryRow: View {
     @Environment(\.managedObjectContext) var moc
-
-    var exerciseEntry: ExerciseEntry
-    // Exercise intended to be Optional. "Previous" exercise entry rows also use this view and does not provie an Exercise entity
-    var exercise: Exercise?
+    @ObservedObject var viewModel: ExerciseEntryRowViewModel
     
-    var isItalic: Bool? = false
-
-    @State var isSheetOpen = false
+    init(
+        exercise: Exercise? = nil,
+        exerciseEntry: ExerciseEntry,
+        isItalic: Bool = false
+    ) {
+        viewModel = ExerciseEntryRowViewModel(
+            exercise: exercise,
+            exerciseEntry: exerciseEntry,
+            isItalic: isItalic
+        )
+    }
     
     /**
      Inteded to only display sheet if exercise value is provided.
      */
     func handleTapGesture() {
-        if (exercise != nil) {
-            isSheetOpen = true
+        if (viewModel.exercise != nil) {
+            viewModel.setIsSheetOpen(isSheetOpen: true)
         }
-    }
-    
-    @State var exerciseEntryRowString = ""
-    
-    func buildExerciseEntryRowString() {
-        var curExerciseEntryRowString = String(exerciseEntry.reps) + " @ " + String(exerciseEntry.weight) + "lbs"
-        
-        if (!exerciseEntry.exerciseEntryTime.isEmpty) {
-            curExerciseEntryRowString += ", " + exerciseEntry.exerciseEntryTime
-        }
-        
-        exerciseEntryRowString = curExerciseEntryRowString
     }
     
     var body: some View {
         
-        if (isItalic == true) {
+        if (viewModel.isItalic == true) {
             ItalicFootnote(
-                content: exerciseEntryRowString
-            ).onAppear{
-                buildExerciseEntryRowString()
-            }
+                content: viewModel.buildExerciseEntryRowString()
+            )
         } else {
-            Text(exerciseEntryRowString).onAppear {
-                buildExerciseEntryRowString()
-            }.onTapGesture {
+            Text(viewModel.buildExerciseEntryRowString()).onTapGesture {
                 handleTapGesture()
-            }.sheet(isPresented: $isSheetOpen) {
-                if let _exercise = exercise {
+            }.sheet(isPresented: $viewModel.isSheetOpen) {
+                if let _exercise = viewModel.exercise {
                     ExerciseInputSheet(
                         context: moc,
-                        isSheetOpen: $isSheetOpen,
+                        isSheetOpen: $viewModel.isSheetOpen,
                         selectedExercise: _exercise,
-                        selectedExerciseEntry: exerciseEntry
+                        selectedExerciseEntry: viewModel.exerciseEntry
                     )
                 }
             }

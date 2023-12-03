@@ -7,46 +7,52 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct ExerciseView: View {
-    @Environment(\.managedObjectContext) var moc
+    @ObservedObject var viewModel: ExerciseViewModel
 
-    var exercise: Exercise
-    var exerciseEntries: [ExerciseEntry] = []
-    
-    @State var isSheetOpen = false
+    init(context: NSManagedObjectContext, exercise: Exercise) {
+        viewModel = ExerciseViewModel(
+            context: context,
+            exercise: exercise
+        )
+    }
     
     func handleTapGesture() {
-        isSheetOpen = true
+        viewModel.setIsSheetOpen(isSheetOpen: true)
+    }
+    
+    func handleExerciseEntryCreate() {
+        viewModel.initExerciseEntries()
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text(exercise.exerciseName).font(.title2).fontWeight(.bold)
+                Text(viewModel.exercise.exerciseName).font(.title2).fontWeight(.bold)
                 
-                ExerciseSetsAndRepRange(exercise: exercise)
+                ExerciseSetsAndRepRange(exercise: viewModel.exercise)
                 
                 Spacer()
                 Image(systemName: "plus.circle")
                     .padding(.trailing, 5.0).onTapGesture {
                         handleTapGesture()
                     }
-                
             }
             
             HStack {
                 VStack(alignment: .leading){
-                    ForEach(exerciseEntries) {
+                    ForEach(viewModel.exerciseEntries) {
                         exerciseEntry in
                         ExerciseEntryRow(
-                            exerciseEntry: exerciseEntry,
-                            exercise: exercise
+                            exercise: viewModel.exercise,
+                            exerciseEntry: exerciseEntry
                         )
                     }.padding(.leading, 15.0)
                     
-                    if (!exercise.exerciseNotes.isEmpty) {
-                        ExerciseNotes(exerciseNotes: exercise.exerciseNotes)
+                    if (!viewModel.exercise.exerciseNotes.isEmpty) {
+                        ExerciseNotes(exerciseNotes: viewModel.exercise.exerciseNotes)
                     }
                 }
                 
@@ -54,25 +60,25 @@ struct ExerciseView: View {
                 
                 VStack(alignment: .leading) {
                     ItalicFootnote(content: "Previous: ")
-                    ForEach(exerciseEntries) {
-                        exerciseEntry in
-                        ExerciseEntryRow(exerciseEntry: exerciseEntry, isItalic: true
+                    ForEach(viewModel.previousExerciseEntries) {
+                        previousExerciseEntry in
+                        ExerciseEntryRow(
+                            exerciseEntry: previousExerciseEntry,
+                            isItalic: true
                         )
                     }
                 }
                 .padding(.bottom, 2.0)
-              
-                
             }
      
             Divider().background(Color(.black))
             
-        }.sheet(isPresented: $isSheetOpen) {
+        }.sheet(isPresented: $viewModel.isSheetOpen) {
             ExerciseInputSheet(
-                context: moc,
-                isSheetOpen: $isSheetOpen,
-                selectedExercise: exercise,
-                selectedExerciseEntry: nil
+                context: viewModel.context,
+                isSheetOpen: $viewModel.isSheetOpen,
+                selectedExercise: viewModel.exercise,
+                onExerciseEntryCreate: handleExerciseEntryCreate
             )
         }
     }

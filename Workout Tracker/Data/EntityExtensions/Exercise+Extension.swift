@@ -17,6 +17,14 @@ extension Exercise: EntityWithSequence {
         return "\(notes ?? "")"
     }
     
+    var exerciseExerciseEntries: [ExerciseEntry] {
+        let exerciseEntriesSet = exerciseEntries as? Set<ExerciseEntry> ?? []
+        
+        return exerciseEntriesSet.sorted {
+            $0.sequence < $1.sequence
+        }
+    }
+    
     static func create(
         context: NSManagedObjectContext,
         dayId: Day.ID,
@@ -44,6 +52,7 @@ extension Exercise: EntityWithSequence {
         }
             
         let newExercise = Exercise(context: context)
+        newExercise.id = UUID()
         newExercise.name = name
         newExercise.notes = notes
         newExercise.repRangeTop = repRangeTop

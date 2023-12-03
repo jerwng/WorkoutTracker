@@ -23,15 +23,28 @@ extension ExerciseInputSheet {
         @Published var notes: String
         @Published var name: String
         
-        var isNewExerciseEntry: Bool
+        private var isNewExerciseEntry: Bool
         
-        init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise, selectedExerciseEntry: ExerciseEntry?) {
+        var onExerciseEntryCreate: (() -> Void)?
+        var onExerciseEntryUpdate: (() -> Void)?
+        
+        init(
+            context: NSManagedObjectContext,
+            isSheetOpen: Binding<Bool>,
+            selectedExercise: Exercise,
+            selectedExerciseEntry: ExerciseEntry?,
+            onExerciseEntryCreate: (() -> Void)? = nil,
+            onExerciseEntryUpdate: (() -> Void)? = nil
+        ) {
             self.context = context
             self.selectedExercise = selectedExercise
             self.selectedExerciseEntry = selectedExerciseEntry
             
             self._isSheetOpen = isSheetOpen
             self.name = selectedExercise.exerciseName
+            
+            self.onExerciseEntryCreate = onExerciseEntryCreate
+            self.onExerciseEntryUpdate = onExerciseEntryUpdate
 
             if let _selectedExerciseEntry = selectedExerciseEntry {
                 self.weight = String(_selectedExerciseEntry.weight)
@@ -53,8 +66,15 @@ extension ExerciseInputSheet {
         func handleExerciseEntryInputSheetSubmit() {
             if (isNewExerciseEntry) {
                 createExerciseEntry()
+                if let _onExerciseEntryCreate = onExerciseEntryCreate {
+                    _onExerciseEntryCreate()
+                }
+                
             } else {
                 updateExerciseEntry()
+                if let _onExerciseEntryUpdate = onExerciseEntryUpdate {
+                    _onExerciseEntryUpdate()
+                }
             }
         }
 
