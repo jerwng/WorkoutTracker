@@ -17,6 +17,7 @@ extension EntityListView {
         @Published var microcycles: [Microcycle] = []
         @Published var days: [Day] = []
         @Published var exercises: [Exercise] = []
+        @Published var exerciseEntries: [ExerciseEntry] = []
         
         init(context: NSManagedObjectContext) {
             self.context = context
@@ -47,11 +48,18 @@ extension EntityListView {
             initializeEntities()
         }
         
+        func handleDeleteExerciseEntry(index: Int) {
+            let exerciseEntryToBeDeleted = exerciseEntries[index]
+            exerciseEntryToBeDeleted.delete()
+            initializeEntities()
+        }
+        
         func initializeEntities() {
             self.mesocycles = fetchAllMesocycles()
             self.microcycles = fetchAllMicrocycles()
             self.days = fetchAllDays()
             self.exercises = fetchAllExercises()
+            self.exerciseEntries = fetchAllExerciseEntries()
         }
         
         func fetchAllMesocycles() -> [Mesocycle] {
@@ -105,6 +113,20 @@ extension EntityListView {
               
             } catch {
                 print("Error fetching exercises: \(error)")
+            }
+            
+            return []
+        }
+        
+        func fetchAllExerciseEntries() -> [ExerciseEntry] {
+            let fetchRequest: NSFetchRequest<ExerciseEntry> = ExerciseEntry.fetchRequest()
+            
+            do {
+                let fetchResult = try context.fetch(fetchRequest)
+                return fetchResult
+              
+            } catch {
+                print("Error fetching exercise entries: \(error)")
             }
             
             return []

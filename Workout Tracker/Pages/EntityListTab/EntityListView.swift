@@ -31,6 +31,10 @@ struct EntityListView: View {
     func handleDeleteExercise(at offsets: IndexSet) {
         viewModel.handleDeleteExercise(index: offsets.first!)
     }
+    
+    func handleDeleteExerciseEntry(at offsets: IndexSet) {
+        viewModel.handleDeleteExerciseEntry(index: offsets.first!)
+    }
 
     var body: some View {
         VStack {
@@ -58,6 +62,13 @@ struct EntityListView: View {
                         Text(exercise.exerciseName)
                     }.onDelete(perform: handleDeleteExercise)
                 }.headerProminence(.increased)
+                
+                Section(header: Text("Exercise Entries")) {
+                    ForEach(viewModel.exerciseEntries, id: \.self) { exerciseEntry in
+                        Text(exerciseEntry.exerciseEntryId)
+                    }.onDelete(perform: handleDeleteExerciseEntry)
+                }.headerProminence(.increased)
+
             }
         }.onAppear {
             viewModel.initializeEntities()
