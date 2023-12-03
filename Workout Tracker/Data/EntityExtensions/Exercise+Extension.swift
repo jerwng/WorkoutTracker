@@ -88,4 +88,14 @@ extension Exercise: EntityWithSequence {
         
         try? managedObjectContext?.save()
     }
+    
+    func addExerciseEntry(exerciseEntry: ExerciseEntry) {
+        addToExerciseEntries(exerciseEntry)
+    
+        do {
+            try managedObjectContext?.save()
+        } catch {
+            print("Error adding Exercise Entry \(exerciseEntry.exerciseEntryId) to Exercise \(exerciseName): \(error)")
+        }
+    }
 }

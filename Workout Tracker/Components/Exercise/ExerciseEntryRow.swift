@@ -11,7 +11,8 @@ import SwiftUI
 struct ExerciseEntryRow: View {
     @Environment(\.managedObjectContext) var moc
 
-    var exerciseEntry: ExerciseEntry_MockData
+    var exerciseEntry: ExerciseEntry
+    // Exercise intended to be Optional. "Previous" exercise entry rows also use this view and does not provie an Exercise entity
     var exercise: Exercise?
     
     var isItalic: Bool? = false
@@ -32,8 +33,8 @@ struct ExerciseEntryRow: View {
     func buildExerciseEntryRowString() {
         var curExerciseEntryRowString = String(exerciseEntry.reps) + " @ " + String(exerciseEntry.weight) + "lbs"
         
-        if (exerciseEntry.time != nil) {
-            curExerciseEntryRowString += ", " + exerciseEntry.time!
+        if (!exerciseEntry.exerciseEntryTime.isEmpty) {
+            curExerciseEntryRowString += ", " + exerciseEntry.exerciseEntryTime
         }
         
         exerciseEntryRowString = curExerciseEntryRowString

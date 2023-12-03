@@ -12,7 +12,7 @@ struct ExerciseView: View {
     @Environment(\.managedObjectContext) var moc
 
     var exercise: Exercise
-    var exerciseEntries: [ExerciseEntry_MockData] = []
+    var exerciseEntries: [ExerciseEntry] = []
     
     @State var isSheetOpen = false
     

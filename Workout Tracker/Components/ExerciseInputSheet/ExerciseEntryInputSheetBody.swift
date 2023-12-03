@@ -16,6 +16,8 @@ struct ExerciseEntryInputSheetBody: View {
     @Binding var time: String
     @Binding var notes: String
     
+    var handleSubmit: () -> Void
+    
     var body: some View {
         BaseExerciseInputSheetBody(
             content: ExerciseEntryInputSheetFields(
@@ -25,7 +27,8 @@ struct ExerciseEntryInputSheetBody: View {
                 notes: $notes
             ),
             sheetTitle: name,
-            isSheetOpen: $isSheetOpen
+            isSheetOpen: $isSheetOpen,
+            handleSubmit: handleSubmit
         )
     }
 }

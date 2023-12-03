@@ -12,13 +12,17 @@ import CoreData
 struct ExerciseInputSheet: View {
     @ObservedObject private var viewModel: ExerciseInputSheetViewModel
 
-    init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise, selectedExerciseEntry: ExerciseEntry_MockData?) {
+    init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise, selectedExerciseEntry: ExerciseEntry?) {
         viewModel = ExerciseInputSheetViewModel(
             context: context,
             isSheetOpen: isSheetOpen,
             selectedExercise: selectedExercise,
-            selectedExerciseEntry: nil
+            selectedExerciseEntry: selectedExerciseEntry
         )
+    }
+    
+    func handleSubmit() {
+        viewModel.handleExerciseEntryInputSheetSubmit()
     }
     
     func handleButtonTap() {
@@ -33,7 +37,8 @@ struct ExerciseInputSheet: View {
                 weight: $viewModel.weight,
                 reps: $viewModel.reps,
                 time: $viewModel.time,
-                notes: $viewModel.notes
+                notes: $viewModel.notes,
+                handleSubmit: handleSubmit
             )
             
             Button("Delete Entry", action: handleButtonTap).foregroundColor(.red).padding(.bottom, 5.0)

@@ -23,6 +23,8 @@ extension ExerciseInputSheet {
         @Published var notes: String
         @Published var name: String
         
+        var isNewExerciseEntry: Bool
+        
         init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise, selectedExerciseEntry: ExerciseEntry?) {
             self.context = context
             self.selectedExercise = selectedExercise
@@ -36,24 +38,60 @@ extension ExerciseInputSheet {
                 self.reps = String(_selectedExerciseEntry.reps)
                 self.time = _selectedExerciseEntry.exerciseEntryTime
                 self.notes = _selectedExerciseEntry.exerciseEntryNotes
+                
+                isNewExerciseEntry = false
             } else {
                 self.weight = ""
                 self.reps = ""
                 self.time = ""
                 self.notes = ""
+                
+                isNewExerciseEntry = true
+            }
+        }
+        
+        func handleExerciseEntryInputSheetSubmit() {
+            if (isNewExerciseEntry) {
+                createExerciseEntry()
+            } else {
+                updateExerciseEntry()
             }
         }
 
         func createExerciseEntry() {
+            if (reps.isEmpty || weight.isEmpty) {
+                return
+            }
             
+            if let newExerciseEntry = ExerciseEntry.create(
+                context: context,
+                exercise: selectedExercise,
+                reps: Int16(reps)!,
+                weight: Int16(weight)!,
+                time: time,
+                notes: notes
+            ) {
+                selectedExercise.addExerciseEntry(exerciseEntry: newExerciseEntry)
+                self.selectedExercise = selectedExercise
+            }
         }
         
         func updateExerciseEntry() {
+            if (reps.isEmpty || weight.isEmpty) {
+                return
+            }
             
+            selectedExerciseEntry?.update(
+                newReps: Int16(reps)!,
+                newWeight: Int16(weight)!,
+                newTime: time,
+                newNotes: notes
+            )
         }
         
         func deleteExerciseEntry() {
-            
+            selectedExerciseEntry?.delete()
+            self.selectedExerciseEntry = nil
         }
     }
 }

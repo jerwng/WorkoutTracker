@@ -66,6 +66,7 @@ extension ExerciseEntry: EntityWithSequence {
         }
         
         let newExerciseEntry = ExerciseEntry(context: context)
+        newExerciseEntry.id = UUID()
         newExerciseEntry.reps = reps
         newExerciseEntry.weight = weight
         newExerciseEntry.time = time
