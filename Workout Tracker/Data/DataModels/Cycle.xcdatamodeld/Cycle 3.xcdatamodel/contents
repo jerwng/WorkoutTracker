@@ -16,7 +16,7 @@
         <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="exercises" inverseEntity="Day"/>
-        <relationship name="exerciseEntry" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ExerciseEntry" inverseName="exercise" inverseEntity="ExerciseEntry"/>
+        <relationship name="exerciseEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ExerciseEntry" inverseName="exercise" inverseEntity="ExerciseEntry"/>
     </entity>
     <entity name="ExerciseEntry" representedClassName="ExerciseEntry" syncable="YES" codeGenerationType="class">
         <attribute name="exerciseNameSequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -26,7 +26,7 @@
         <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="time" optional="YES" attributeType="String"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="exerciseEntry" inverseEntity="Exercise"/>
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="exerciseEntries" inverseEntity="Exercise"/>
     </entity>
     <entity name="Mesocycle" representedClassName="Mesocycle" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
