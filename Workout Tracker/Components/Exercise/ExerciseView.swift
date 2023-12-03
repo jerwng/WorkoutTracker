@@ -23,7 +23,7 @@ struct ExerciseView: View {
         viewModel.setIsSheetOpen(isSheetOpen: true)
     }
     
-    func handleExerciseEntryCreate() {
+    func handleRefreshExerciseEntries() {
         viewModel.initExerciseEntries()
     }
 
@@ -47,7 +47,8 @@ struct ExerciseView: View {
                         exerciseEntry in
                         ExerciseEntryRow(
                             exercise: viewModel.exercise,
-                            exerciseEntry: exerciseEntry
+                            exerciseEntry: exerciseEntry,
+                            onExerciseEntryDelete: handleRefreshExerciseEntries
                         )
                     }.padding(.leading, 15.0)
                     
@@ -78,7 +79,7 @@ struct ExerciseView: View {
                 context: viewModel.context,
                 isSheetOpen: $viewModel.isSheetOpen,
                 selectedExercise: viewModel.exercise,
-                onExerciseEntryCreate: handleExerciseEntryCreate
+                onExerciseEntryCreate: handleRefreshExerciseEntries
             )
         }
     }

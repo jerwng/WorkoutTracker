@@ -18,7 +18,8 @@ struct ExerciseInputSheet: View {
         selectedExercise: Exercise,
         selectedExerciseEntry: ExerciseEntry? = nil,
         onExerciseEntryCreate: (() -> Void)? = nil,
-        onExerciseEntryUpdate: (() -> Void)? = nil
+        onExerciseEntryUpdate: (() -> Void)? = nil,
+        onExerciseEntryDelete: (() -> Void)? = nil
     ) {
         viewModel = ExerciseInputSheetViewModel(
             context: context,
@@ -26,7 +27,8 @@ struct ExerciseInputSheet: View {
             selectedExercise: selectedExercise,
             selectedExerciseEntry: selectedExerciseEntry,
             onExerciseEntryCreate: onExerciseEntryCreate,
-            onExerciseEntryUpdate: onExerciseEntryUpdate
+            onExerciseEntryUpdate: onExerciseEntryUpdate,
+            onExerciseEntryDelete: onExerciseEntryDelete
         )
     }
     
@@ -35,7 +37,7 @@ struct ExerciseInputSheet: View {
     }
     
     func handleButtonTap() {
-        print("tap delete exercise entry button")
+        viewModel.deleteExerciseEntry()
     }
     
     var body: some View {

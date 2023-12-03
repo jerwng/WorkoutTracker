@@ -12,16 +12,21 @@ struct ExerciseEntryRow: View {
     @Environment(\.managedObjectContext) var moc
     @ObservedObject var viewModel: ExerciseEntryRowViewModel
     
+    let onExerciseEntryDelete: (() -> Void)?
+    
     init(
         exercise: Exercise? = nil,
         exerciseEntry: ExerciseEntry,
-        isItalic: Bool = false
+        isItalic: Bool = false,
+        onExerciseEntryDelete: (() -> Void)? = nil
     ) {
         viewModel = ExerciseEntryRowViewModel(
             exercise: exercise,
             exerciseEntry: exerciseEntry,
             isItalic: isItalic
         )
+        
+        self.onExerciseEntryDelete = onExerciseEntryDelete
     }
     
     /**
@@ -48,7 +53,8 @@ struct ExerciseEntryRow: View {
                         context: moc,
                         isSheetOpen: $viewModel.isSheetOpen,
                         selectedExercise: _exercise,
-                        selectedExerciseEntry: viewModel.exerciseEntry
+                        selectedExerciseEntry: viewModel.exerciseEntry,
+                        onExerciseEntryDelete: onExerciseEntryDelete
                     )
                 }
             }

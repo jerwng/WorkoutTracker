@@ -27,6 +27,7 @@ extension ExerciseInputSheet {
         
         var onExerciseEntryCreate: (() -> Void)?
         var onExerciseEntryUpdate: (() -> Void)?
+        var onExerciseEntryDelete: (() -> Void)?
         
         init(
             context: NSManagedObjectContext,
@@ -34,7 +35,8 @@ extension ExerciseInputSheet {
             selectedExercise: Exercise,
             selectedExerciseEntry: ExerciseEntry?,
             onExerciseEntryCreate: (() -> Void)? = nil,
-            onExerciseEntryUpdate: (() -> Void)? = nil
+            onExerciseEntryUpdate: (() -> Void)? = nil,
+            onExerciseEntryDelete: (() -> Void)? = nil
         ) {
             self.context = context
             self.selectedExercise = selectedExercise
@@ -45,6 +47,7 @@ extension ExerciseInputSheet {
             
             self.onExerciseEntryCreate = onExerciseEntryCreate
             self.onExerciseEntryUpdate = onExerciseEntryUpdate
+            self.onExerciseEntryDelete = onExerciseEntryDelete
 
             if let _selectedExerciseEntry = selectedExerciseEntry {
                 self.weight = String(_selectedExerciseEntry.weight)
@@ -110,8 +113,15 @@ extension ExerciseInputSheet {
         }
         
         func deleteExerciseEntry() {
-            selectedExerciseEntry?.delete()
-            self.selectedExerciseEntry = nil
+            if let _selectedExerciseEntry = selectedExerciseEntry {
+                _selectedExerciseEntry.delete()
+
+                if let _onExerciseEntryDelete = onExerciseEntryDelete {
+                    _onExerciseEntryDelete()
+                }
+                
+                self.isSheetOpen = false
+            }
         }
     }
 }
