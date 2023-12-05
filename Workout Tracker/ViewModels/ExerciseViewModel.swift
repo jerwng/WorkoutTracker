@@ -27,10 +27,23 @@ extension ExerciseView {
         func initExerciseEntries() {
             self.exerciseEntries = self.exercise.exerciseExerciseEntries
         }
-        
-        // TODO: Implement this function
+
         func initPreviousExerciseEntries() {
             self.previousExerciseEntries = []
+
+            // Fetch the last previous Exercise Entry sorted by exerciseNameSequence, where the Exercise Entry is under the current Exercise (name), but not the Exercise (id)
+            // This will give access to the Exercise containing the entire previous Exercise Entries array
+            let lastPreviousExerciseEntryFetchRequest = FetchRequestUtils.getLastPreviousExerciseEntryFetchRequest(exercise: exercise)
+            
+            do {
+                let fetchResult = try context.fetch(lastPreviousExerciseEntryFetchRequest)
+                if let lastPreviousExerciseEntry = fetchResult.first {
+                    // Want the entire Exercise Entries array from the Exercise containing the last previous Exercise Entry
+                    self.previousExerciseEntries = lastPreviousExerciseEntry.exercise?.exerciseExerciseEntries ?? []
+                }
+            } catch {
+                print("Error fetching first previous exercise entry : \(error)")
+            }
         }
         
         func setIsSheetOpen(isSheetOpen: Bool) {

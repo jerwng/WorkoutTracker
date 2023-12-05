@@ -25,6 +25,10 @@ extension Exercise: EntityWithSequence {
         }
     }
     
+    var exerciseId: String {
+        return id?.uuidString ?? "Unknown Exercise Id"
+    }
+    
     static func create(
         context: NSManagedObjectContext,
         dayId: Day.ID,

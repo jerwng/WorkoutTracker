@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-extension ExerciseEntry: EntityWithSequence {
+extension ExerciseEntry: EntityWithSequence, EntityWithExerciseNameSequence {
     var exerciseEntryNotes: String {
         return notes ?? ""
     }
@@ -46,15 +46,22 @@ extension ExerciseEntry: EntityWithSequence {
             return nil
         }
         
-        // Note: Calculate the exerciseNameSequence property in ExerciseEntry entity. Build a sequence based on the exercise name.
-        // This is used to sequence exercise entries of exercises under the same name, but with different ids, across different days.
+        // Note: Calculate the exerciseNameSequence property in ExerciseEntry entity. Build a sequence based on the Exercise name and group Exercise Entries with same Exercise Id.
+
+        /**
+         What is this exerciseNameSequence used for?
+         - Exercise Entries under the same Exercise Id share the same exerciseNameSequence.
+         - exerciseNameSequence is used to determine the previous exercise entries.
+         - Sharing same exerciseNameSequence across Exercise Id reduces potential ordering issue if user enters Exercise Entries of same Exercise Name on different days without order.
+           exerciseNameSequence order remains based on the first entered Exercise Entry of the Exercise id group.
+         */
         let highestExerciseEntryNameSequenceFetchRequest: NSFetchRequest<ExerciseEntry> = NSFetchRequest(entityName: "ExerciseEntry")
      
         if let exerciseName = exercise.name {
             highestExerciseEntryNameSequenceFetchRequest.predicate = NSPredicate(format: "exercise.name == %@", exerciseName)
         }
         
-        let highestExerciseEntryNameSequence = EntityUtils().getEntityHighestSequence(
+        let highestExerciseEntryNameSequence = EntityUtils().getEntityHighestExerciseNameSequence(
             context: context,
             fetchRequest: highestExerciseEntryNameSequenceFetchRequest
         )
@@ -72,7 +79,14 @@ extension ExerciseEntry: EntityWithSequence {
         newExerciseEntry.time = time
         newExerciseEntry.notes = notes
         newExerciseEntry.sequence = Int16(highestExerciseEntrySequence + 1)
-        newExerciseEntry.exerciseNameSequence = Int16(highestExerciseEntryNameSequence + 1)
+        
+        // Exercise Entries under Exercise with the same ID share an exerciseNameSequence, see above block comment for explanation on this behaviour
+        if (exercise.exerciseExerciseEntries.isEmpty) {
+            newExerciseEntry.exerciseNameSequence = Int16(highestExerciseEntryNameSequence + 1)
+        } else {
+            let lastExerciseExerciseEntry = exercise.exerciseExerciseEntries.last!
+            newExerciseEntry.exerciseNameSequence = Int16(lastExerciseExerciseEntry.exerciseNameSequence)
+        }
         
         do {
             try context.save()
