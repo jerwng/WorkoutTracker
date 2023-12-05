@@ -85,7 +85,7 @@ extension ExerciseInputSheet {
 
         func createExerciseEntry() throws {
             if (reps.isEmpty || weight.isEmpty) {
-                throw ErrorsConstants.repsOrWeightFieldEmpty
+                throw ErrorsConstants.repsAndWeightFieldEmpty
             }
             
             if let newExerciseEntry = ExerciseEntry.create(
@@ -103,7 +103,7 @@ extension ExerciseInputSheet {
         
         func updateExerciseEntry() throws {
             if (reps.isEmpty || weight.isEmpty) {
-                throw ErrorsConstants.repsOrWeightFieldEmpty
+                throw ErrorsConstants.repsAndWeightFieldEmpty
             }
             
             selectedExerciseEntry?.update(

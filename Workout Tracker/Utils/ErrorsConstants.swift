@@ -8,5 +8,6 @@
 import Foundation
 
 struct ErrorsConstants {
-    static let repsOrWeightFieldEmpty = "Reps or Weight field cannot be empty"
+    static let repsAndWeightFieldEmpty = "Reps and Weight field cannot be empty"
+    static let setsAndRepRangeAndNameFieldEmpty = "Sets, Rep Ranges and Name fields cannot be empty"
 }

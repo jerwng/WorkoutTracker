@@ -13,8 +13,6 @@ extension CreateExerciseInputSheet {
     @MainActor class CreateExerciseInputSheetViewModel: ObservableObject {
         private let context: NSManagedObjectContext
         
-        @Binding var isSheetOpen: Bool
-        
         @Published var day: Day
         
         @Published var sets: String
@@ -28,10 +26,9 @@ extension CreateExerciseInputSheet {
         
         private let selectedExercise: Exercise?
         
-        init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise?, day: Day) {
+        init(context: NSManagedObjectContext, selectedExercise: Exercise?, day: Day) {
             self.context = context
             self.day = day
-            self._isSheetOpen = isSheetOpen
             self.selectedExercise = selectedExercise
             
             if let exercise = selectedExercise {
@@ -53,17 +50,23 @@ extension CreateExerciseInputSheet {
             }
         }
         
-        func handleCreateExerciseInputSheetSubmit() {
-            if (isNewExercise) {
-                createExerciseToSelectedDay()
-            } else {
-                updateExercise()
+        func handleCreateExerciseInputSheetSubmit() -> Error? {
+            do {
+                if (isNewExercise) {
+                    try createExerciseToSelectedDay()
+                } else {
+                    try updateExercise()
+                }
+            } catch {
+                return error
             }
+            
+            return nil
         }
         
-        func createExerciseToSelectedDay() {
+        func createExerciseToSelectedDay() throws {
             if (sets.isEmpty || repRangeBot.isEmpty || repRangeTop.isEmpty || name.isEmpty) {
-                return
+                throw ErrorsConstants.setsAndRepRangeAndNameFieldEmpty
             }
             
             if let newExercise = Exercise.create(
@@ -80,9 +83,9 @@ extension CreateExerciseInputSheet {
             }
         }
         
-        func updateExercise() {
+        func updateExercise() throws {
             if (sets.isEmpty || repRangeBot.isEmpty || repRangeTop.isEmpty || name.isEmpty) {
-                return
+                throw ErrorsConstants.setsAndRepRangeAndNameFieldEmpty
             }
             
             selectedExercise?.update(

@@ -8,5 +8,6 @@
 import Foundation
 
 extension String: LocalizedError {
+    // Extend String entity to allow error descriptions
     public var errorDescription: String? { return self }
 }
