@@ -22,14 +22,26 @@ extension CreateExerciseInputSheet {
         @Published var name: String
         @Published var title: String
         
+        var onExerciseCreate: (() -> Void)?
+        var onExerciseUpdate: (() -> Void)?
+        
         var isNewExercise: Bool
         
         private let selectedExercise: Exercise?
         
-        init(context: NSManagedObjectContext, selectedExercise: Exercise?, day: Day) {
+        init(
+            context: NSManagedObjectContext,
+            selectedExercise: Exercise?,
+            day: Day,
+            onExerciseCreate: (() -> Void)? = nil,
+            onExerciseUpdate: (() -> Void)? = nil
+        ) {
             self.context = context
             self.day = day
             self.selectedExercise = selectedExercise
+            
+            self.onExerciseCreate = onExerciseCreate
+            self.onExerciseUpdate = onExerciseUpdate
             
             if let exercise = selectedExercise {
                 self.name = exercise.exerciseName
@@ -54,8 +66,14 @@ extension CreateExerciseInputSheet {
             do {
                 if (isNewExercise) {
                     try createExerciseToSelectedDay()
+                    if let _onExerciseCreate = onExerciseCreate {
+                        _onExerciseCreate()
+                    }
                 } else {
                     try updateExercise()
+                    if let _onExerciseUpdate = onExerciseUpdate {
+                        _onExerciseUpdate()
+                    }
                 }
             } catch {
                 return error
@@ -84,7 +102,6 @@ extension CreateExerciseInputSheet {
                 sets: Int16(sets)!
             ) {
                 day.addExercise(newExercise: newExercise)
-                self.day = day
             }
         }
         

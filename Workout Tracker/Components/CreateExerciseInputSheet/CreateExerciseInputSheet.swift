@@ -15,11 +15,20 @@ struct CreateExerciseInputSheet: View {
     @State var isAlertPresented = false
     @State var alertMessage: String = ""
     
-    init(context: NSManagedObjectContext, isSheetOpen: Binding<Bool>, selectedExercise: Exercise?, day: Day) {
+    init(
+        context: NSManagedObjectContext,
+        isSheetOpen: Binding<Bool>,
+        selectedExercise: Exercise?,
+        day: Day,
+        onExerciseCreate: (() -> Void)? = nil,
+        onExerciseUpdate: (() -> Void)? = nil
+    ) {
         viewModel = CreateExerciseInputSheetViewModel(
             context: context,
             selectedExercise: selectedExercise,
-            day: day
+            day: day,
+            onExerciseCreate: onExerciseCreate,
+            onExerciseUpdate: onExerciseUpdate
         )
         
         self._isSheetOpen = isSheetOpen

@@ -33,6 +33,10 @@ struct DayProgramView: View {
     func handleTapBackChevron() {
         programRouter.navigateBack()
     }
+    
+    func handleRefreshDay() {
+        viewModel.refreshDay()
+    }
 
     var body: some View {
         VStack {
@@ -53,7 +57,12 @@ struct DayProgramView: View {
             }.padding(.bottom, 10)
             
             if let day = viewModel.day {
-                ExerciseList(context: context, exercises: day.dayExercises, day: day)
+                ExerciseList(
+                    context: context,
+                    exercises: day.dayExercises,
+                    day: day,
+                    onExerciseUpdate: handleRefreshDay
+                )
             }
         }
         .sheet(isPresented: $isSheetOpen) {
@@ -62,7 +71,8 @@ struct DayProgramView: View {
                     context: context,
                     isSheetOpen: $isSheetOpen,
                     selectedExercise: nil,
-                    day: _day
+                    day: _day,
+                    onExerciseCreate: handleRefreshDay
                 )
             }
         }

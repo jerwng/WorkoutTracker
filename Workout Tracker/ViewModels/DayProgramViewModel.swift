@@ -40,5 +40,11 @@ extension DayProgramView {
             return nil
         }
         
+        // This is needed to refresh Day after creating an Exercise.
+        // TODO: Investigation is needed on why Day doesn't publish changes
+        func refreshDay() {
+            self.day = fetchDayById(dayId: day?.id)
+        }
+        
     }
 }

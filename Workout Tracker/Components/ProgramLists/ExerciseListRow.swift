@@ -16,6 +16,8 @@ struct ExerciseListRow: View {
     
     @State private var isSheetOpen: Bool = false
     
+    var onExerciseUpdate: () -> Void
+    
     func handleTapRow() {
         isSheetOpen = true
     }
@@ -38,7 +40,8 @@ struct ExerciseListRow: View {
                     context: context,
                     isSheetOpen: $isSheetOpen,
                     selectedExercise: exercise,
-                    day: day
+                    day: day,
+                    onExerciseUpdate: onExerciseUpdate
                 )
             }
             if let exerciseNotes = exercise.notes {

@@ -14,6 +14,8 @@ struct ExerciseList: View {
     var exercises: [Exercise]
     var day: Day
     
+    var onExerciseUpdate: () -> Void
+    
     func handleDelete(at offsets: IndexSet) {
         print("delete exercise")
         let exerciseToBeDeleted = exercises[offsets.first!]
@@ -28,7 +30,8 @@ struct ExerciseList: View {
                     ExerciseListRow(
                         context: context,
                         exercise: exercise,
-                        day: day
+                        day: day,
+                        onExerciseUpdate: onExerciseUpdate
                     )
                     .exerciseListListRowStylingModifier()
             }.onDelete(perform: handleDelete)
