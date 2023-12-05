@@ -24,6 +24,10 @@ extension Day: EntityWithSequence {
     var dayMicrocycleName: String {
         return  "\(microcycle?.microcycleName ?? "Unknown Microcycle")"
     }
+    
+    var dayId: String {
+        return id?.uuidString ?? "Unknown Day Id"
+    }
 
     static func create(context: NSManagedObjectContext, microcycleId: Microcycle.ID) -> Day? {
         let highestDaySequenceFetchRequest: NSFetchRequest<Day> = NSFetchRequest(entityName: "Day")

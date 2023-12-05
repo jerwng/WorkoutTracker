@@ -16,6 +16,8 @@ extension DayView {
         @Published var nextDay: Day?
         @Published var previousDay: Day?
         
+        @AppStorage(UserDefaultKeys.lastVisitedDayId) var lastVisitedDayId: String = ""
+        
         init(context: NSManagedObjectContext) {
             // Current default to Day 1 Week 1 (first day)
             self.context = context
@@ -29,6 +31,8 @@ extension DayView {
         
         func setSelectedDay(day: Day?) {
             self.selectedDay = day
+            
+            lastVisitedDayId = day?.dayId ?? ""
 
             setNextDay()
             setPreviousDay()
