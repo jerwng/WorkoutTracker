@@ -25,8 +25,12 @@ extension DayView {
         }
         
         func initializeSelectedDay() {
-            let mesocycleFirstDay = fetchActiveMesocycleFirstDay()
-            setSelectedDay(day: mesocycleFirstDay)
+            if let lastVisitedDay = !lastVisitedDayId.isEmpty ? fetchActiveMesocycleDayById(dayId: lastVisitedDayId) : nil {
+                setSelectedDay(day: lastVisitedDay)
+            } else {
+                let mesocycleFirstDay = fetchActiveMesocycleFirstDay()
+                setSelectedDay(day: mesocycleFirstDay)
+            }
         }
         
         func setSelectedDay(day: Day?) {
@@ -96,9 +100,26 @@ extension DayView {
         /**
          Fetch the day in the current active mesocycle by ID
          */
-        func fetchActiveMesocycleDayById() {
-            // Return day with matching ID. Ensure the day is from a microcycle in the active mesocycle.
+        func fetchActiveMesocycleDayById(dayId: String) -> Day? {
+            // Return day with matching ID. Ensure the day is from a microcycle in the active Mesocycle.
+            let fetchRequest = FetchRequestUtils.getDayById(dayId: dayId)
             
+            do {
+                let fetchResult = try context.fetch(fetchRequest)
+                if let day = fetchResult.first {
+                    // Ensure Day is from an active Mesocycle, by checking Day -> Microcycle -> Mesocycle.isComplete is false
+                    // Only return Day if isComplete is false to avoid Day from a completed Mesocycle from showing on Day view
+                    let isDayMesocycleComplete = day.microcycle?.mesocycle?.isComplete
+                    
+                    if (isDayMesocycleComplete == false) {
+                        return day
+                    }
+                }
+            } catch {
+                print("Error fetching Day with Id \(dayId): \(error)")
+            }
+            
+            return nil
         }
         
         /**

@@ -49,4 +49,14 @@ class FetchRequestUtils {
         
         return fetchRequest
     }
+    
+    static func getDayById(dayId: String) -> NSFetchRequest<Day> {
+        let fetchRequest: NSFetchRequest<Day> = Day.fetchRequest()
+
+        let predicate = NSPredicate(format: "id == %@", dayId)
+        
+        fetchRequest.predicate = predicate
+        
+        return fetchRequest
+    }
 }
