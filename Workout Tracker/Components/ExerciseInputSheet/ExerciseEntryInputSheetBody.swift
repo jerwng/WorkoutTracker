@@ -43,10 +43,10 @@ struct ExerciseEntryInputSheetFields: View {
         Form {
             Section {
                 DecimalPadTextField(
-                    textValue: $weight, textPlaceholder: "lbs"
+                    textValue: $reps, textPlaceholder: "Reps"
                 )
                 DecimalPadTextField(
-                    textValue: $reps, textPlaceholder: "Reps"
+                    textValue: $weight, textPlaceholder: "lbs"
                 )
                 BackgroundTextField(
                     textValue: $time, textPlaceholder: "Time"
