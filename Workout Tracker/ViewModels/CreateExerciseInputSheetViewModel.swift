@@ -66,7 +66,12 @@ extension CreateExerciseInputSheet {
         
         func createExerciseToSelectedDay() throws {
             if (sets.isEmpty || repRangeBot.isEmpty || repRangeTop.isEmpty || name.isEmpty) {
-                throw ErrorsConstants.setsAndRepRangeAndNameFieldEmpty
+                throw ErrorConstants.setsAndRepRangeAndNameFieldEmpty
+            }
+            
+            let dayExercisesWithCurrentName = day.dayExercises .filter {$0.exerciseName.localizedCaseInsensitiveContains(name)}
+            if (!dayExercisesWithCurrentName.isEmpty) {
+                throw ErrorConstants.exerciseWithNameExistsInDay
             }
             
             if let newExercise = Exercise.create(
@@ -85,7 +90,12 @@ extension CreateExerciseInputSheet {
         
         func updateExercise() throws {
             if (sets.isEmpty || repRangeBot.isEmpty || repRangeTop.isEmpty || name.isEmpty) {
-                throw ErrorsConstants.setsAndRepRangeAndNameFieldEmpty
+                throw ErrorConstants.setsAndRepRangeAndNameFieldEmpty
+            }
+            
+            let dayExercisesWithCurrentName = day.dayExercises .filter {$0.exerciseName.localizedCaseInsensitiveContains(name)}
+            if (!dayExercisesWithCurrentName.isEmpty) {
+                throw ErrorConstants.exerciseWithNameExistsInDay
             }
             
             selectedExercise?.update(
