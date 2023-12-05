@@ -15,8 +15,6 @@ extension ExerciseInputSheet {
         @Published var selectedExercise: Exercise
         @Published var selectedExerciseEntry: ExerciseEntry?
         
-        @Binding var isSheetOpen: Bool
-        
         @Published var weight: String
         @Published var reps: String
         @Published var time: String
@@ -31,7 +29,6 @@ extension ExerciseInputSheet {
         
         init(
             context: NSManagedObjectContext,
-            isSheetOpen: Binding<Bool>,
             selectedExercise: Exercise,
             selectedExerciseEntry: ExerciseEntry?,
             onExerciseEntryCreate: (() -> Void)? = nil,
@@ -41,8 +38,7 @@ extension ExerciseInputSheet {
             self.context = context
             self.selectedExercise = selectedExercise
             self.selectedExerciseEntry = selectedExerciseEntry
-            
-            self._isSheetOpen = isSheetOpen
+
             self.name = selectedExercise.exerciseName
             
             self.onExerciseEntryCreate = onExerciseEntryCreate
@@ -66,24 +62,30 @@ extension ExerciseInputSheet {
             }
         }
         
-        func handleExerciseEntryInputSheetSubmit() {
-            if (isNewExerciseEntry) {
-                createExerciseEntry()
-                if let _onExerciseEntryCreate = onExerciseEntryCreate {
-                    _onExerciseEntryCreate()
+        func handleExerciseEntryInputSheetSubmit() -> Error? {
+            do {
+                if (isNewExerciseEntry) {
+                    try createExerciseEntry()
+                    if let _onExerciseEntryCreate = onExerciseEntryCreate {
+                        _onExerciseEntryCreate()
+                    }
+                    
+                } else {
+                    try updateExerciseEntry()
+                    if let _onExerciseEntryUpdate = onExerciseEntryUpdate {
+                        _onExerciseEntryUpdate()
+                    }
                 }
-                
-            } else {
-                updateExerciseEntry()
-                if let _onExerciseEntryUpdate = onExerciseEntryUpdate {
-                    _onExerciseEntryUpdate()
-                }
+            } catch {
+                return error
             }
+            
+            return nil
         }
 
-        func createExerciseEntry() {
+        func createExerciseEntry() throws {
             if (reps.isEmpty || weight.isEmpty) {
-                return
+                throw ErrorsConstants.repsOrWeightFieldEmpty
             }
             
             if let newExerciseEntry = ExerciseEntry.create(
@@ -99,9 +101,9 @@ extension ExerciseInputSheet {
             }
         }
         
-        func updateExerciseEntry() {
+        func updateExerciseEntry() throws {
             if (reps.isEmpty || weight.isEmpty) {
-                return
+                throw ErrorsConstants.repsOrWeightFieldEmpty
             }
             
             selectedExerciseEntry?.update(
@@ -119,8 +121,6 @@ extension ExerciseInputSheet {
                 if let _onExerciseEntryDelete = onExerciseEntryDelete {
                     _onExerciseEntryDelete()
                 }
-                
-                self.isSheetOpen = false
             }
         }
     }

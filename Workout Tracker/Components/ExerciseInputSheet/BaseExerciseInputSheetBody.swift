@@ -15,20 +15,14 @@ struct BaseExerciseInputSheetBody<Content: View>: View {
 
     @Binding var isSheetOpen: Bool
 
-    var handleSubmit: (() -> Void)?
+    var handleSubmit: () -> Void
     
     func handleCancelButtonTap() {
-        print("tap cancel")
         isSheetOpen = false
     }
     
     func handleDoneButtonTap() {
-        print("tap done")
-        isSheetOpen = false
-        
-        if let _handleSubmit = handleSubmit {
-            _handleSubmit()
-        }
+        handleSubmit()
     }
     
     var body: some View {
