@@ -87,7 +87,7 @@ extension CreateExerciseInputSheet {
                 throw ErrorConstants.setsAndRepRangeAndNameFieldEmpty
             }
             
-            let dayExercisesWithCurrentName = day.dayExercises .filter {$0.exerciseName.localizedCaseInsensitiveContains(name)}
+            let dayExercisesWithCurrentName = day.dayExercises .filter {$0.exerciseName.lowercased() == name.lowercased()}
             if (!dayExercisesWithCurrentName.isEmpty) {
                 throw ErrorConstants.exerciseWithNameExistsInDay
             }
@@ -110,7 +110,7 @@ extension CreateExerciseInputSheet {
                 throw ErrorConstants.setsAndRepRangeAndNameFieldEmpty
             }
             
-            let dayExercisesWithCurrentName = day.dayExercises .filter {$0.exerciseName.localizedCaseInsensitiveContains(name)}
+            let dayExercisesWithCurrentName = day.dayExercises .filter {$0.exerciseName.lowercased() == name.lowercased()}
             if (!dayExercisesWithCurrentName.isEmpty) {
                 throw ErrorConstants.exerciseWithNameExistsInDay
             }
